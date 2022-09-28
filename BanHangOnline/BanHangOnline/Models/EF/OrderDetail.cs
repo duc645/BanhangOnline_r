@@ -10,12 +10,18 @@ namespace BanHangOnline.Models.EF
     [Table("tb_OrderDetail")]
     public class OrderDetail
     {
-        [key]
-        [Column(Order = 0)]
-        public int OrderId { get; set; }
+        //[Key]
+        //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        //public int Id { get; set; }
+        
+        [Key]
+        [Column(Order=1)]
 
-        [key, Column(Order = 1)]
         public int ProductId { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        public int OrderId { get; set; }
 
         public decimal Price { get; set; }
 

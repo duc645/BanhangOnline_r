@@ -16,13 +16,15 @@ namespace BanHangOnline.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
         public string Code { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = " CustomerName nằm từ {1} đến {0}")]
         public string CustomerName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
+        [Phone(ErrorMessage = "Hãy nhâp đúng định dạng số điện thoại")]
         public string Phone {get;set;}
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
         public string Address { get; set; }
 
         public decimal TotalAmount { get; set; }

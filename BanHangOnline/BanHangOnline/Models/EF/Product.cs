@@ -10,10 +10,17 @@ namespace BanHangOnline.Models.EF
     [Table("tb_Product")]
     public class Product:CommonAbstract
     {
+
+        public Product()
+        {
+            this.OrderDetails = new HashSet<OrderDetail>();
+            this.Product_Categories = new HashSet<Product_Category>();
+        }
+
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
         [StringLength(250)]
         public string Title { get; set; }
 
@@ -22,9 +29,9 @@ namespace BanHangOnline.Models.EF
 
         public string Detail { get; set; }
         public string Image { get; set; }
-
+        [Required(ErrorMessage = "Trường này không được để trống")]
         public string Quantity { get; set; }
-
+        [Required(ErrorMessage = "Trường này không được để trống")]
         public decimal Price { get; set; }
         public decimal PriceSale { get; set; }
 
@@ -36,13 +43,20 @@ namespace BanHangOnline.Models.EF
         public bool IsHot { get; set; }
 
 
-        public int ProductCategoryId { get; set; }
+        
 
         public string SeoTitle { get; set; }
 
         public string SeoDescription { get; set; }
 
         public string SeoKeywords { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
+
+        //public int ProductCategoryId { get; set; }
+        //public virtual ProductCategory ProductCategory { get; set; }
+
+
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public ICollection<Product_Category> Product_Categories { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace BanHangOnline.Models.EF
     {
         public ProductCategory()
         {
-            this.Products = new HashSet<Product>();
+            this.Product_Categories = new HashSet<Product_Category>();
         }
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
         [StringLength(150)]
         public string Title { get; set; }
 
@@ -32,6 +32,8 @@ namespace BanHangOnline.Models.EF
 
         public string SeoKeywords { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product_Category> Product_Categories { get; set; }
+
+        //      public ICollection<Product> Products { get; set; }
     }
 }

@@ -13,6 +13,9 @@ namespace BanHangOnline.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [StringLength(150, ErrorMessage = "Không được viết trên 150 ký tự")]
+        [EmailAddress(ErrorMessage = "Hãy nhập đúng định dạng email")]
+        [Required(ErrorMessage = "Trường này không được để trống")]
         public string Email { get; set; }
 
         public DateTime CreatedDate { get; set; }

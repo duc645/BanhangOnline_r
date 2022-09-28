@@ -14,11 +14,13 @@ namespace BanHangOnline.Models.EF
         public Category()
         {
             this.News = new HashSet<News>();
+            this.Posts = new HashSet<Posts>();
         }
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Trường này không được để trống")]
         public string Title { get; set; }
 
         public string Description { get; set; }

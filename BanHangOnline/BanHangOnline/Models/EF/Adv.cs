@@ -14,7 +14,7 @@ namespace BanHangOnline.Models.EF
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Trường này không được để trống")]
         [StringLength(200)]
         public string Title { get; set; }
         [StringLength(500)]
