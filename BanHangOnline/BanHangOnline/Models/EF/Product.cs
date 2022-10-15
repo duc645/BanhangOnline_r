@@ -23,6 +23,7 @@ namespace BanHangOnline.Models.EF
         [Required(ErrorMessage = "Trường này không được để trống")]
         [StringLength(250)]
         public string Title { get; set; }
+        public string Alias { get; set; }
 
         public string ProductCode { get; set; }
         public string Description { get; set; }
