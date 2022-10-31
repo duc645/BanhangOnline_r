@@ -14,7 +14,7 @@ namespace BanHangOnline.Models.EF
         public Product()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.Product_Categories = new HashSet<Product_Category>();
+            //this.Product_Categories = new HashSet<Product_Category>();
         }
 
         [Key]
@@ -52,12 +52,16 @@ namespace BanHangOnline.Models.EF
 
         public string SeoKeywords { get; set; }
 
-        //public int ProductCategoryId { get; set; }
-        //public virtual ProductCategory ProductCategory { get; set; }
+
+        public int CategoryId { get; set; }
+        public virtual ProductCategory productcategory { get; set; }
+
+        //public int productcategoryid { get; set; }
+        //public virtual productcategory productcategory { get; set; }
 
 
         public ICollection<OrderDetail> OrderDetails { get; set; }
 
-        public ICollection<Product_Category> Product_Categories { get; set; }
+        //public ICollection<Product_Category> Product_Categories { get; set; }
     }
 }

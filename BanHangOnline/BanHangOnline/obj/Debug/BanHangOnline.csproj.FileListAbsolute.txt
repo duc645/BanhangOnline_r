@@ -101,7 +101,6 @@ D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\Microsoft.O
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\Microsoft.Owin.Security.OAuth.xml
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CoreCompileInputs.cache
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CopyComplete
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.dll
@@ -110,3 +109,6 @@ D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHa
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.GenerateResource.cache
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.UpdateCategory.resources
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.addFieldAlias.resources
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.deleteproduct_category.resources
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\CKFinder.dll
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\CKFinder.pdb

@@ -12,7 +12,8 @@ namespace BanHangOnline.Models.EF
     {
         public ProductCategory()
         {
-            this.Product_Categories = new HashSet<Product_Category>();
+            //this.Product_Categories = new HashSet<Product_Category>();
+            this.Products = new HashSet<Product>();
         }
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -33,8 +34,8 @@ namespace BanHangOnline.Models.EF
 
         public string SeoKeywords { get; set; }
 
-        public ICollection<Product_Category> Product_Categories { get; set; }
+        //public ICollection<Product_Category> Product_Categories { get; set; }
 
-        //      public ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
