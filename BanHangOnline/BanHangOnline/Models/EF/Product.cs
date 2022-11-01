@@ -43,8 +43,9 @@ namespace BanHangOnline.Models.EF
 
         public bool IsHot { get; set; }
 
+        public bool IsActive { get; set; }
 
-        
+
 
         public string SeoTitle { get; set; }
 

@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202210301630339_deleteproduct_category.Designer.cs">
       <DependentUpon>202210301630339_deleteproduct_category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210311819263_addFieldActive.cs" />
+    <Compile Include="Migrations\202210311819263_addFieldActive.Designer.cs">
+      <DependentUpon>202210311819263_addFieldActive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3117,6 +3121,7 @@
     <Content Include="Content\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3194,6 +3199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210301630339_deleteproduct_category.resx">
       <DependentUpon>202210301630339_deleteproduct_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210311819263_addFieldActive.resx">
+      <DependentUpon>202210311819263_addFieldActive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -32,6 +32,8 @@ namespace BanHangOnline.Models.EF
 
         public string SeoKeywords { get; set; }
 
+        public bool IsActive { get; set; }
+
         public virtual Category Category { get; set; }
     }
 }
