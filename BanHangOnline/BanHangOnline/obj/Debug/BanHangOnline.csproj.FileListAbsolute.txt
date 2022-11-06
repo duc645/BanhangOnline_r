@@ -113,3 +113,8 @@ D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHa
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\CKFinder.dll
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\CKFinder.pdb
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.addFieldActive.resources
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.changeLengsPostPro.resources
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.dll
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.dll
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.xml
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.xml

@@ -9,25 +9,25 @@ using System.Web.Mvc;
 
 namespace BanHangOnline.Areas.Admin.Controllers
 {
-    public class NewsController : Controller
+    public class PostsController : Controller
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
-        // GET: Admin/News
+        // GET: Admin/Posts
         public ActionResult Index(string searchText, int? page)
         {
             var pageSize = 10;
-            if (page == null)
+            if(page == null)
             {
                 page = 1;
             }
-            IEnumerable<News> items = _dbContext.News.OrderByDescending(x => x.Id);
+            IEnumerable<Posts> items = _dbContext.Posts.OrderByDescending(x => x.Id);
             if (!string.IsNullOrEmpty(searchText))
             {
                 items = items.Where(x => x.Alias.Contains(searchText) || x.Title.Contains(searchText));
             }
-            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
-            items = items.ToPagedList(pageIndex, pageSize);
+            var pageIndex = page.HasValue ? Convert.ToInt32(page):1;
+            items =items.ToPagedList(pageIndex,pageSize);
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
             ViewBag.SearchText = searchText;
@@ -39,7 +39,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(News model)
+        public ActionResult Add(Posts model)
         {
             if (ModelState.IsValid)
             {
@@ -47,7 +47,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 model.ModifiedDate = DateTime.Now;
                 model.CategoryId = 2;
                 model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
-                _dbContext.News.Add(model);
+                _dbContext.Posts.Add(model);
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -56,19 +56,19 @@ namespace BanHangOnline.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var item = _dbContext.News.Find(id);
+            var item = _dbContext.Posts.Find(id);
             return View(item);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(News model)
+        public ActionResult Edit(Posts model)
         {
             if (ModelState.IsValid)
             {
 
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
-                _dbContext.News.Attach(model);
+                _dbContext.Posts.Attach(model);
                 _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,20 +78,20 @@ namespace BanHangOnline.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var item = _dbContext.News.Find(id);
-            if(item != null)
+            var item = _dbContext.Posts.Find(id);
+            if (item != null)
             {
-                _dbContext.News.Remove(item);
+                _dbContext.Posts.Remove(item);
                 _dbContext.SaveChanges();
                 return Json(new { success = true });
             }
-            return Json(new {success = false });
+            return Json(new { success = false });
         }
 
         [HttpPost]
         public ActionResult IsActive(int id)
         {
-            var item = _dbContext.News.Find(id);
+            var item = _dbContext.Posts.Find(id);
             if (item != null)
             {
                 item.IsActive = !item.IsActive;
@@ -108,12 +108,12 @@ namespace BanHangOnline.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(ids))
             {
                 var items = ids.Split(',');
-                if(items!=null && items.Any())
+                if (items != null && items.Any())
                 {
-                    foreach(var item in items)
+                    foreach (var item in items)
                     {
-                        var obj = _dbContext.News.Find(Convert.ToInt32(item));
-                        _dbContext.News.Remove(obj);
+                        var obj = _dbContext.Posts.Find(Convert.ToInt32(item));
+                        _dbContext.Posts.Remove(obj);
                         _dbContext.SaveChanges();
                     }
 
