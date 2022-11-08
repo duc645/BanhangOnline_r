@@ -1,11 +1,11 @@
-﻿
-@model PagedList.PagedList<BanHangOnline.Models.EF.News>
+﻿@model PagedList.PagedList<BanHangOnline.Models.EF.Product>
 @using PagedList.Mvc;
 @using PagedList;
 @{
-    ViewBag.Title = "Danh sách tin tức ";
+    ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 @section naviheader{
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cập nhật tin tức</h1>
+                <h1>Cập nhật @ViewBag.Title</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -43,22 +43,21 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"> @ViewBag.Title</h3>
+            <h3 class="card-title">Danh sách @ViewBag.Title</h3>
 
             <div class="card-tools">
-                <a href="/admin/news/add" class="btn btn-primary">Thêm</a>
+                <a href="/admin/products/add" class="btn btn-primary">Thêm</a>
                 <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
             </div>
         </div>
         <div class="card-body">
-            <div class="row">
+            @*<div class="row">
                 <div class="col-6">
-                    @using (Html.BeginForm("index", "News", FormMethod.Get, new { }))
+                    @using (Html.BeginForm("index", "Products", FormMethod.Get, new { }))
                     {
                         <div class="form-group">
                             <div class="input-group input-group-sm">
-                                @Html.TextBox("searchText", null, new { }@*new { @class = "form-control", @placeholder = "Nhập tìm kiếm ở đây..." }*@)
-                                @*<input type="text" name="searchtext" class="form-control">*@
+                                @Html.TextBox("searchText", null, new { @class = "form-control", @placeholder = "Nhập tìm kiếm ở đây..." })
                                 <span class="input-group-append">
                                     <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
                                 </span>
@@ -67,17 +66,19 @@
                     }
 
                 </div>
-            </div>
+            </div>*@
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="SelectAll" /></th>
                         <th>STT</th>
                         <th>Hình ảnh</th>
-                        <th>Tiêu đề</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Danh mục</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
                         <th>Ngày tạo</th>
                         <th class="text-center">Hiển thị</th>
-                        <th>Thứ tự</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -93,12 +94,15 @@
                                 <td>@i</td>
                                 <td><img src="@item.Image" width="60" /></td>
                                 <td>@item.Title</td>
+                                <td>@item.productcategory.Title</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Price</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td class="text-center">
                                     <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
                                 </td>
                                 <td>
-                                    <a href="/admin/news/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
+                                    <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                     @*@Html.Raw(@item.Detail)*@
                                 </td>
@@ -168,7 +172,7 @@
                     var conf = confirm('Bạn có muốn xóa các bản ghi này không? ');
                     if (conf === true) {
                         $.ajax({
-                            url: '/admin/news/deletedAll',
+                            url: '/admin/products/deletedAll',
                             type: 'POST',
                             data: { ids: str },
                             success: function (rs) {
@@ -200,7 +204,7 @@
                 var conf = confirm('Bạn có muốn xóa bản ghi này không?');
                 if (conf === true) {
                     $.ajax({
-                        url: '/admin/news/delete',
+                        url: '/admin/products/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {
@@ -220,7 +224,7 @@
                 var id = btn.data("id");
 
                 $.ajax({
-                    url: '/admin/news/IsActive',
+                    url: '/admin/products/IsActive',
                     type: 'POST',
                     data: { id: id },
                     success: function (rs) {

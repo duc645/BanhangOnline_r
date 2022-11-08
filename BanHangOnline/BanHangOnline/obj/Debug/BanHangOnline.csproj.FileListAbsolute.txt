@@ -118,3 +118,5 @@ D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.d
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.dll
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.xml
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.xml
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.UpdateProductCategory.resources
+D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache
