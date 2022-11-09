@@ -34,7 +34,7 @@
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            @RenderSection("naviheader",required:false)
+            @RenderSection("naviheader", required: false)
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -215,11 +215,12 @@
     <script src="~/Content/clients/plugins/dropzone/min/dropzone.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Content/clients/dist/js/adminlte.min.js"></script>
+    <script src="~/Scripts/autoNumeric-1.9.45.js"></script>
     <!-- AdminLTE for demo purposes -->
     @*<script src="~/Content/clients/dist/js/demo.js"></script>*@
     <!-- Page specific script -->
     <script>
-    $(function () {
+        $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
 
@@ -350,12 +351,12 @@
         document.querySelector("#actions .cancel").onclick = function () {
             myDropzone.removeAllFiles(true)
         }
-      // DropzoneJS Demo Code End</script>
+          // DropzoneJS Demo Code End</script>
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
+        @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
-<script src="~/Content/ckeditor/ckeditor.js"></script>
-<script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
 </body>
 </html>
 
