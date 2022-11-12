@@ -37,7 +37,7 @@ namespace BanHangOnline.Models.EF
         [StringLength(250)]
         public string SeoKeywords { get; set; }
 
-        //public ICollection<Product_Category> Product_Categories { get; set; }
+
 
         public ICollection<Product> Products { get; set; }
     }

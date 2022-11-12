@@ -3,7 +3,7 @@ namespace BanHangOnline.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDb : DbMigration
+    public partial class themdbmoi : DbMigration
     {
         public override void Up()
         {
@@ -29,11 +29,13 @@ namespace BanHangOnline.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false),
+                        Title = c.String(nullable: false, maxLength: 150),
+                        Alias = c.String(),
                         Description = c.String(),
-                        SeoTitle = c.String(),
-                        SeoDescription = c.String(),
-                        SeoKeywords = c.String(),
+                        SeoTitle = c.String(maxLength: 150),
+                        SeoDescription = c.String(maxLength: 250),
+                        SeoKeywords = c.String(maxLength: 150),
+                        IsActive = c.Boolean(nullable: false),
                         Position = c.Int(nullable: false),
                         CreateBy = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
@@ -48,6 +50,7 @@ namespace BanHangOnline.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 150),
+                        Alias = c.String(),
                         Description = c.String(),
                         Detail = c.String(),
                         Image = c.String(),
@@ -55,6 +58,7 @@ namespace BanHangOnline.Migrations
                         SeoTitle = c.String(),
                         SeoDescription = c.String(),
                         SeoKeywords = c.String(),
+                        IsActive = c.Boolean(nullable: false),
                         CreateBy = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
@@ -70,13 +74,15 @@ namespace BanHangOnline.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 150),
+                        Alias = c.String(maxLength: 150),
                         Description = c.String(),
                         Detail = c.String(),
-                        Image = c.String(),
+                        Image = c.String(maxLength: 250),
                         CategoryId = c.Int(nullable: false),
-                        SeoTitle = c.String(),
-                        SeoDescription = c.String(),
-                        SeoKeywords = c.String(),
+                        SeoTitle = c.String(maxLength: 250),
+                        SeoDescription = c.String(maxLength: 500),
+                        SeoKeywords = c.String(maxLength: 200),
+                        IsActive = c.Boolean(nullable: false),
                         CreateBy = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
@@ -103,12 +109,13 @@ namespace BanHangOnline.Migrations
                 "dbo.tb_OrderDetail",
                 c => new
                     {
+                        Id = c.Int(nullable: false, identity: true),
                         ProductId = c.Int(nullable: false),
                         OrderId = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Quantity = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.ProductId, t.OrderId })
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.tb_Order", t => t.OrderId, cascadeDelete: true)
                 .ForeignKey("dbo.tb_Product", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.ProductId)
@@ -138,10 +145,11 @@ namespace BanHangOnline.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 250),
-                        ProductCode = c.String(),
+                        Alias = c.String(maxLength: 250),
+                        ProductCode = c.String(maxLength: 50),
                         Description = c.String(),
                         Detail = c.String(),
-                        Image = c.String(),
+                        Image = c.String(maxLength: 250),
                         Quantity = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PriceSale = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -149,27 +157,18 @@ namespace BanHangOnline.Migrations
                         IsSale = c.Boolean(nullable: false),
                         IsFeature = c.Boolean(nullable: false),
                         IsHot = c.Boolean(nullable: false),
-                        SeoTitle = c.String(),
-                        SeoDescription = c.String(),
-                        SeoKeywords = c.String(),
+                        IsActive = c.Boolean(nullable: false),
+                        SeoTitle = c.String(maxLength: 250),
+                        SeoDescription = c.String(maxLength: 500),
+                        SeoKeywords = c.String(maxLength: 200),
+                        ProductCategoryId = c.Int(nullable: false),
                         CreateBy = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
                         ModifiedBy = c.String(),
                     })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Product_Category",
-                c => new
-                    {
-                        ProductId = c.Int(nullable: false),
-                        ProductCategoryId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.ProductId, t.ProductCategoryId })
-                .ForeignKey("dbo.tb_Product", t => t.ProductId, cascadeDelete: true)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.tb_ProductCategory", t => t.ProductCategoryId, cascadeDelete: true)
-                .Index(t => t.ProductId)
                 .Index(t => t.ProductCategoryId);
             
             CreateTable(
@@ -178,11 +177,12 @@ namespace BanHangOnline.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 150),
-                        Icon = c.String(),
-                        Description = c.String(),
-                        SeoTitle = c.String(),
-                        SeoDescription = c.String(),
-                        SeoKeywords = c.String(),
+                        Alias = c.String(nullable: false, maxLength: 150),
+                        Icon = c.String(maxLength: 150),
+                        Description = c.String(maxLength: 250),
+                        SeoTitle = c.String(maxLength: 250),
+                        SeoDescription = c.String(maxLength: 500),
+                        SeoKeywords = c.String(maxLength: 250),
                         CreateBy = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
@@ -199,7 +199,9 @@ namespace BanHangOnline.Migrations
                         Image = c.String(),
                         IsDefault = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.tb_Product", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -299,8 +301,8 @@ namespace BanHangOnline.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Product_Category", "ProductCategoryId", "dbo.tb_ProductCategory");
-            DropForeignKey("dbo.Product_Category", "ProductId", "dbo.tb_Product");
+            DropForeignKey("dbo.tb_ProductImage", "ProductId", "dbo.tb_Product");
+            DropForeignKey("dbo.tb_Product", "ProductCategoryId", "dbo.tb_ProductCategory");
             DropForeignKey("dbo.tb_OrderDetail", "ProductId", "dbo.tb_Product");
             DropForeignKey("dbo.tb_OrderDetail", "OrderId", "dbo.tb_Order");
             DropForeignKey("dbo.tb_Posts", "CategoryId", "dbo.tb_Category");
@@ -311,8 +313,8 @@ namespace BanHangOnline.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Product_Category", new[] { "ProductCategoryId" });
-            DropIndex("dbo.Product_Category", new[] { "ProductId" });
+            DropIndex("dbo.tb_ProductImage", new[] { "ProductId" });
+            DropIndex("dbo.tb_Product", new[] { "ProductCategoryId" });
             DropIndex("dbo.tb_OrderDetail", new[] { "OrderId" });
             DropIndex("dbo.tb_OrderDetail", new[] { "ProductId" });
             DropIndex("dbo.tb_Posts", new[] { "CategoryId" });
@@ -326,7 +328,6 @@ namespace BanHangOnline.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.tb_ProductImage");
             DropTable("dbo.tb_ProductCategory");
-            DropTable("dbo.Product_Category");
             DropTable("dbo.tb_Product");
             DropTable("dbo.tb_Order");
             DropTable("dbo.tb_OrderDetail");

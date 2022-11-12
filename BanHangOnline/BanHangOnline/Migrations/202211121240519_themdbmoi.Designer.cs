@@ -7,13 +7,13 @@ namespace BanHangOnline.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addFieldActive : IMigrationMetadata
+    public sealed partial class themdbmoi : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addFieldActive));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(themdbmoi));
         
         string IMigrationMetadata.Id
         {
-            get { return "202210311819263_addFieldActive"; }
+            get { return "202211121240519_themdbmoi"; }
         }
         
         string IMigrationMetadata.Source

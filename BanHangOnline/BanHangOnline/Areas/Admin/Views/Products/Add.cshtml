@@ -131,8 +131,8 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Danh mục</label>
-                                            @Html.DropDownListFor(x => x.CategoryId, ViewBag.ProductCategory as SelectList,"--- Chọn danh mục ---",new { @class = "form-control", @placeholder = "Code" })
-                                            @Html.ValidationMessageFor(x => x.CategoryId, null, new { @class = "text-danger" })
+                                            @Html.DropDownListFor(x => x.ProductCategoryId, ViewBag.ProductCategory as SelectList,"--- Chọn danh mục ---",new { @class = "form-control", @placeholder = "Code" })
+                                            @Html.ValidationMessageFor(x => x.ProductCategoryId, null, new { @class = "text-danger" })
 
                                         </div>
                                         <div class="form-group">

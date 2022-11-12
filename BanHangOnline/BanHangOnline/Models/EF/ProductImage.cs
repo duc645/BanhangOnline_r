@@ -18,5 +18,7 @@ namespace BanHangOnline.Models.EF
         public string Image { get; set; }
 
         public bool IsDefault { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

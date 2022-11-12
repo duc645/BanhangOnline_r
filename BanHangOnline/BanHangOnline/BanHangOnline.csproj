@@ -191,33 +191,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202209280324266_CreateDb.cs" />
-    <Compile Include="Migrations\202209280324266_CreateDb.Designer.cs">
-      <DependentUpon>202209280324266_CreateDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210110747558_UpdateCategory.cs" />
-    <Compile Include="Migrations\202210110747558_UpdateCategory.Designer.cs">
-      <DependentUpon>202210110747558_UpdateCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210110920453_addFieldAlias.cs" />
-    <Compile Include="Migrations\202210110920453_addFieldAlias.Designer.cs">
-      <DependentUpon>202210110920453_addFieldAlias.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210301630339_deleteproduct_category.cs" />
-    <Compile Include="Migrations\202210301630339_deleteproduct_category.Designer.cs">
-      <DependentUpon>202210301630339_deleteproduct_category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210311819263_addFieldActive.cs" />
-    <Compile Include="Migrations\202210311819263_addFieldActive.Designer.cs">
-      <DependentUpon>202210311819263_addFieldActive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211060606180_changeLengsPostPro.cs" />
-    <Compile Include="Migrations\202211060606180_changeLengsPostPro.Designer.cs">
-      <DependentUpon>202211060606180_changeLengsPostPro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211071620430_UpdateProductCategory.cs" />
-    <Compile Include="Migrations\202211071620430_UpdateProductCategory.Designer.cs">
-      <DependentUpon>202211071620430_UpdateProductCategory.cs</DependentUpon>
+    <Compile Include="Migrations\202211121240519_themdbmoi.cs" />
+    <Compile Include="Migrations\202211121240519_themdbmoi.Designer.cs">
+      <DependentUpon>202211121240519_themdbmoi.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,7 +210,6 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
-    <Compile Include="Models\EF\Product_Category.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -3214,26 +3189,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202209280324266_CreateDb.resx">
-      <DependentUpon>202209280324266_CreateDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210110747558_UpdateCategory.resx">
-      <DependentUpon>202210110747558_UpdateCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210110920453_addFieldAlias.resx">
-      <DependentUpon>202210110920453_addFieldAlias.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210301630339_deleteproduct_category.resx">
-      <DependentUpon>202210301630339_deleteproduct_category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210311819263_addFieldActive.resx">
-      <DependentUpon>202210311819263_addFieldActive.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211060606180_changeLengsPostPro.resx">
-      <DependentUpon>202211060606180_changeLengsPostPro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211071620430_UpdateProductCategory.resx">
-      <DependentUpon>202211071620430_UpdateProductCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211121240519_themdbmoi.resx">
+      <DependentUpon>202211121240519_themdbmoi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
