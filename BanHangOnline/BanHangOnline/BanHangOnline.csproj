@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -194,6 +195,10 @@
     <Compile Include="Migrations\202211121240519_themdbmoi.cs" />
     <Compile Include="Migrations\202211121240519_themdbmoi.Designer.cs">
       <DependentUpon>202211121240519_themdbmoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211121844199_pricesalechophepnull.cs" />
+    <Compile Include="Migrations\202211121844199_pricesalechophepnull.Designer.cs">
+      <DependentUpon>202211121844199_pricesalechophepnull.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3123,6 +3128,9 @@
     <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductImage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutEmpty.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3191,6 +3199,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202211121240519_themdbmoi.resx">
       <DependentUpon>202211121240519_themdbmoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211121844199_pricesalechophepnull.resx">
+      <DependentUpon>202211121844199_pricesalechophepnull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

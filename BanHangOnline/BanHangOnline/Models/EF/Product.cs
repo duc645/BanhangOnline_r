@@ -39,7 +39,7 @@ namespace BanHangOnline.Models.EF
         public string Quantity { get; set; }
         [Required(ErrorMessage = "Trường này không được để trống")]
         public decimal Price { get; set; }
-        public decimal PriceSale { get; set; }
+        public decimal? PriceSale { get; set; }
 
         public bool IsHome { get; set; }
         public bool IsSale { get; set; }
