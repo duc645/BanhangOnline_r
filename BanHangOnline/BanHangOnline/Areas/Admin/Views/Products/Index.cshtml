@@ -78,6 +78,8 @@
                         <th>Số lượng</th>
                         <th>Giá</th>
                         <th>Ngày tạo</th>
+                        <th class="text-center">Home</th>
+                        <th class="text-center">Sale</th>
                         <th class="text-center">Hiển thị</th>
                         <th></th>
                     </tr>
@@ -89,24 +91,33 @@
                         foreach (var item in Model)
                         {
                             var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-                                <td>@i</td>
-                                <td><img class="imgproduct" data-id="@item.Id" src="@item.Image" width="60" /></td>
-                                <td>@item.Title</td>
-                                <td>@item.ProductCategory.Title</td>
-                                <td>@item.Quantity</td>
-                                <td>@item.Price</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td class="text-center">
-                                    <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                                </td>
-                                <td>
-                                    <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                    @*@Html.Raw(@item.Detail)*@
-                                </td>
-                            </tr>
+                            var strCheckHome = item.IsHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckSale = item.IsSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+
+                    <tr id="trow_@item.Id">
+                        <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                        <td>@i</td>
+                        <td><img class="imgproduct" data-id="@item.Id" src="@item.Image" width="60" /></td>
+                        <td>@item.Title</td>
+                        <td>@item.ProductCategory.Title</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price</td>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center">
+                            <a href="#" data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                        </td>
+                        <td>
+                            <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
+                            <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                            @*@Html.Raw(@item.Detail)*@
+                        </td>
+                    </tr>
                             i++;
                         }
 
@@ -258,6 +269,62 @@
                         if (rs.success) {
 
                             if (rs.isActive) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                                //$(this).find("i").removeClass("fa fa-times text-danger");
+                                //$(this).find("i").addClass("fas fa-check text-success");/*.html("<i class='fas fa-check text-success'></i>");*/
+                            }
+                            else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                                //$(this).find("i").removeClass("fas fa-check text-success");
+                                //$(this).find("i").addClass("fa fa-times text-danger");
+                            }
+                        }
+
+                    }
+
+                });
+            });
+            $('body').on('click', '.btnHome', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+
+                $.ajax({
+                    url: '/admin/products/IsHome',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+
+                            if (rs.isHome) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                                //$(this).find("i").removeClass("fa fa-times text-danger");
+                                //$(this).find("i").addClass("fas fa-check text-success");/*.html("<i class='fas fa-check text-success'></i>");*/
+                            }
+                            else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                                //$(this).find("i").removeClass("fas fa-check text-success");
+                                //$(this).find("i").addClass("fa fa-times text-danger");
+                            }
+                        }
+
+                    }
+
+                });
+            });
+            $('body').on('click', '.btnSale', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+
+                $.ajax({
+                    url: '/admin/products/IsSale',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+
+                            if (rs.isSale) {
                                 btn.html("<i class='fa fa-check text-success'></i>");
                                 //$(this).find("i").removeClass("fa fa-times text-danger");
                                 //$(this).find("i").addClass("fas fa-check text-success");/*.html("<i class='fas fa-check text-success'></i>");*/
