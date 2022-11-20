@@ -16,7 +16,7 @@ namespace BanHangOnline.Controllers
         {
             return View();
         }
-
+        //cac san pham o trang chu dc lay ra boi danh muc () nam trong phan view _MenuProductCategory
         //lay san pham o trang chu , ten ham viet sai
         public ActionResult Partial_ItemsByCateId()
         {
@@ -27,7 +27,7 @@ namespace BanHangOnline.Controllers
 
         public ActionResult Partial_ProductSale()
         {
-            var items = _dbContext.Products.Where(p => p.IsSale == true && p.IsActive == true).Take(4).Include(c => c.ProductImages).ToList();
+            var items = _dbContext.Products.Where(p => p.IsSale == true && p.IsActive == true && p.PriceSale>0).Take(4).Include(c => c.ProductImages).ToList();
             return PartialView(items);
 
         }

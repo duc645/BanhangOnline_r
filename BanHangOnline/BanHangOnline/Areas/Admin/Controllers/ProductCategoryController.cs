@@ -30,7 +30,9 @@ namespace BanHangOnline.Areas.Admin.Controllers
             {
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
-                model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
+
+                    model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
+
                 _dbContext.ProductCategories.Add(model);
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");

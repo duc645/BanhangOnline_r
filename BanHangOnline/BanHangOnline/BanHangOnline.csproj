@@ -187,9 +187,11 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\test2Controller.cs" />
     <Compile Include="Global.asax.cs">
@@ -3293,6 +3295,9 @@
     <Content Include="Views\Menu\_MenuProductCategory.cshtml" />
     <Content Include="Views\Product\Partial_ItemsByCateId.cshtml" />
     <Content Include="Views\Product\Partial_ProductSale.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

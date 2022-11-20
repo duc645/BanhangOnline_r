@@ -3,43 +3,71 @@
 {
     foreach (var item in Model)
     {
-        //t10 29:56 ko lay dc tham chieu???=>them include moi lay ra duoc 
-        var strImge="";
-        var img = item.ProductImages.FirstOrDefault(x=>x.IsDefault);
-        if(img != null)
+        //t10 29:56 ko lay dc tham chieu???=>them include moi lay ra duoc
+        var strImge = "";
+        var img = item.ProductImages.FirstOrDefault(x => x.IsDefault);
+        if (img != null)
         {
             strImge = img.Image;
         }
         <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat @item.ProductCategory.Alias">
             <div class="featured__item">
-                <div class="featured__item__pic set-bg" @*data-setbg="@strImge"*@>
-                    @*@if (item.PriceSale > 0)
-                    {
-                        <div><span class="badge badge-danger">SALE</span></div>
-                    }*@
-                    <div class="product_image">
-                        <img src="@strImge" alt="@item.Title" />
-                    </div>
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a class="product_name" href="@item.Alias">@item.Title</a></h6>
-                    @if (item.PriceSale > 0)
-                    {
-                        <h5 class="product_price" style="float: left;" >@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ</h5>
-                        <p style="float: right; color: orange; text-size-adjust: inherit; text-decoration:line-through;">@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</p>
-                    }
-                    else
-                    {
-                        <h5 class="product_price">@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</h5>
+                <div class="product__discount__item">
+                    <div class="product__discount__item__pic set-bg"
+                         @*data-setbg="Content/assets/img/product/discount/pd-1.jpg"*@>
+                        <div class="product_image">
+                            <img src="@strImge" alt="@item.Title" />
+                        </div>
+                        @if (item.PriceSale > 0)
+                        {
+                            <div class="product__discount__percent">SALE</div>
+                        }
 
-                    }
+                        <ul class="product__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__discount__item__text">
+                        @*<span>Dried Fruit</span>*@
+                        <h5><a class="product_name" href="@item.Alias">@item.Title</a></h5>
+                        @if (item.PriceSale > 0)
+                        {
+                    <div class="product__item__price">@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ<span>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</span></div>
+                        }
+                        else
+                        {
+                    <div class="product__item__price">@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</div>
+                        }
+                    </div>
                 </div>
+
             </div>
         </div>
     }
 }
+
+@*<div class="featured__item__pic set-bg" data-setbg="@strImge">
+    <div class="product_image">
+        <img src="@strImge" alt="@item.Title" />
+    </div>
+    <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+    </ul>
+</div>
+<div class="featured__item__text">
+    <h6><a class="product_name" href="@item.Alias">@item.Title</a></h6>
+    @if (item.PriceSale > 0)
+    {
+        <h5 class="product_price" style="float: left;">@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ</h5>
+        <p style="float: right; color: orange; text-size-adjust: inherit; text-decoration:line-through;">@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</p>
+    }
+    else
+    {
+        <h5 class="product_price">@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</h5>
+
+    }
+</div>*@
