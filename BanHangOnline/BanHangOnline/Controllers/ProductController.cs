@@ -1,4 +1,5 @@
 ﻿using BanHangOnline.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,9 +13,25 @@ namespace BanHangOnline.Controllers
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? category)
         {
-            return View();
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            if (category != null)
+            {
+                ViewBag.category = category;
+                var productList = _dbContext.Products.OrderByDescending(p => p.Id)
+                                            .Where(p => p.ProductCategoryId == category)
+                                            .ToPagedList(pageNumber, pageSize);
+                return View(productList);
+            }
+            else
+            {
+                var productList = _dbContext.Products.OrderByDescending(p => p.Id)
+                                            .ToPagedList(pageNumber, pageSize);
+                return View(productList);
+            }
+            //return View();
         }
         //cac san pham o trang chu dc lay ra boi danh muc () nam trong phan view _MenuProductCategory
         //lay san pham o trang chu , ten ham viet sai

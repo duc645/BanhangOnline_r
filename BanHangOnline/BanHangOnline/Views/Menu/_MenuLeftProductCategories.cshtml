@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BanHangOnline.Models.EF.ProductCategory>
+@if (Model != null && Model.Any())
+{
+    <h4>Danh mục sách</h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            if (ViewBag.category == item.Id)
+            {
+                <li class="active">@Html.ActionLink(">>> " + item.Title, "Index", "Product", new { page = 1, category = item.Id }, null)</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id }, null)</li>
+            }
+
+        }
+
+    </ul>
+}
