@@ -1,4 +1,5 @@
 ﻿using BanHangOnline.Models;
+using BanHangOnline.Models.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -13,24 +14,43 @@ namespace BanHangOnline.Controllers
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index(int? page, int? category)
+        public ActionResult Index(int? page, int? category,string searchText)
         {
-            var pageNumber = page ?? 1;
-            var pageSize = 5;
+            var pageSize = 2;
+            if (page == null)
+            {
+                page = 1;
+            }
+            IEnumerable<Product> items = _dbContext.Products.OrderByDescending(p => p.Id);
             if (category != null)
             {
                 ViewBag.category = category;
-                var productList = _dbContext.Products.OrderByDescending(p => p.Id)
-                                            .Where(p => p.ProductCategoryId == category)
-                                            .ToPagedList(pageNumber, pageSize);
-                return View(productList);
+                items = items.Where(p => p.ProductCategoryId == category);
             }
-            else
+            if (!string.IsNullOrEmpty(searchText))
             {
-                var productList = _dbContext.Products.OrderByDescending(p => p.Id)
-                                            .ToPagedList(pageNumber, pageSize);
-                return View(productList);
+                items = items.Where(p => p.Alias.Contains(searchText) || p.Title.Contains(searchText));
             }
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+            ViewBag.SearchText = searchText;
+            return View(items);
+            //if (category != null)
+            //{
+            //    ViewBag.category = category;
+            //    var productList = _dbContext.Products.OrderByDescending(p => p.Id)
+            //                                .Where(p => p.ProductCategoryId == category)
+            //                                .ToPagedList(pageNumber, pageSize);
+            //    return View(productList);
+            //}
+            //else
+            //{
+            //    var productList = _dbContext.Products.OrderByDescending(p => p.Id)
+            //                                .ToPagedList(pageNumber, pageSize);
+            //    return View(productList);
+            //}
             //return View();
         }
         //cac san pham o trang chu dc lay ra boi danh muc () nam trong phan view _MenuProductCategory
