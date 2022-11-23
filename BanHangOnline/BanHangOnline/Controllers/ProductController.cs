@@ -68,5 +68,10 @@ namespace BanHangOnline.Controllers
             return PartialView(items);
 
         }
+        public ActionResult ProductDetail(int? id)
+        {
+            var item = _dbContext.Products.Where(p=> p.Id==id).Include(x => x.ProductImages).FirstOrDefault();
+            return View(item);
+        }
     }
 }

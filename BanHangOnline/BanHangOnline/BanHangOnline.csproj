@@ -3299,6 +3299,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Menu\_MenuLeftProductCategories.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

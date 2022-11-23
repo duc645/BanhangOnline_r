@@ -259,7 +259,7 @@
                                     </div>
                                     <div class="product__discount__item__text">
                                         @*<span>Dried Fruit</span>*@
-                                        <h5><a class="product_name" href="@item.Alias">@item.Title</a></h5>
+                                        <h5><a class="product_name" href="/Product/ProductDetail/@item.Id">@item.Title</a></h5>
                                         @if (item.PriceSale > 0)
                                         {
                                             <div class="product__item__price">@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ<span>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</span></div>
