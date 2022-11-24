@@ -36,10 +36,11 @@ namespace BanHangOnline.Models.EF
         [StringLength(250)]
         public string Image { get; set; }
         [Required(ErrorMessage = "Trường này không được để trống")]
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         [Required(ErrorMessage = "Trường này không được để trống")]
         public decimal Price { get; set; }
         public decimal? PriceSale { get; set; }
+        public decimal PriceM { get; set; }
 
         public bool IsHome { get; set; }
         public bool IsSale { get; set; }

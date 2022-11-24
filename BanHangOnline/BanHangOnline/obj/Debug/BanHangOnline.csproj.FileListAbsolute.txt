@@ -236,3 +236,5 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CopyComplete
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.pdb
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themtruongPriceM_suakieuSoLuong.resources

@@ -205,6 +205,10 @@
     <Compile Include="Migrations\202211121844199_pricesalechophepnull.Designer.cs">
       <DependentUpon>202211121844199_pricesalechophepnull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211241528147_themtruongPriceM_suakieuSoLuong.cs" />
+    <Compile Include="Migrations\202211241528147_themtruongPriceM_suakieuSoLuong.Designer.cs">
+      <DependentUpon>202211241528147_themtruongPriceM_suakieuSoLuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3328,6 +3332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211121844199_pricesalechophepnull.resx">
       <DependentUpon>202211121844199_pricesalechophepnull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211241528147_themtruongPriceM_suakieuSoLuong.resx">
+      <DependentUpon>202211241528147_themtruongPriceM_suakieuSoLuong.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
