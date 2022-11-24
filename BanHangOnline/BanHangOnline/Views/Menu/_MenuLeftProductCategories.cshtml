@@ -7,11 +7,11 @@
         {
             if (ViewBag.category == item.Id)
             {
-                <li class="active">@Html.ActionLink(">>> " + item.Title, "Index", "Product", new { page = 1, category = item.Id }, null)</li>
+                <li class="active">@Html.ActionLink(">>> " + item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText }, null)</li>
             }
             else
             {
-                <li>@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id }, null)</li>
+                <li>@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText }, null)</li>
             }
 
         }

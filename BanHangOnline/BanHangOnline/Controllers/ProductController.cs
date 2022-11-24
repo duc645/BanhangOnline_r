@@ -29,13 +29,14 @@ namespace BanHangOnline.Controllers
             }
             if (!string.IsNullOrEmpty(searchText))
             {
+                ViewBag.SearchText = searchText;
                 items = items.Where(p => p.Alias.Contains(searchText) || p.Title.Contains(searchText));
             }
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
-            ViewBag.SearchText = searchText;
+
             return View(items);
             //if (category != null)
             //{

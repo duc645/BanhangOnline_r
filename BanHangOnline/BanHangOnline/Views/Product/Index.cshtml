@@ -32,7 +32,7 @@
                 <div class="sidebar">
                     <div class="sidebar__item">
                         @* dat partial menuleft o day *@
-                        @Html.Action("MenuLeftProductCategories", "Menu", new { id = ViewBag.category })
+                        @Html.Action("MenuLeftProductCategories", "Menu", new { id = ViewBag.category, SearchText = ViewBag.SearchText })
                     </div>
                     <div class="sidebar__item">
                         <h4>Price</h4>
@@ -190,7 +190,7 @@
                     <div class="col-6">
                         @using (Html.BeginForm("index", "Product", FormMethod.Get, new { }))
                         {
-                            @Html.Hidden("category", 2)
+                            @Html.Hidden("category", (object)ViewBag.category)
                             <div class="form-group">
                                 <div class="input-group input-group-sm">
                                     @Html.TextBox("searchText", null, new { }@*new { @class = "form-control", @placeholder = "Nhập tìm kiếm ở đây..." }*@)
@@ -254,7 +254,7 @@
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="#" class="btnAddToCart" data-id="@item.Id"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__discount__item__text">
