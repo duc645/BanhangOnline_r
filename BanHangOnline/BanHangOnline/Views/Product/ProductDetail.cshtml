@@ -75,20 +75,29 @@
                         <p>
                             @Model.Description
                         </p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input id="quantity_value" type="text" value="1">
-                                </div>
+                        <div class="product__details__quantity @*quantity d-flex flex-column flex-sm-row align-items-sm-center*@">
+                            @*<div class="quantity">
+                        <div class="pro-qty">
+                        <input id="quantity_value" type="text" value="1">
+                        </div>
+                        </div>*@
+                            <div class="quantity_selector">
+                                <span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                <span id="quantity_value">1</span>
+                                <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
                         </div>
                         <a href="#" class="btnAddToCart primary-btn" data-id="@Model.Id ">ADD TO CARD</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            @*@if(Model.Quantity > 0)
-                             {*@
-                            <li><b>Tình trạng: </b> <span>In Stock</span></li>
-                             @* } *@
+                            @if(Model.Quantity > 0)
+                             {
+                                <li><b>Tình trạng: </b> <span>Còn hàng</span></li>
+                             }
+                             else
+                             {
+                                <li><b>Tình trạng:  <span>Hết Hàng</span></b></li>
+                             }
                             
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BanHangOnline.Models.ShoppingCartItem>
+@using BanHangOnline.Common
+<div class="row">
+    <div class="col-lg-12">
+        <div class="shoping__cart__table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th class="shoping__product" style="text-align:center">Ảnh sách</th>
+                        <th >Tên sách</th>
+                        <th >Tên danh mục</th>
+                        <th>Giá</th>
+                        <th style="width:100px;">Số lượng</th>
+                        <th >Thành tiền</th>
+                        <th style="width:30px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = 0;
+                        var tongtien = decimal.Zero;
+                        foreach (var item in Model)
+                        {
+                            tongtien += item.TotalPrice;
+                            <tr id="trow_@item.ProductId">
+                                <td>@(i+1)</td>
+                                <td class="shoping__cart__item">
+                                    <img src="@item.ProductImg">
+                                </td>
+                                <td class="@*shoping__cart__item*@">
+                                    <a href="/Product/ProductDetail/@item.ProductId"><h5>@item.ProductName</h5></a>
+                                </td>
+                                <td class="@*shoping__cart__item*@">
+                                    <h5>@item.CategoryName</h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    @Common.FormatNumber(item.Price, 0) Đ
+                                </td>
+                                @*<td class="shoping__cart__quantity">
+                                     <div class="quantity">
+                                         <div class="pro-qty">
+                                             <input type="text" value="1">
+                                         </div>
+                                     </div>
+                                    </td>*@
+                                <td class="">
+                                    <input type="number" data-id="@item.ProductId" data-price="@item.Price" class="form-control input-block-level txtQuantity" value="@item.Quantity"  />
+                                </td>
+                                <td class="shoping__cart__total" id="amout_@item.ProductId">
+                                    @Common.FormatNumber(item.TotalPrice, 2) Đ
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                    <a href="#" class="btnDelete" data-id="@item.ProductId"><span class="icon_close"></span></a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+
+                        <tr>
+                            <th colspan="4" style="color:red;text-align:right;"><h3>Tổng tiền :</h3></th>
+                            <th colspan="7" id="lblTotalOrder" style="font-size:30px;color:red;text-align:center;">@Common.FormatNumber(tongtien, 0) Đ</th>
+                            <th></th>
+
+                        </tr>
+
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+@if (Model == null)
+{
+    <div style="margin-bottom:100px;margin-top:100px">
+        <h1 style="color:darkred;text-align:center">Giỏ hàng trống!!!</h1>
+    </div>
+}
