@@ -19,8 +19,21 @@ namespace BanHangOnline.Controllers
 
         public ActionResult CheckOut()
         {
-
+            ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            if (cart != null && cart.items.Count >0)
+            {
+                ViewBag.CheckCart = cart;
+            }
             return View();
+        }
+        public ActionResult Partial_Item_Thanhtoan()
+        {
+            ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            if (cart != null)
+            {
+                return PartialView(cart.items);
+            }
+            return PartialView();
         }
 
         public ActionResult Partial_Item_Cart()
