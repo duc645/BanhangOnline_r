@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "CheckOut2";
+}
+
+@*@using (Html.BeginForm("CheckOut2", "ShoppingCart", FormMethod.Post, new { }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class=" form-group">
+            <label for="customerName">Họ tên:<span>*</span></label>
+            @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control", @placeholder = "Nhập họ tên" })
+            @Html.ValidationMessageFor(x => x.CustomerName, null, new { @class = "text-danger" })
+        </div>
+        <div class=" form-group">
+            <label for="phone">Số điện thoại:<span>*</span></label>
+            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder = "Nhập số điện thoại" })
+            @Html.ValidationMessageFor(x => x.Phone, null, new { @class = "text-danger" })
+        </div>
+        <div class=" form-group">
+            <label for="address">Địa chỉ:<span>*</span></label>
+            @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = "Nhập địa chỉ" })
+            @Html.ValidationMessageFor(x => x.Address, null, new { @class = "text-danger" })
+        </div>
+        <div class=" form-group">
+            <label>Email:<span>*</span></label>
+            <input type="text" name="Email" class="form-control" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Hình thức thành toán:</label>
+                </div>
+                <div class="col-6">
+                    <select class="form-control" name="Payment">
+                        <option value="1" selected>COD</option>
+                        <option value="2">Chuyển khoản</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" style="color:white;float:right;" class="site-btn btn">Đặt hàng</button>
+        </div>
+    }*@
+@if(ViewBag.CheckCart != null)
+            {
+<div class="checkout__form">
+    @using (Ajax.BeginForm("CheckOut2", "ShoppingCart", new AjaxOptions
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "load_data"
+    }, new { @Id = "myForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="checkout__input">
+            <label>Họ tên:<span>*</span></label>
+            <input type="text" name="CustomerName" class="form-control" autocomplete="off">
+        </div>
+        <div class="checkout__input">
+            <label>Số điện thoại:<span>*</span></label>
+            <input type="text" name="Phone" class="form-control" autocomplete="off">
+        </div>
+        <div class="checkout__input">
+            <label>Địa chỉ:<span>*</span></label>
+            <input type="text" name="Address" class="form-control" autocomplete="off">
+        </div>
+        <div class="checkout__input">
+            <label>Email:<span>*</span></label>
+            <input type="text" name="Email" class="form-control" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Hình thức thành toán:</label>
+                </div>
+                <div class="col-6">
+                    <select class="form-control" name="Payment">
+                        <option value="1" selected>COD</option>
+                        <option value="2">Chuyển khoản</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
+        </div>
+    }
+</div>
+            }
+
+
+
+

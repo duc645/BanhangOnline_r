@@ -1,0 +1,48 @@
+﻿@model BanHangOnline.Models.CustomerViewModel
+
+@using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
+{
+    HttpMethod = "post",
+    UpdateTargetId = "load_data",
+    //OnComplete = "OnSuccessCO",
+    OnSuccess = "onSuccess",
+    OnFailure ="onFailure"
+}, new { @Id = "myForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Họ tên:<span>*</span></label>
+        <input type="text" name="CustomerName"  class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label>Số điện thoại:<span>*</span></label>
+        <input type="text" name="Phone" class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label>Địa chỉ:<span>*</span></label>
+        <input type="text" name="Address" class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label>Email:<span>*</span></label>
+        <input type="text" name="Email" class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-3">
+                <label>Hình thức thành toán:</label>
+            </div>
+            <div class="col-6">
+                <select class="form-control" name="Payment">
+                    <option value="1" selected>COD</option>
+                    <option value="2">Chuyển khoản</option>
+                </select>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="form-group">
+        <button style="color: white; float: right; background-color: #B10626;" type="submit" class="btn @*site-btn*@">Đặt hàng</button>
+    </div>
+}

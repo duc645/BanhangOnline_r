@@ -3,6 +3,45 @@
     ViewBag.Title = "ProductDetail";
 }
 
+<style>
+    .quantity {
+        width: 100%;
+        height: 40px;
+        margin-top: 23px;
+    }
+
+    .quantity_selector span {
+        font-weight: 500;
+        color: #232530;
+    }
+
+    .quantity_selector span {
+        font-weight: 500;
+        color: #232530;
+    }
+
+    .plus, .minus {
+        padding-left: 14px;
+        padding-right: 14px;
+        cursor: pointer;
+    }
+
+    .quantity_selector {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 132px;
+        height: 100%;
+        border: solid 1px #e5e5e5;
+        margin-bottom: 30px;
+    }
+</style>
+
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="/Content/assets/img/breadcrumb.jpg">
     <div class="container">
@@ -75,7 +114,7 @@
                         <p>
                             @Model.Description
                         </p>
-                        <div class="product__details__quantity @*quantity d-flex flex-column flex-sm-row align-items-sm-center*@">
+                        <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
                             @*<div class="quantity">
                         <div class="pro-qty">
                         <input id="quantity_value" type="text" value="1">

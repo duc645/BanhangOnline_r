@@ -1,4 +1,5 @@
 ﻿using BanHangOnline.Models;
+using BanHangOnline.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,26 +11,101 @@ namespace BanHangOnline.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: ShoppingCart
         public ActionResult Index()
         {
-
-            return View();
-        }
-
-        public ActionResult CheckOut()
-        {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
-            if (cart != null && cart.items.Count >0)
+            if (cart != null && cart.items.Any())
             {
                 ViewBag.CheckCart = cart;
             }
             return View();
         }
+
+        //public ActionResult CheckOut2()
+        //{
+        //    ShoppingCart cart = (ShoppingCart)Session["Cart"];
+        //    if (cart != null && cart.items.Count > 0)
+        //    {
+        //        ViewBag.CheckCart = cart;
+        //    }
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult CheckOut2(CustomerViewModel order)
+        //{
+        //    ShoppingCart cart = (ShoppingCart)Session["Cart"];
+        //    if (cart != null && cart.items.Count > 0)
+        //    {
+        //        ViewBag.CheckCart = cart;
+        //    }
+        //    return View();
+        //}
+
+
+
+        public ActionResult CheckOut()
+        {
+            ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            if (cart != null && cart.items.Any())
+            {
+                ViewBag.CheckCart = cart;
+            }
+            return View();
+        }
+
+        public ActionResult CheckOutSuccess()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckOut(CustomerViewModel req)
+        {
+            var code = new { Success = false, Code = -1 };
+            if (ModelState.IsValid)
+            {
+                ShoppingCart cart = (ShoppingCart)Session["Cart"];
+                if (cart != null && cart.items.Count >0)
+                {
+                    Order order = new Order();
+                    order.CustomerName = req.CustomerName;
+                    order.Phone = req.Phone;
+                    order.Address = req.Address;
+                    cart.items.ForEach(x => order.OrderDetails.Add(new OrderDetail
+                    {
+                        ProductId = x.ProductId,
+                        Quantity = x.Quantity,
+                        Price = x.Price
+                    }));
+                    order.TotalAmount = cart.items.Sum(x => (x.Price * x.Quantity));
+                    order.TypePayment = req.Payment;
+                    order.CreatedDate = DateTime.Now;
+                    order.ModifiedDate = DateTime.Now;
+                    //order.CreatedBy = req.Phone;
+                    Random rd = new Random();
+                    order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
+                    _dbContext.Orders.Add(order);
+                    //_dbContext.SaveChanges();
+                    cart.ClearCart();
+                    //return Redirect("/ShoppingCart");
+                    return Json(new { url = Url.Action("CheckOutSuccess","ShoppingCart") });
+                }
+            }
+            return Json(code);
+        }
+
+        public ActionResult Partial_CheckOut()
+        {
+            return PartialView();
+        }
         public ActionResult Partial_Item_Thanhtoan()
         {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
-            if (cart != null)
+            if (cart != null && cart.items.Any())
             {
                 return PartialView(cart.items);
             }
@@ -39,12 +115,15 @@ namespace BanHangOnline.Controllers
         public ActionResult Partial_Item_Cart()
         {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
-            if (cart != null)
+            if (cart != null && cart.items.Any())
             {
+                ViewBag.CheckCart = cart;
                 return PartialView(cart.items);
             }
             return PartialView();
         }
+
+
 
         [HttpPost]
         public ActionResult AddToCart(int id,int quantity)

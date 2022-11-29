@@ -12,8 +12,8 @@
                 tongtien += item.TotalPrice;
                 <tr>
                     <td>@item.ProductName</td>
-                    <td>@item.Quantity</td>
-                    <td>@Common.FormatNumber(item.Price,0) Đ</td>
+                    <td>x @item.Quantity</td>
+                    <td>@Common.FormatNumber(item.TotalPrice,0) Đ</td>
                 </tr>
                 i++;
             }

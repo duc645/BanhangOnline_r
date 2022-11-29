@@ -210,6 +210,10 @@
     <Compile Include="Migrations\202211241528147_themtruongPriceM_suakieuSoLuong.Designer.cs">
       <DependentUpon>202211241528147_themtruongPriceM_suakieuSoLuong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211271845156_themTypePayment_Order.cs" />
+    <Compile Include="Migrations\202211271845156_themTypePayment_Order.Designer.cs">
+      <DependentUpon>202211271845156_themTypePayment_Order.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3259,6 +3263,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -3312,6 +3318,9 @@
     <Content Include="Views\ShoppingCart\Partial_Item_Cart.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\Partial_Item_Thanhtoan.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut2.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3341,6 +3350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211241528147_themtruongPriceM_suakieuSoLuong.resx">
       <DependentUpon>202211241528147_themtruongPriceM_suakieuSoLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211271845156_themTypePayment_Order.resx">
+      <DependentUpon>202211271845156_themTypePayment_Order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
