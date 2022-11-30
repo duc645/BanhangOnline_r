@@ -181,6 +181,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
@@ -213,6 +214,10 @@
     <Compile Include="Migrations\202211271845156_themTypePayment_Order.cs" />
     <Compile Include="Migrations\202211271845156_themTypePayment_Order.Designer.cs">
       <DependentUpon>202211271845156_themTypePayment_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211300742591_themtruongemailOrder.cs" />
+    <Compile Include="Migrations\202211300742591_themtruongemailOrder.Designer.cs">
+      <DependentUpon>202211300742591_themtruongemailOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3112,6 +3117,8 @@
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\templates\send1.html" />
+    <Content Include="Content\templates\send2.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -3325,6 +3332,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Order\" />
     <Folder Include="Content\ckfinder\userfiles\" />
     <Folder Include="Views\test2\" />
   </ItemGroup>
@@ -3353,6 +3361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211271845156_themTypePayment_Order.resx">
       <DependentUpon>202211271845156_themTypePayment_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211300742591_themtruongemailOrder.resx">
+      <DependentUpon>202211300742591_themtruongemailOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
