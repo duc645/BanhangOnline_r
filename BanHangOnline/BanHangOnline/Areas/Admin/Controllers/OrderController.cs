@@ -1,4 +1,5 @@
 ﻿using BanHangOnline.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,30 @@ namespace BanHangOnline.Areas.Admin.Controllers
     {
         public ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Admin/Order
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var items = _dbContext.Orders.OrderByDescending(p => p.CreatedDate).ToList();
-            return View();
+            var items = _dbContext.Orders.OrderByDescending(x => x.CreatedDate).ToList();
+
+            if (page == null)
+            {
+                page = 1;
+            }
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = pageNumber;
+            return View(items.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult View(int id)
+        {
+            var item = _dbContext.Orders.Find(id);
+            return View(item);
+        }
+        public ActionResult Partial_SanPham(int id)
+        {
+            var items = _dbContext.OrderDetails.Where(x => x.OrderId == id).ToList();
+            return PartialView(items);
         }
     }
 }

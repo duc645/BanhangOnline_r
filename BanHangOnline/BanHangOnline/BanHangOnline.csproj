@@ -3264,6 +3264,9 @@
     <Content Include="Content\assets\sass\_shoping-cart.scss" />
     <Content Include="Content\assets\sass\_sidebar.scss" />
     <Content Include="Content\assets\sass\_variable.scss" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Partial_SanPham.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3332,7 +3335,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Order\" />
     <Folder Include="Content\ckfinder\userfiles\" />
     <Folder Include="Views\test2\" />
   </ItemGroup>

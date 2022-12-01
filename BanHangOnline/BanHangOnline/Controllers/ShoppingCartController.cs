@@ -76,6 +76,7 @@ namespace BanHangOnline.Controllers
                     order.CustomerName = req.CustomerName;
                     order.Phone = req.Phone;
                     order.Address = req.Address;
+                    order.Email = req.Email;
                     cart.items.ForEach(x => order.OrderDetails.Add(new OrderDetail
                     {
                         ProductId = x.ProductId,
@@ -112,7 +113,7 @@ namespace BanHangOnline.Controllers
                     contentCustomer = contentCustomer.Replace("{{NgayDat}}", DateTime.Now.ToString("dd/MM/yyyy"));
                     contentCustomer = contentCustomer.Replace("{{TenKhachHang}}", order.CustomerName);
                     contentCustomer = contentCustomer.Replace("{{Phone}}", order.Phone);
-                    contentCustomer = contentCustomer.Replace("{{Email}}", req.Email);
+                    contentCustomer = contentCustomer.Replace("{{Email}}", order.Email);
                     contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentCustomer = contentCustomer.Replace("{{ThanhTien}}", BanHangOnline.Common.Common.FormatNumber(thanhtien, 0));
                     contentCustomer = contentCustomer.Replace("{{TongTien}}", BanHangOnline.Common.Common.FormatNumber(TongTien, 0));
