@@ -19,7 +19,7 @@
                 <tr>
                     <td>@i</td>
                     <td>@item.Product.Title</td>
-                    <td>@BanHangOnline.Common.Common.FormatNumber(@item.Price,0) Đ</td>
+                    <td>@BanHangOnline.Common.Common.FormatNumber(@item.Price, 0) Đ</td>
                     <td>@item.Quantity</td>
                     <td>@BanHangOnline.Common.Common.FormatNumber((item.Price * item.Quantity), 0) Đ</td>
                 </tr>
@@ -27,4 +27,5 @@
             }
         </tbody>
     </table>
+    <a href="/admin/order" class="btn btn-danger">Quay lại</a>
 }

@@ -120,7 +120,6 @@ D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.x
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.xml
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.UpdateProductCategory.resources
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache
-D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\BanHangOnline.dll.config
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\BanHangOnline.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\BanHangOnline.pdb
@@ -131,6 +130,7 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\rosly
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\csi.exe.config
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\csi.rsp
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
@@ -234,6 +234,7 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themtruongPriceM_suakieuSoLuong.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themTypePayment_Order.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themtruongemailOrder.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.thembangOrderStatus.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.GenerateResource.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CoreCompileInputs.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CopyComplete

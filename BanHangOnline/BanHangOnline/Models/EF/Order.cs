@@ -36,6 +36,10 @@ namespace BanHangOnline.Models.EF
         public int TypePayment { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
 
+        public int OrderStatusId { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
+
+
 
     }
 }

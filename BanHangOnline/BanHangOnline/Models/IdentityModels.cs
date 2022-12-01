@@ -49,6 +49,7 @@ namespace BanHangOnline.Models
         public DbSet<ProductImage> ProductImages { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<OrderStatus> OrderStatuss { get; set; }
 
         public DbSet<Order> Orders { get; set; }
 

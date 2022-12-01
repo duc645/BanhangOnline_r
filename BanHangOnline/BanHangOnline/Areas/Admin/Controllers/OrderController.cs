@@ -1,4 +1,5 @@
 ﻿using BanHangOnline.Models;
+using BanHangOnline.Models.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,30 @@ namespace BanHangOnline.Areas.Admin.Controllers
         {
             var items = _dbContext.OrderDetails.Where(x => x.OrderId == id).ToList();
             return PartialView(items);
+        }
+        public ActionResult EditStatus(int id)
+        {
+            ViewBag.Status = new SelectList(_dbContext.OrderStatuss.ToList(), "Id", "Title");
+            var item = _dbContext.Orders.Find(id);
+            return View(item);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditStatus(Order model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                model.ModifiedDate = DateTime.Now;
+                
+                _dbContext.Orders.Attach(model);
+                _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
 }

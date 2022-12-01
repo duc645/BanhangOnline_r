@@ -38,6 +38,7 @@
                         <th>Tên Khách hàng</th>
                         <th>Số điện thoại</th>
                         <th>Tiền</th>
+                        <th>Phương thức TT</th>
                         <th>Trạng thái</th>
                         <th>Ngày tạo</th>
                         <th></th>
@@ -56,11 +57,12 @@
                                 <td>@item.CustomerName</td>
                                 <td>@item.Phone</td>
                                 <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                <td>@(item.TypePayment==1?"Chờ thành toán":"Đã thanh toán")</td>
+                                <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
+                                <td>@item.OrderStatus.Title</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
                                     <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    <a href="#" class="btn btn-sm btn-info btnCapNhat" data-id="@item.Id">Cập nhật</a>
+                                    <a href="/admin/order/Editstatus/@item.Id" class="btn btn-sm btn-info btnCapNhat" data-id="@item.Id">Chỉnh sửa</a>
                                 </td>
                             </tr>
                             i++;

@@ -219,6 +219,10 @@
     <Compile Include="Migrations\202211300742591_themtruongemailOrder.Designer.cs">
       <DependentUpon>202211300742591_themtruongemailOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212011025453_thembangOrderStatus.cs" />
+    <Compile Include="Migrations\202212011025453_thembangOrderStatus.Designer.cs">
+      <DependentUpon>202212011025453_thembangOrderStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -231,6 +235,7 @@
     <Compile Include="Models\EF\News.cs" />
     <Compile Include="Models\EF\Order.cs" />
     <Compile Include="Models\EF\OrderDetail.cs" />
+    <Compile Include="Models\EF\OrderStatus.cs" />
     <Compile Include="Models\EF\Posts.cs" />
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
@@ -3267,6 +3272,7 @@
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\View.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Partial_SanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\EditStatus.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3366,6 +3372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211300742591_themtruongemailOrder.resx">
       <DependentUpon>202211300742591_themtruongemailOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212011025453_thembangOrderStatus.resx">
+      <DependentUpon>202212011025453_thembangOrderStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

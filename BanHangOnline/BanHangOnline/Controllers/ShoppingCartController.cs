@@ -87,6 +87,7 @@ namespace BanHangOnline.Controllers
                     order.TypePayment = req.Payment;
                     order.CreatedDate = DateTime.Now;
                     order.ModifiedDate = DateTime.Now;
+                    order.OrderStatusId = 1;
                     //order.CreatedBy = req.Phone;
                     Random rd = new Random();
                     order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
