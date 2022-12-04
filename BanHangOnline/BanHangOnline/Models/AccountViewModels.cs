@@ -48,22 +48,55 @@ namespace BanHangOnline.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Required(ErrorMessage ="Tài khoản không được để trống ")]
+        [Display(Name = "Tên tài khoản")]
+        public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Mật khẩu không được để trống")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
 
+
+    public class  CreateAccountViewModel
+    {
+
+
+        [Required(ErrorMessage = "Tên tài khoản không được để trống")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Họ tên không được để trống")]
+        public string FullName { get; set; }
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
+        [Phone(ErrorMessage = "Bạn phải nhập đúng dịnh dạng số điện thoại")]
+        public string Phone { get; set; }
+        [Required(ErrorMessage = "Quyền không được để trống")]
+        public string Role { get; set; }
+
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
     public class RegisterViewModel
     {
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

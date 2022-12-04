@@ -25,6 +25,11 @@
     <div class="container">
         @if (ViewBag.CheckCart != null)
         {
+            <div class="row">
+                <div style="color:red;font-size:30px;" class="col-md-5" id="load_page">
+                    @*<span class="icon_loading"></span>*@
+                </div>
+            </div>
             <div class="@*checkout__form*@">
                 <h2>Thông tin thanh toán</h2>
                 <hr />
@@ -33,17 +38,17 @@
                     <div class="col-lg-4 col-md-6">
 
                         @*<div class="checkout__order">
-                <h4>Giỏ Hàng</h4>
-                <div class="checkout__order__products">Products <span>Total</span></div>
-                <ul>
-                    <li>Vegetable’s Package <span>$75.99</span></li>
-                    <li>Fresh Vegetable <span>$151.99</span></li>
-                    <li>Organic Bananas <span>$53.99</span></li>
-                </ul>
+                            <h4>Giỏ Hàng</h4>
+                            <div class="checkout__order__products">Products <span>Total</span></div>
+                            <ul>
+                                <li>Vegetable’s Package <span>$75.99</span></li>
+                                <li>Fresh Vegetable <span>$151.99</span></li>
+                                <li>Organic Bananas <span>$53.99</span></li>
+                            </ul>
 
-                <div class="checkout__order__total">Total <span>$750.99</span></div>
-                <button type="submit" class="site-btn">PLACE ORDER</button>
-            </div>*@
+                            <div class="checkout__order__total">Total <span>$750.99</span></div>
+                            <button type="submit" class="site-btn">PLACE ORDER</button>
+                        </div>*@
                         @Html.Action("Partial_Item_Thanhtoan", "ShoppingCart")
                     </div>
                     <div class="col-lg-8 col-md-6">
@@ -57,7 +62,7 @@
             <div class="row">
                 <p style="font-size:30px;">Bạn chưa mua sản phẩm nào. Mời bạn quay lại trang <a href="/Product">Sản phẩm</a> để mua hàng !!!</p>
             </div>
-            }
+        }
     </div>
 </section>
 <!-- Checkout Section End -->
@@ -69,6 +74,10 @@
                 $('#show_success').html("Bạn mua hàng không thành công! Xin vui lòng thử lại");
             }
         }
+        function onBegin(rs) {
+            $('#load_page').html('Đang xử lý ...');
+        }
+
 
         var onSuccess = function(result) {
             if (result.url) {
