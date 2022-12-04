@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BanHangOnline.Models;
+using BanHangOnline.Models.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +8,10 @@ using System.Web.Mvc;
 
 namespace BanHangOnline.Controllers
 {
+    
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
@@ -25,6 +29,22 @@ namespace BanHangOnline.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Partial_Subcrice()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult Subscribe(Subscribe req)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Subscribes.Add(new Subscribe { Email = req.Email, CreatedDate = DateTime.Now });
+                _dbContext.SaveChanges();
+                return Json(new { Success = true });
+            }
+            return View("Partial_Subcrice", req);
         }
     }
 }

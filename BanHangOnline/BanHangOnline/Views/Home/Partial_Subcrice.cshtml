@@ -1,0 +1,27 @@
+﻿@model BanHangOnline.Models.EF.Subscribe
+<h6>Join Our Newsletter Now</h6>
+<p>Get E-mail updates about our latest shop and special offers.</p>
+
+@using (Ajax.BeginForm("Subscribe", "Home", new AjaxOptions
+{
+    OnBegin = "OnBeginSub",
+    OnSuccess = "OnSuccessSub",
+    OnFailure = "OnFailureSub"
+}))
+{
+    @Html.AntiForgeryToken()
+    <script>
+                        function OnBeginSub() {
+
+                        }
+                        function OnSuccessSub (rs) {
+                            if (rs.Success) {
+                                alert("Đăng ký thành công");
+                            }
+                        }
+                        function OnFailureSub(rs) {}
+    </script>
+    <input name="Email" type="email" placeholder="Email" required="required" data-error="Mời bạn nhập Email">
+    <button type="submit" class="site-btn">Đăng ký</button>
+}
+

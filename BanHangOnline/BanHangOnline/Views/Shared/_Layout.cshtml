@@ -100,8 +100,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> anhducnguyen0703@gmail.com</li>
+                                <li>Miễn phí ship cho đơn hàng trên 400.000 Đ</li>
                             </ul>
                         </div>
                     </div>
@@ -113,18 +113,34 @@
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                            @*<div class="header__top__right__language">
+            <img src="img/language.png" alt="">
+            <div>English</div>
+            <span class="arrow_carrot-down"></span>
+            <ul>
+                <li><a href="#">Spanis</a></li>
+                <li><a href="#">English</a></li>
+            </ul>
+        </div>*@
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                @if (!Request.IsAuthenticated)
+                                {
+                                    <a href="/account/login"><i class="fa fa-user"></i> Đăng nhập</a>
+                                }
+                                else
+                                {
+                                    <a href="#"><i class="fa fa-user"></i> Xin chào: @User.Identity.Name</a>
+                                    <a href="javascript:document.getElementById('logOffForm').submit()"> Đăng xuất</a>
+                                }
+
                             </div>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div style="display:none">
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logOffForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()}
+                                </div>}
                         </div>
                     </div>
                 </div>
@@ -148,7 +164,7 @@
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="/shoppingcart"><i class="fa fa-shopping-bag"></i> <span id="cart_cout">0</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        @*<div class="header__cart__price">item: <span>$150.00</span></div>*@
                     </div>
                 </div>
             </div>
@@ -201,12 +217,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
+                        @Html.Action("Partial_Subcrice", "Home")
                         <div class="footer__widget__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
