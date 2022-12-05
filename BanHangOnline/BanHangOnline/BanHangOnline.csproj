@@ -3457,6 +3457,7 @@
     <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
     <Content Include="Views\News\Partial_News3_Home.cshtml" />
     <Content Include="Views\Home\Partial_Subcrice.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoginUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,6 @@
 ﻿@model BanHangOnline.Models.LoginViewModel
 @{
-    ViewBag.Title = "Đăng nhập";
+    ViewBag.Title = "Đăng nhập admin";
     //Layout = "~/Areas/Admin/Views/Shared_LayoutLogin.cshtml";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
 
@@ -12,9 +12,9 @@
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login100-form validate-form" }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true);
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
         <span style="font-family: 'Material-Design-Iconic-Font';" class="login100-form-title p-b-49">
-            Đăng Nhập
+            Đăng Nhập admin
         </span>
 
         <div class="wrap-input100 validate-input m-b-15" data-validate="Username is reauired">
