@@ -52,6 +52,15 @@ namespace BanHangOnline.Controllers
             }
         }
 
+        //Profile Manager
+        public ActionResult ManageProfile (string id)
+        {
+            ViewBag.IdUser = id;
+            return View();
+        }
+
+
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

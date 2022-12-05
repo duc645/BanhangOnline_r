@@ -132,6 +132,16 @@ namespace BanHangOnline.Controllers
                     //contentAdmin = contentAdmin.Replace("{{TongTien}}", BanHangOnline.Common.Common.FormatNumber(TongTien, 0));
                     //BanHangOnline.Common.Common.SendMail("ShopOnline", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
 
+                    foreach(var item in cart.items)
+                    {
+                        var productc = _dbContext.Products.Find(item.ProductId);
+                        if(productc != null)
+                        {
+                            productc.Quantity = productc.Quantity - item.Quantity;
+                            _dbContext.SaveChanges();
+                        }
+                    }
+
                     cart.ClearCart();
                     //return Redirect("/ShoppingCart");
                     return Json(new { url = Url.Action("CheckOutSuccess","ShoppingCart") });
@@ -173,6 +183,11 @@ namespace BanHangOnline.Controllers
             var code = new { Success = false, msg = "", code = -1, Count = 0 };
             var db = new ApplicationDbContext();
             var checkProduct = db.Products.Where(x => x.Id == id).Include(c=>c.ProductCategory).FirstOrDefault();
+            if(checkProduct !=null && checkProduct.Quantity < quantity)
+            {
+                code = new { Success = false, msg = " Số lượng hàng trong kho không đủ ", code = -1, Count = 0};
+                return Json(code);
+            }
             if(checkProduct != null)
             {
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
@@ -233,6 +248,12 @@ namespace BanHangOnline.Controllers
         public ActionResult Update(int id, int quantity)
         {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            var db = new ApplicationDbContext();
+            var checkProduct = db.Products.Where(x => x.Id == id).Include(c => c.ProductCategory).FirstOrDefault();
+            if (checkProduct != null && checkProduct.Quantity < quantity)
+            {
+                return Json(new { Success = false });
+            }
             if (cart != null)
             {
                 cart.UpdateQuantity(id, quantity);

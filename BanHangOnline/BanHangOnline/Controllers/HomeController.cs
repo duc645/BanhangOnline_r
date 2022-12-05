@@ -1,5 +1,6 @@
 ﻿using BanHangOnline.Models;
 using BanHangOnline.Models.EF;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace BanHangOnline.Controllers
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         public ActionResult Index()
         {
+
+            //string userId = User.Identity.GetUserId();
             return View();
         }
 

@@ -21,6 +21,9 @@ $(document).ready(function () {
                     $('#cart_cout').html(rs.Count);
                     alert(rs.msg);
                 }
+                else {
+                    alert(rs.msg);
+                }
             }
         });
     });
@@ -112,6 +115,9 @@ function Update(id, quantity) {
         success: function (rs) {
             if (rs.Success) {
                 LoadCart();
+            }
+            else {
+                alert("Số lượng trong kho không đủ, xin mời bạn chọn lại !!!");
             }
         }
     });
