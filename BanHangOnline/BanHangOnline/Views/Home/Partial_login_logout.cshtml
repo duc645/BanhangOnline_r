@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity;
+@if (!Request.IsAuthenticated)
+{
+    <a href="/account/login"><i class="fa fa-user"></i> Đăng nhập</a>
+}
+else
+{
+    <a href="/manage/index"><i class="fa fa-user"></i> Xin chào: @User.Identity.Name</a>
+    <a style="border-left:solid 1px;padding-left:14px;" href="javascript:document.getElementById('logOffForm').submit()"> Đăng xuất</a>
+}
+
+@if (Request.IsAuthenticated)
+{
+    <div style="display:none">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logOffForm" }))
+        {
+            @Html.AntiForgeryToken()}
+    </div>}

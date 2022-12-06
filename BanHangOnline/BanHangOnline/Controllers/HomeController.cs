@@ -49,5 +49,10 @@ namespace BanHangOnline.Controllers
             }
             return View("Partial_Subcrice", req);
         }
+
+        public ActionResult Partial_login_logout()
+        {
+            return PartialView();
+        }
     }
 }

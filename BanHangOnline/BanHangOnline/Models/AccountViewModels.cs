@@ -107,7 +107,7 @@ namespace BanHangOnline.Models
         public string Phone { get; set; }
        
 
-        [Required]
+        [Required(ErrorMessage ="Email không được để trống")]
         [EmailAddress(ErrorMessage ="Bạn phải nhập đúng định dạng email")]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -123,6 +123,8 @@ namespace BanHangOnline.Models
         [Compare("Password", ErrorMessage = "Mật khẩu và xác nhận mật khẩu phải giống nhau.")]
         public string ConfirmPassword { get; set; }
     }
+    
+    
 
     public class ResetPasswordViewModel
     {

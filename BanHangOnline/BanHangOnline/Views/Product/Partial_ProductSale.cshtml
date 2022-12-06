@@ -13,10 +13,10 @@
             <div class="featured__item">
                 <div class="product__discount__item">
                     <div class="product__discount__item__pic set-bg"
-                         @*data-setbg="Content/assets/img/product/discount/pd-1.jpg"*@>
-                        <div class="product_image">
+                         data-setbg="@strImge">
+                        @*<div class="product_image">
                             <img src="@strImge" alt="@item.Title" />
-                        </div>
+                        </div>*@
                         @if (item.PriceSale > 0)
                         {
                             <div class="product__discount__percent">SALE</div>

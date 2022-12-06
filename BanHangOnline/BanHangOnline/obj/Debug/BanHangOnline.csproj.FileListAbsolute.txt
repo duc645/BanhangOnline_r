@@ -235,6 +235,7 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themTypePayment_Order.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themtruongemailOrder.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.thembangOrderStatus.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.ThemViewCoutVaUserId.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.GenerateResource.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CoreCompileInputs.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CopyComplete

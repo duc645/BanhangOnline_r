@@ -39,6 +39,8 @@ namespace BanHangOnline.Models.EF
         public int OrderStatusId { get; set; }
         public virtual OrderStatus OrderStatus { get; set; }
 
+        public string UserId { get; set; }
+
 
 
     }

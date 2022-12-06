@@ -398,9 +398,10 @@ ol {
 }
 
 .header__top__right__auth a {
-	display: block;
+	display: inline-block;
 	font-size: 14px;
 	color: #1c1c1c;
+	margin-left:10px;
 }
 
 .header__top__right__auth a i {
@@ -1281,7 +1282,7 @@ ol {
 }
 
 .product__discount__item__pic {
-	height: 270px;
+	height: 300px;
 	position: relative;
 	overflow: hidden;
 }
@@ -1677,6 +1678,7 @@ ol {
 
 .product__details__pic__slider.owl-carousel .owl-item img {
 	width: auto;
+	min-height:170px;
 }
 
 .product__details__text h3 {

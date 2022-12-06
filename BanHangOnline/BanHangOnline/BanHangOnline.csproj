@@ -225,6 +225,10 @@
     <Compile Include="Migrations\202212011025453_thembangOrderStatus.Designer.cs">
       <DependentUpon>202212011025453_thembangOrderStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212051737462_ThemViewCoutVaUserId.cs" />
+    <Compile Include="Migrations\202212051737462_ThemViewCoutVaUserId.Designer.cs">
+      <DependentUpon>202212051737462_ThemViewCoutVaUserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3391,6 +3395,7 @@
     <Content Include="Content\login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\Order\IndexOrderCancel.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3458,6 +3463,14 @@
     <Content Include="Views\News\Partial_News3_Home.cshtml" />
     <Content Include="Views\Home\Partial_Subcrice.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginUser.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfile.cshtml" />
+    <Content Include="Views\Shared\_PartialSideBarProfile.cshtml" />
+    <Content Include="Views\Account\ManageProfile.cshtml" />
+    <Content Include="Views\Home\Partial_login_logout.cshtml" />
+    <Content Include="Views\Manage\EditUserInfo.cshtml" />
+    <Content Include="Views\Manage\ListOrder.cshtml" />
+    <Content Include="Views\Manage\ViewDetailOrderProfile.cshtml" />
+    <Content Include="Views\Manage\Partial_SanPham_profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3496,6 +3509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212011025453_thembangOrderStatus.resx">
       <DependentUpon>202212011025453_thembangOrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212051737462_ThemViewCoutVaUserId.resx">
+      <DependentUpon>202212051737462_ThemViewCoutVaUserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -8,10 +8,11 @@
             </div>
             <div class="featured__controls">
                 <ul>
-                    <li class="active" data-filter=".oranges">ALL</li>
+                    @* class="active" *@
+                    <li data-filter=".oranges">ALL</li>
                     @foreach (var item in Model)
                     {
-                        <li class="active" data-filter=".@item.Alias">@item.Title</li>
+                        <li data-filter=".@item.Alias">@item.Title</li>
                     }
                     @*<li data-filter=".oranges">Oranges</li>
         <li data-filter=".fresh-meat">Fresh Meat</li>

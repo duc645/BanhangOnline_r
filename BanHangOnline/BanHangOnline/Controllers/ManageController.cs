@@ -7,14 +7,17 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BanHangOnline.Models;
+using PagedList;
+using System.Data.Entity;
 
 namespace BanHangOnline.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Customer")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -55,7 +58,7 @@ namespace BanHangOnline.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Thay đổi mật khẩu thành công"
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -213,13 +216,105 @@ namespace BanHangOnline.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
+
+        //Order of user 
+
+        public ActionResult ListOrder(int? page)
+        {
+            var id = User.Identity.GetUserId();
+            var items = _dbContext.Orders.Where(x=>(x.UserId==id && x.OrderStatusId==1) || (x.UserId==id && x.OrderStatusId==2)).OrderByDescending(x => x.CreatedDate).ToList();
+
+            if (page == null)
+            {
+                page = 1;
+            }
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = pageNumber;
+            return View(items.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult ViewDetailOrderProfile(int id)
+        {
+            var item = _dbContext.Orders.Find(id);
+            return View(item);
+        }
+        public ActionResult Partial_SanPham_profile(int id)
+        {
+            var items = _dbContext.OrderDetails.Where(x => x.OrderId == id).ToList();
+            return PartialView(items);
+        }
+
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public ActionResult CancelStatus(int id)
+        {
+            var item = _dbContext.Orders.Where(o => o.Id == id).Include(d => d.OrderDetails).FirstOrDefault();
+            if(item != null)
+            {
+                item.OrderStatusId = 3;
+                _dbContext.Orders.Attach(item);
+                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+                //return Json(new { success = true });
+                //RedirectToAction("ListOrder");
+
+                foreach (var item_details in item.OrderDetails)
+                {
+                    var product = _dbContext.Products.Where(x => x.Id == item_details.ProductId).FirstOrDefault();
+                    if(product != null)
+                    {
+                        product.Quantity += item_details.Quantity;
+                        _dbContext.Products.Attach(product);
+                        _dbContext.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                        _dbContext.SaveChanges();
+                    }
+                }
+
+                return Json(new { success=true}, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        }
+
+        //edit user info
+
+        public ActionResult EditUserInfo()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if(user == null)
+            {
+                return View();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditUserInfo(ApplicationUser model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            _dbContext.Users.Attach(model);
+            _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _dbContext.SaveChangesAsync();
+            //var result = await UserManager.UpdateAsync(model);
+            //if (result.Succeeded)
+            //{
+                //return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+            ViewBag.StatusMessage = "Cập nhật thông tin thành công";
+            return View(model);
+            //}
+            //AddErrors(result);
+            //return View(model);
+        }
+
         //
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
-
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -238,7 +333,9 @@ namespace BanHangOnline.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                //return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                ViewBag.StatusMessage = "Thay đổi mật khẩu thành công";
+                return View();
             }
             AddErrors(result);
             return View(model);

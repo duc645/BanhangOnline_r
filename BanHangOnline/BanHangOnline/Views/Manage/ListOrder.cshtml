@@ -1,0 +1,123 @@
+﻿@model PagedList.IPagedList<BanHangOnline.Models.EF.Order>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "ListOrder";
+    Layout = "~/Views/Shared/_LayoutProfile.cshtml";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/order" class="nav-link">Danh sách đơn hàng</a>
+        </li>
+    </ul>
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách đơn hàng</h3>
+
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên Khách hàng</th>
+                        <th>Số điện thoại</th>
+                        <th>Tiền</th>
+                        <th>Phương thức TT</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                        foreach (var item in Model)
+                        {
+                            <tr id="trow_@item.Id">
+                                <td>@i</td>
+                                <td>@item.Code</td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.Phone</td>
+                                <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                                <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
+                                <td>@item.OrderStatus.Title</td>
+                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <a href="/Manage/ViewDetailOrderProfile/@item.Id" class="btn btn-sm btn-success">Xem</a>
+                                    @if (item.OrderStatusId == 1)
+                                    {
+                                        <a href="#" class="btn btn-sm btn-danger btnCancel" data-id="@item.Id">Hủy đơn hàng</a>
+                                    }
+
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+            @if (Model != null && Model.Any())
+            {
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="text-align:right;">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    </div>
+                </div>
+            }
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnCancel', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/Manage/CancelStatus',
+                        type: 'GET',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                            else {
+                                alert("Không thành công!!!");
+                            }
+                        }
+
+                    });
+                }
+            });
+        });
+    </script>
+}

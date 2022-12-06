@@ -68,6 +68,7 @@
                         @Html.HiddenFor(x => x.Phone)
                         @Html.HiddenFor(x => x.TotalAmount)
                         @Html.HiddenFor(x => x.TypePayment)
+                        @Html.HiddenFor(x=>x.UserId)
                         <div class="form-group">
                             <label for="exampleInputEmail1">Trạng thái đơn</label>
                             @Html.DropDownListFor(x => x.OrderStatusId, ViewBag.Status as SelectList, "--- Chọn trạng thái ---", new { @class = "form-control", @placeholder = "Trạng thái" })

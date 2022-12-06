@@ -122,25 +122,10 @@
                 <li><a href="#">English</a></li>
             </ul>
         </div>*@
-                            <div class="header__top__right__auth">
-                                @if (!Request.IsAuthenticated)
-                                {
-                                    <a href="/account/login"><i class="fa fa-user"></i> Đăng nhập</a>
-                                }
-                                else
-                                {
-                                    <a href="#"><i class="fa fa-user"></i> Xin chào: @User.Identity.Name</a>
-                                    <a href="javascript:document.getElementById('logOffForm').submit()"> Đăng xuất</a>
-                                }
+                        <div class="header__top__right__auth">
+                            @Html.Action("Partial_login_logout", "Home")
+                        </div>
 
-                            </div>
-                            @if (Request.IsAuthenticated)
-                            {
-                                <div style="display:none">
-                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logOffForm" }))
-                                    {
-                                        @Html.AntiForgeryToken()}
-                                </div>}
                         </div>
                     </div>
                 </div>
