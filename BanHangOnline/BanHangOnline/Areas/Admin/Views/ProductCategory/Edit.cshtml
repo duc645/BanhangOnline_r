@@ -1,8 +1,10 @@
-﻿@model BanHangOnline.Models.EF.Category
+﻿@model BanHangOnline.Models.EF.ProductCategory
 @{
-    ViewBag.Title = "Sửa danh mục";
+    ViewBag.Title = "Cập nhật danh mục sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+
 @section naviheader{
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -13,10 +15,10 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/category" class="nav-link">Danh mục</a>
+            <a href="/admin/news" class="nav-link">Danh mục sản phẩm</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Sửa</a>
+            <a href="#" class="nav-link">Cập nhật</a>
         </li>
 
     </ul>
@@ -26,11 +28,11 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cập nhật danh mục</h1>
+                <h1>Cập nhật danh mục sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                    <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
                     <li class="breadcrumb-item active">Cập nhật</li>
                 </ol>
             </div>
@@ -44,32 +46,37 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Sửa danh mục</h3>
+            <h3 class="card-title">Thông tin Cập nhật danh mục</h3>
 
         </div>
         <div class="card-body">
-            <div class="bs-stepper-content">
-                @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { }))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
-                    @Html.HiddenFor(x => x.Id)
-                    @Html.HiddenFor(x => x.CreatedDate)
-                    <!-- your steps content here -->
+            @if (Model != null)
+            {
+                <div class="bs-stepper-content">
+                    @using (Html.BeginForm("Edit", "ProductCategory", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.HiddenFor(x => x.CreatedDate)
+                        <!-- your steps content here -->
                     <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Tên danh mục</label>
-                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên danh mục" })
+                            <label for="exampleInputEmail1">Tiêu đề</label>
+                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
                             @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Alias</label>
+                            @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias" })
+                            @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả</label>
                             @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Thứ tự</label>
-                            @Html.TextBoxFor(x => x.Position, new { @class = "form-control", @Value = "1" })
-                        </div>
+
+
                         <div class="form-group">
                             <label for="exampleInputPassword1">Seo title</label>
                             @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
@@ -84,14 +91,16 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Lưu</button>
-                            <a href="/admin/category" class="btn btn-danger">Quay lại</a>
+                            <a href="/admin/productcategory" class="btn btn-danger">Quay lại</a>
 
                         </div>
                     </div>
 
-                }
+                    }
 
-            </div>
+                </div>
+            }
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -102,4 +111,4 @@
     <!-- /.card -->
 
 </section>
-<!-- /.content -->
+
