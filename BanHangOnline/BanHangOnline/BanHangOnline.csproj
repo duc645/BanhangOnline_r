@@ -3472,6 +3472,9 @@
     <Content Include="Views\Manage\ListOrder.cshtml" />
     <Content Include="Views\Manage\ViewDetailOrderProfile.cshtml" />
     <Content Include="Views\Manage\Partial_SanPham_profile.cshtml" />
+    <Content Include="Views\Menu\_MenuLeftCategories.cshtml" />
+    <Content Include="Views\News\NewDetail.cshtml" />
+    <Content Include="Views\News\Take3News_Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

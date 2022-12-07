@@ -67,6 +67,9 @@
 
             </div>
         </div>*@
+            <div style="font-size:20px;" class="text-success textsucc">
+                @ViewBag.Status
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -211,6 +214,7 @@
                         success: function (rs) {
                             if (rs.success) {
                                 $('#trow_' + id).remove();
+                                $('.textsucc').html("Xóa thành công");
                             }
                         }
 

@@ -35,6 +35,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         }
         public ActionResult Add()
         {
+            ViewBag.Category = new SelectList(_dbContext.Categories.ToList(), "Id", "Title");
             return View();
         }
         [HttpPost]
@@ -45,17 +46,19 @@ namespace BanHangOnline.Areas.Admin.Controllers
             {
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
-                model.CategoryId = 2;
+                //model.CategoryId = 2;
                 model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
                 _dbContext.News.Add(model);
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Category = new SelectList(_dbContext.Categories.ToList(), "Id", "Title");
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
+            ViewBag.Category = new SelectList(_dbContext.Categories.ToList(), "Id", "Title");
             var item = _dbContext.News.Find(id);
             return View(item);
         }
@@ -73,6 +76,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Category = new SelectList(_dbContext.Categories.ToList(), "Id", "Title");
             return View(model);
         }
         [HttpPost]

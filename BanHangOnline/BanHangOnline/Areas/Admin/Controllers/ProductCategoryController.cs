@@ -26,7 +26,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             items = items.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
-
+            ViewBag.Status = TempData["message"];
             return View(items);
         }
         public ActionResult Add()
@@ -47,6 +47,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
 
                 _dbContext.ProductCategories.Add(model);
                 _dbContext.SaveChanges();
+                TempData["message"] = "Thêm thành công";
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -73,7 +74,9 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.ProductCategories.Attach(model);
                 _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();
+                TempData["message"] = "Sửa thành công";
                 return RedirectToAction("Index");
+
             }
             return View(model);
         }
@@ -85,6 +88,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             {
                 _dbContext.ProductCategories.Remove(item);
                 _dbContext.SaveChanges();
+                //TempData["message"] = "Xóa thành công";
                 return Json(new { success = true });
             }
             return Json(new { success = false });
