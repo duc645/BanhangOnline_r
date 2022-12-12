@@ -131,13 +131,13 @@
                         <ul>
                             @if(Model.Quantity > 0)
                              {
-                                <li><b>Tình trạng: </b> <span>Còn hàng</span></li>
+                                <li><i class="fa fa-solid fa-check"></i><b>  Tình trạng: </b> <span>Còn hàng</span></li>
                              }
                              else
                              {
-                                <li><b>Tình trạng:  <span>Hết Hàng</span></b></li>
+                                <li><i class=" fa fa-solid fa-xmark"></i><b>  Tình trạng:  <span>Hết Hàng</span></b></li>
                              }
-                            
+                            <li><i class=" fa fa-solid fa-eye"></i> <b>Lượt xem:</b>  <span>@Model.ViewCout</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
                             @*<li>

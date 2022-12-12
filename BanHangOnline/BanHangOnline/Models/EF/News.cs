@@ -35,5 +35,7 @@ namespace BanHangOnline.Models.EF
         public bool IsActive { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public int ViewCount { get; set; }
     }
 }

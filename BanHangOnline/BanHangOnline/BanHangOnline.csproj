@@ -229,6 +229,10 @@
     <Compile Include="Migrations\202212051737462_ThemViewCoutVaUserId.Designer.cs">
       <DependentUpon>202212051737462_ThemViewCoutVaUserId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212070917315_themViewCountNews.cs" />
+    <Compile Include="Migrations\202212070917315_themViewCountNews.Designer.cs">
+      <DependentUpon>202212070917315_themViewCountNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3475,6 +3479,7 @@
     <Content Include="Views\Menu\_MenuLeftCategories.cshtml" />
     <Content Include="Views\News\NewDetail.cshtml" />
     <Content Include="Views\News\Take3News_Category.cshtml" />
+    <Content Include="Views\News\SeeMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3516,6 +3521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212051737462_ThemViewCoutVaUserId.resx">
       <DependentUpon>202212051737462_ThemViewCoutVaUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212070917315_themViewCountNews.resx">
+      <DependentUpon>202212070917315_themViewCountNews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

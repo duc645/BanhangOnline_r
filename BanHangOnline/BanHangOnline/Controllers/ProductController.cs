@@ -72,6 +72,13 @@ namespace BanHangOnline.Controllers
         public ActionResult ProductDetail(int? id)
         {
             var item = _dbContext.Products.Where(p=> p.Id==id).Include(x => x.ProductImages).FirstOrDefault();
+            if (item != null)
+            {
+                _dbContext.Products.Attach(item);
+                item.ViewCout = item.ViewCout + 1;
+                _dbContext.Entry(item).Property(x =>x.ViewCout).IsModified = true;
+                _dbContext.SaveChanges();
+            }
             return View(item);
         }
     }

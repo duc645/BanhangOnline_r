@@ -48,6 +48,13 @@ namespace BanHangOnline.Controllers
         public ActionResult NewDetail(int? id)
         {
             var item = _dbContext.News.Where(p => p.Id == id).Include(n => n.Category).FirstOrDefault();
+            if(item!= null)
+            {
+                _dbContext.News.Attach(item);
+                item.ViewCount = item.ViewCount + 1;
+                _dbContext.Entry(item).Property(x => x.ViewCount).IsModified = true;
+                _dbContext.SaveChanges();
+            }
             ViewBag.CategoryToTake3below = item.CategoryId;
             return View(item);
         }
@@ -56,6 +63,12 @@ namespace BanHangOnline.Controllers
         {
             var items = _dbContext.News.Where(p => p.CategoryId == id && p.IsActive == true).Take(3).ToList();
             return PartialView(items);
+        }
+
+        public ActionResult SeeMore()
+        {
+            var item = _dbContext.News.Where(p => p.IsActive == true).OrderByDescending(x => x.ViewCount).Take(3).ToList();
+            return PartialView(item);
         }
     }
 }

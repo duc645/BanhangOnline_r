@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BanHangOnline.Models.EF.News>
+<h4>Xem nhiều</h4>
+
+@if (Model != null && Model.Any())
+{
+
+<div class="blog__sidebar__recent">
+    @foreach (var item in Model)
+    {
+        <a href="/News/NewDetail/@item.Id" class="blog__sidebar__recent__item">
+            <div class="blog__sidebar__recent__item__pic" style="width: 90px;">
+                <img src="@item.Image" alt="">
+            </div>
+            <div class="blog__sidebar__recent__item__text">
+                <h6>@item.Title</h6>
+                <span>@item.CreatedDate.ToString("dd/MM/yyyy")</span>
+            </div>
+        </a>
+    }
+
+</div>
+}
+
