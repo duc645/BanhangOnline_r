@@ -3480,6 +3480,9 @@
     <Content Include="Views\News\NewDetail.cshtml" />
     <Content Include="Views\News\Take3News_Category.cshtml" />
     <Content Include="Views\News\SeeMore.cshtml" />
+    <Content Include="Views\Manage\ListOrderCancel.cshtml" />
+    <Content Include="Views\Manage\ViewDetailOrderCancelProfile.cshtml" />
+    <Content Include="Views\Manage\Partial_SanPham_dhHuy_profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

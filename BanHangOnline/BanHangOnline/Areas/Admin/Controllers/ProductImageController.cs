@@ -61,6 +61,13 @@ namespace BanHangOnline.Areas.Admin.Controllers
                     _dbContext.SaveChanges();
                 }
                 mainImage.IsDefault = true;
+
+                //sau khi thay đổi ảnh đại diện xong là phải lưu vào bảng product - truong Image - Phan nay van chua lam
+                var product = _dbContext.Products.Where(p => p.Id == mainImage.ProductId).FirstOrDefault();
+                product.Image = mainImage.Image;
+                _dbContext.Products.Attach(product);
+                _dbContext.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                //da xong phan chuyen anh dai dien thi cung chuyen du lieu sang truong Image bảng product
                 _dbContext.SaveChanges();
             }
 

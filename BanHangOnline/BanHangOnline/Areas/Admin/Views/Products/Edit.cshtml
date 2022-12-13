@@ -3,7 +3,27 @@
     ViewBag.Title = "Cập nhật sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .glImage {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
 
+        .glImage li {
+            display: inline-block;
+            position: relative
+        }
+
+    .box-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+</style>
 @section naviheader{
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -14,7 +34,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/products" class="nav-link">Sản phẩm</a>
+            <a href="/admin/products" class="nav-link">Sách</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Cập nhật</a>
@@ -31,7 +51,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Cập nhật Sản phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="#">Cập nhật Sách</a></li>
                     <li class="breadcrumb-item active">Cập nhật</li>
                 </ol>
             </div>
@@ -41,6 +61,49 @@
 
 <!-- Main content -->
 <section class="content">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Ảnh sản phẩm  </h3>
+            <div class="card-tools">
+                @*<button type="button" class="btn btn-danger" title="Collapse">
+                    Xóa hết
+                </button>*@
+                <input type="button" class="btn btn-success" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="glImage">
+                @if (Model != null)
+                {
+                    foreach (var item in Model.ProductImages)
+                    {
+                        <li id="trow_@item.Id">
+                            <img src="@item.Image" width="200" height="260"/>
+                            <div class="box-btn">
+                                <a href="#" class="btn btn-sm btn-danger btnDelete" data-id="@item.Id"><i class="fa fa-trash"></i></a>
+                                @if (item.IsDefault)
+                                {
+                            <a href="#" class="btn btn-sm btn-success btnDefault" data-default1="@item.IsDefault" data-id="@item.Id" onclick="ChangeMain();">@*<i class="fa fa-check"></i>*@ Ảnh đại diện</a>
+                                }
+                                else
+                                {
+                                    <a href="#" class="btn btn-sm btn-success btnDefault" data-default1="@item.IsDefault" data-id="@item.Id">Đặt làm ảnh đại diện</a>
+                                }
+                            </div>
+
+                        </li>
+                    }
+                }
+            </ul>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+        </div>
+        <!-- /.card-footer-->
+    </div>
+
 
     <!-- Default box -->
     <div class="card">
@@ -60,51 +123,51 @@
                         @Html.HiddenFor(x => x.Image)
                         <!-- your steps content here -->
                         @*<div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Tiêu đề</label>
-                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
-                    @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">Ảnh đại diện</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
-                        </div>
-                        <div class="input-group-append">
-                            <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Mô tả</label>
-                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Chi tiết</label>
-                    @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Hiển thị</label>
-                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "@checked" })
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Seo title</label>
-                    @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Seo Description</label>
-                    @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Seo Keywords</label>
-                    @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                    <a href="/admin/products" class="btn btn-danger">Quay lại</a>
-                </div>
-            </div>*@
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tiêu đề</label>
+                                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
+                                    @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Ảnh đại diện</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
+                                        </div>
+                                        <div class="input-group-append">
+                                            <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Mô tả</label>
+                                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Chi tiết</label>
+                                    @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Hiển thị</label>
+                                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "@checked" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Seo title</label>
+                                    @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Seo Description</label>
+                                    @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Seo Keywords</label>
+                                    @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                    <a href="/admin/products" class="btn btn-danger">Quay lại</a>
+                                </div>
+                            </div>*@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
@@ -267,6 +330,29 @@
 
 @section scripts{
     <script>
+
+            function BrowseServer(field) {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            //khi popup , click vao them mot cai anh trong finder thi no se goi ham , va truyen url  anh vao
+            AddImage(@ViewBag.ProductId, fileUrl);
+        };
+        finder.popup();
+    };
+
+    function AddImage(id, url) {
+        $.ajax({
+            url: '/admin/ProductImage/AddImage',
+            type: 'POST',
+            data: { productId: id, url: url },
+            success: function (rs) {
+                if (rs.success) {
+                    window.location.reload();
+                }
+            }
+        });
+    }
+
         $(document).ready(function () {
             $('.auto').autoNumeric('init');//thu vien cua input "gia"
             //Nhập vào ô input trên sẽ được auto thêm ".", "," ,ô input dưới sẽ có type hidden (đoạn js này sẽ bỏ các "." và "," để có thể lưu vào sql)
@@ -286,7 +372,48 @@
                 customConfig: '/content/ckeditor/config.js',
                 extraAllowedContent: 'span',
             });
-           
+
+                    $('body').on('click', '.btnDelete', function () {
+            var id = $(this).data('id');
+            var conf = confirm('Bạn có muốn xóa ảnh này không?');
+            if (conf === true) {
+                $.ajax({
+                    url: '/admin/productimage/delete',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            $('#trow_' + id).remove();
+                        }
+                    }
+                });
+            }
+        });
+
+        $('body').on('click', '.btnDefault', function () {
+            var default1 = $(this).data('default1');
+            //if (default1 === true) {
+            //alert('Ảnh này đã là ảnh đại diện!!!' + default1);
+            //}
+            var id = $(this).data('id');
+            var conf = confirm('Bạn có muốn đặt ảnh này làm ảnh đại diện không không?');
+            if (conf === true) {
+                $.ajax({
+                    url: '/admin/productimage/ChangeMainImage',
+                    type: 'POST',
+                    data: { productId: @ViewBag.ProductId, id: id, isDefault: default1 },
+                    success: function (rs) {
+                        if (rs.success) {
+                            window.location.reload();
+                        }
+                        else {
+                            alert("Ảnh này đã là ảnh đại diện !!!")
+                        }
+                    }
+                });
+            }
+        });
+
 
         });
 

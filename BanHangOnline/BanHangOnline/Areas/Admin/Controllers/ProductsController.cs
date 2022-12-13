@@ -3,6 +3,7 @@ using BanHangOnline.Models.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,7 +17,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
 
         public ActionResult Index(string searchText, int? page)
         {
-            var pageSize = 10;
+            var pageSize = 5;
             if (page == null)
             {
                 page = 1;
@@ -81,6 +82,14 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 {
                     model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
                 }
+                if(model.PriceSale>0 && model.PriceSale < model.Price)
+                {
+                    model.PriceM = model.PriceSale.Value;
+                }
+                else
+                {
+                    model.PriceM = model.Price;
+                }
                 _dbContext.Products.Add(model);
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
@@ -93,7 +102,8 @@ namespace BanHangOnline.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
-            var item = _dbContext.Products.Find(id);
+            var item = _dbContext.Products.Where(x=> x.Id ==id).Include(a => a.ProductImages).FirstOrDefault();
+            ViewBag.ProductId = id;
             return View(item);
         }
 
@@ -106,6 +116,14 @@ namespace BanHangOnline.Areas.Admin.Controllers
 
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
+                if (model.PriceSale > 0 && model.PriceSale < model.Price)
+                {
+                    model.PriceM = model.PriceSale.Value;
+                }
+                else
+                {
+                    model.PriceM = model.Price;
+                }
                 _dbContext.Products.Attach(model);
                 _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();

@@ -216,7 +216,33 @@ namespace BanHangOnline.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
+        //Order cancel of user
+        public ActionResult ListOrderCancel(int? page)
+        {
+            var id = User.Identity.GetUserId();
+            var items = _dbContext.Orders.Where(x => x.UserId == id && x.OrderStatusId == 3).OrderByDescending(x => x.CreatedDate).ToList();
 
+            if (page == null)
+            {
+                page = 5;
+            }
+            var pageNumber = page ?? 1;
+            var pageSize = 1;
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = pageNumber;
+            return View(items.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult ViewDetailOrderCancelProfile(int id)
+        {
+            var item = _dbContext.Orders.Find(id);
+            return View(item);
+        }
+        public ActionResult Partial_SanPham_dhHuy_profile(int id)
+        {
+            var items = _dbContext.OrderDetails.Where(x => x.OrderId == id).ToList();
+            return PartialView(items);
+        }
         //Order of user 
 
         public ActionResult ListOrder(int? page)

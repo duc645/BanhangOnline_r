@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Chi tiết đơn hàng người dùng";
+    ViewBag.Title = "Chi tiết đơn hàng đã hủy";
     Layout = "~/Views/Shared/_LayoutProfile.cshtml";
 }
 
@@ -32,7 +32,7 @@
                     <td>@Model.Phone</td>
                     <td>@Model.CreatedDate.ToString("dd/MM/yyyy")</td>
                     <td>@Model.Email</td>
-                    <td>@(Model.TypePayment == 1 ? "COD" : "Chuyển khoản")</td>
+                    <td>@(Model.TypePayment == 1 ? "COD" : "chuyển khoản")</td>
                 </tr>
 
 
@@ -97,7 +97,7 @@
                     <h5>Danh sách sách của đơn #@Model.Code</h5>
                 </div>
                 <div class="col-12">
-                    @Html.Action("Partial_SanPham_profile", "Manage", new { id = Model.Id })
+                    @Html.Action("Partial_SanPham_dhHuy_profile", "Manage", new { id = Model.Id })
                 </div>
             </div>
         </div>
