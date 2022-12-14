@@ -120,7 +120,6 @@ D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.x
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.xml
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.UpdateProductCategory.resources
 D:\ki2_nam4\aspnet\Web\BanHangOnline\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache
-D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\WebGrease.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\BanHangOnline.dll.config
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\BanHangOnline.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\BanHangOnline.pdb
@@ -202,6 +201,7 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\Syste
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\System.Web.WebPages.Deployment.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\System.Web.WebPages.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\System.Web.WebPages.Razor.dll
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\WebGrease.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\CKFinder.pdb
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\PagedList.xml
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\bin\PagedList.Mvc.xml
@@ -241,8 +241,11 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.sualan2bangContactThamCommonAbstract.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.suabangcontactThemIsRead.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themTruongProductSoldBodiRequiredTruongCodeBangOrder.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.thubodiTruongCodeBangOrder.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.GenerateResource.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CoreCompileInputs.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CopyComplete
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.pdb
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.BodiTruongCodelan2.resources

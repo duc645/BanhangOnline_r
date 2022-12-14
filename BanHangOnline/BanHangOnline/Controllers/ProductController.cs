@@ -65,7 +65,27 @@ namespace BanHangOnline.Controllers
 
         public ActionResult Partial_ProductSale()
         {
-            var items = _dbContext.Products.Where(p => p.IsSale == true && p.IsActive == true && p.PriceSale>0).Take(4).Include(c => c.ProductImages).ToList();
+            var items = _dbContext.Products.Where(p =>  p.IsActive == true && p.PriceSale>0).Take(4).Include(c => c.ProductImages).ToList();
+            return PartialView(items);
+
+        }
+
+        public ActionResult Partial_TopProductSold()
+        {
+            var items = _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p=>p.ProductSold).Take(5).Include(c => c.ProductImages).ToList();
+            return PartialView(items);
+
+        }
+        public ActionResult Partial_TopViewCount()
+        {
+            var items = _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.ViewCout).Take(5).Include(c => c.ProductImages).ToList();
+            return PartialView(items);
+
+        }
+
+        public ActionResult Partial_TopProductNew()
+        {
+            var items = _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.CreatedDate).Take(5).Include(c => c.ProductImages).ToList();
             return PartialView(items);
 
         }

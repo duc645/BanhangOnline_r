@@ -250,6 +250,14 @@
     <Compile Include="Migrations\202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.Designer.cs">
       <DependentUpon>202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212141742366_thubodiTruongCodeBangOrder.cs" />
+    <Compile Include="Migrations\202212141742366_thubodiTruongCodeBangOrder.Designer.cs">
+      <DependentUpon>202212141742366_thubodiTruongCodeBangOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212141748512_BodiTruongCodelan2.cs" />
+    <Compile Include="Migrations\202212141748512_BodiTruongCodelan2.Designer.cs">
+      <DependentUpon>202212141748512_BodiTruongCodelan2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3503,6 +3511,9 @@
     <Content Include="Views\Manage\ViewDetailOrderCancelProfile.cshtml" />
     <Content Include="Views\Manage\Partial_SanPham_dhHuy_profile.cshtml" />
     <Content Include="Views\Contact\AddContact.cshtml" />
+    <Content Include="Views\Product\Partial_TopProductSold.cshtml" />
+    <Content Include="Views\Product\Partial_TopViewCount.cshtml" />
+    <Content Include="Views\Product\Partial_TopProductNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3559,6 +3570,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.resx">
       <DependentUpon>202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212141742366_thubodiTruongCodeBangOrder.resx">
+      <DependentUpon>202212141742366_thubodiTruongCodeBangOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212141748512_BodiTruongCodelan2.resx">
+      <DependentUpon>202212141748512_BodiTruongCodelan2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
