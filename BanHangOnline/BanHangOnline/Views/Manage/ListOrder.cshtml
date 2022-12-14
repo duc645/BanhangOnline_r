@@ -52,24 +52,35 @@
                         var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                         foreach (var item in Model)
                         {
-                            <tr id="trow_@item.Id">
-                                <td>@i</td>
-                                <td>@item.Code</td>
-                                <td>@item.CustomerName</td>
-                                <td>@item.Phone</td>
-                                <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
-                                <td>@item.OrderStatus.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td>
-                                    <a href="/Manage/ViewDetailOrderProfile/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    @if (item.OrderStatusId == 1)
-                                    {
-                                        <a href="#" class="btn btn-sm btn-danger btnCancel" data-id="@item.Id">Hủy đơn hàng</a>
-                                    }
+                    <tr id="trow_@item.Id">
+                        <td>@i</td>
+                        <td>@item.Code</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.Phone</td>
+                        <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                        <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
+                        @if (item.OrderStatusId == 1)
+                        {
+                            <td class="text-warning">@item.OrderStatus.Title</td>
+                        }
+                        @if (item.OrderStatusId == 2)
+                        {
+                            <td class="text-success">@item.OrderStatus.Title</td>
+                        }
+                        @if (item.OrderStatusId == 4)
+                        {
+                            <td class="text-primary">@item.OrderStatus.Title</td>
+                        }
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a href="/Manage/ViewDetailOrderProfile/@item.Id" class="btn btn-sm btn-success">Xem</a>
+                            @if (item.OrderStatusId == 1)
+                            {
+                                <a href="#" class="btn btn-sm btn-danger btnCancel" data-id="@item.Id">Hủy đơn hàng</a>
+                            }
 
-                                </td>
-                            </tr>
+                        </td>
+                    </tr>
                             i++;
                         }
                     }

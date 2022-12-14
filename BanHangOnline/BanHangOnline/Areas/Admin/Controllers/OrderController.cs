@@ -16,7 +16,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         // GET: Admin/Order
         public ActionResult Index(int? page)
         {
-            var items = _dbContext.Orders.Where(x=>x.OrderStatusId ==1 || x.OrderStatusId==2).OrderByDescending(x => x.CreatedDate).ToList();
+            var items = _dbContext.Orders.Where(x=>x.OrderStatusId ==1 || x.OrderStatusId==2 || x.OrderStatusId == 4).OrderByDescending(x => x.CreatedDate).ToList();
 
             if (page == null)
             {

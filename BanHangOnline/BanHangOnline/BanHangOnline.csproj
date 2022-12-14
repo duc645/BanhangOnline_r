@@ -180,6 +180,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
@@ -232,6 +233,18 @@
     <Compile Include="Migrations\202212070917315_themViewCountNews.cs" />
     <Compile Include="Migrations\202212070917315_themViewCountNews.Designer.cs">
       <DependentUpon>202212070917315_themViewCountNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212131709139_sualaibangLienHe.cs" />
+    <Compile Include="Migrations\202212131709139_sualaibangLienHe.Designer.cs">
+      <DependentUpon>202212131709139_sualaibangLienHe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212131836076_sualan2bangContactThamCommonAbstract.cs" />
+    <Compile Include="Migrations\202212131836076_sualan2bangContactThamCommonAbstract.Designer.cs">
+      <DependentUpon>202212131836076_sualan2bangContactThamCommonAbstract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212140855243_suabangcontactThemIsRead.cs" />
+    <Compile Include="Migrations\202212140855243_suabangcontactThemIsRead.Designer.cs">
+      <DependentUpon>202212140855243_suabangcontactThemIsRead.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3401,6 +3414,8 @@
     <Content Include="Content\login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\Order\IndexOrderCancel.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\View.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3483,6 +3498,7 @@
     <Content Include="Views\Manage\ListOrderCancel.cshtml" />
     <Content Include="Views\Manage\ViewDetailOrderCancelProfile.cshtml" />
     <Content Include="Views\Manage\Partial_SanPham_dhHuy_profile.cshtml" />
+    <Content Include="Views\Contact\AddContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3527,6 +3543,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212070917315_themViewCountNews.resx">
       <DependentUpon>202212070917315_themViewCountNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212131709139_sualaibangLienHe.resx">
+      <DependentUpon>202212131709139_sualaibangLienHe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212131836076_sualan2bangContactThamCommonAbstract.resx">
+      <DependentUpon>202212131836076_sualan2bangContactThamCommonAbstract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212140855243_suabangcontactThemIsRead.resx">
+      <DependentUpon>202212140855243_suabangcontactThemIsRead.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

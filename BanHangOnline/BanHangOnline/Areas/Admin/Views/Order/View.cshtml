@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Chi tiết đơn hàng";
 }
 
 @section naviheader{
@@ -13,7 +13,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/view/@Model.Id" class="nav-link">Chi tiết đơn hàng @Model.Code</a>
+            <a href="/admin/contact/view/@Model.Id" class="nav-link">Chi tiết đơn hàng @Model.Code</a>
         </li>
     </ul>
 }
@@ -35,7 +35,7 @@
                     <th>Số điện thoại</th>
                     <th>Ngày tạo</th>
                     <th>Email</th>
-                    <th>Trạng thái</th>
+                    <th>Phương thức TT</th>
                 </tr>
 
             </thead>

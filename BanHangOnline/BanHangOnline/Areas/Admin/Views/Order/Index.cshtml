@@ -51,20 +51,32 @@
                         var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                         foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@i</td>
-                                <td>@item.Code</td>
-                                <td>@item.CustomerName</td>
-                                <td>@item.Phone</td>
-                                <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
-                                <td>@item.OrderStatus.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td>
-                                    <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    <a href="/admin/order/Editstatus/@item.Id" class="btn btn-sm btn-info btnCapNhat" data-id="@item.Id">Chỉnh sửa</a>
-                                </td>
-                            </tr>
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.Code</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.Phone</td>
+                        <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                        <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
+                        @if (item.OrderStatusId == 1)
+                        {
+                            <td class="text-warning">@item.OrderStatus.Title</td>
+                        }
+                        @if (item.OrderStatusId == 2)
+                        {
+                            <td class="text-success">@item.OrderStatus.Title</td>
+                        }
+                        @if (item.OrderStatusId == 4)
+                        {
+                            <td class="text-primary">@item.OrderStatus.Title</td>
+                        }
+                        @*<td>@item.OrderStatus.Title</td>*@
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
+                            <a href="/admin/order/Editstatus/@item.Id" class="btn btn-sm btn-info btnCapNhat" data-id="@item.Id">Chỉnh sửa</a>
+                        </td>
+                    </tr>
                             i++;
                         }
                     }

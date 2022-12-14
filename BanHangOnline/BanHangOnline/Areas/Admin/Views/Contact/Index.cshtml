@@ -1,0 +1,126 @@
+﻿@model PagedList.IPagedList<BanHangOnline.Models.EF.Contact>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Danh sách liên hệ";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/contact" class="nav-link">Danh sách liên hệ</a>
+        </li>
+    </ul>
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách liên hệ</h3>
+
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Người gửi</th>
+                        <th>Email</th>
+                        <th>Ngày tạo</th>
+                        <th>Loại khách</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                        foreach (var item in Model)
+                        {
+                    <tr id="trow_@item.Id">
+                        <td>@i</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        @if (item.CreateBy != null)
+                        {
+                            <td class="text-primary">Thành viên</td>
+                        }
+                        else
+                        {
+                            <td class="text-warning">Khách vãng lai</td>
+                        }
+                        @if (item.IsRead == false)
+                        {
+                            <td class="text-danger">Chưa xem</td>
+                        }
+                        else
+                        {
+                            <td class="text-success">Đã xem</td>
+                        }
+                    <td>
+                        <a href="/admin/contact/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
+                        <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                    </td>
+                    </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6" style="text-align:right;">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Bạn có muốn xóa bản ghi này không?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/admin/contact/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+
+                    });
+                }
+            });
+
+        });
+    </script>
+}

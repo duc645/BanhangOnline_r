@@ -224,10 +224,10 @@ namespace BanHangOnline.Controllers
 
             if (page == null)
             {
-                page = 5;
+                page = 1;
             }
             var pageNumber = page ?? 1;
-            var pageSize = 1;
+            var pageSize = 5;
             ViewBag.PageSize = pageSize;
             ViewBag.Page = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
@@ -248,7 +248,7 @@ namespace BanHangOnline.Controllers
         public ActionResult ListOrder(int? page)
         {
             var id = User.Identity.GetUserId();
-            var items = _dbContext.Orders.Where(x=>(x.UserId==id && x.OrderStatusId==1) || (x.UserId==id && x.OrderStatusId==2)).OrderByDescending(x => x.CreatedDate).ToList();
+            var items = _dbContext.Orders.Where(x=>(x.UserId==id && x.OrderStatusId==1) || (x.UserId==id && x.OrderStatusId==2) || (x.UserId == id && x.OrderStatusId == 4)).OrderByDescending(x => x.CreatedDate).ToList();
 
             if (page == null)
             {

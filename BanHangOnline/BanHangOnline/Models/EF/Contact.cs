@@ -7,13 +7,13 @@ using System.Web;
 
 namespace BanHangOnline.Models.EF
 {
-    public class Contact
+    public class Contact : CommonAbstract
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Tên không được để trống")]
+        [Required(ErrorMessage ="Tên tài khoản không được để trống")]
         [StringLength(150,ErrorMessage ="Không được viết trên 150 ký tự")]
         public string Name { get; set; }
 
@@ -22,11 +22,12 @@ namespace BanHangOnline.Models.EF
         [Required(ErrorMessage = "Trường này không được để trống")]
         public string Email { get; set; }
 
-        public string Website { get; set; }
 
+        [Required(ErrorMessage = "Trường này không được để trống")]
         [StringLength(5000, ErrorMessage = "Không được viết trên 5000 ký tự")]
         public string Message { get; set; }
 
         public bool IsRead { get; set; }
+
     }
 }

@@ -58,7 +58,7 @@
                                 <td>@item.Phone</td>
                                 <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
                                 <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
-                                <td>@item.OrderStatus.Title</td>
+                                <td class="text-danger">@item.OrderStatus.Title</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
                                     <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>

@@ -1,0 +1,95 @@
+﻿@model BanHangOnline.Models.EF.Contact
+    @using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="breadcrumb-section set-bg" data-setbg="/Content/assets/img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Liên hệ với chúng tôi</h2>
+                    <div class="breadcrumb__option">
+                        <a href="/home">Trang chủ</a>
+                        <span>Liên hệ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="contact-form spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact__form__title">
+                    <h2>Gửi liên hệ</h2>
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.User == null)
+        {
+            using (Html.BeginForm("AddContact", "Contact", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Nhập họ tên" })
+                        @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Nhập email" })
+                        @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        @Html.TextAreaFor(x => x.Message, new { @class = "form-control", @placeholder = "Nhập nội dung liên hệ" })
+                        @Html.ValidationMessageFor(x => x.Message, null, new { @class = "text-danger" })
+                        <button type="submit" class="site-btn">Gửi</button>
+                    </div>
+                </div>
+            }
+        }
+        @if (ViewBag.User != null)
+        {
+            using (Html.BeginForm("AddContact", "Contact", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Nhập tên tài khoản", @Value = ViewBag.User.UserName })
+                        @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Nhập email", @Value = ViewBag.User.Email })
+                        @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        @Html.TextAreaFor(x => x.Message, new { @class = "form-control", @placeholder = "Nhập nội dung liên hệ" })
+                        @Html.ValidationMessageFor(x => x.Message, null, new { @class = "text-danger" })
+                        <button type="submit" class="site-btn">Gửi</button>
+                    </div>
+                </div>
+            }
+        }
+
+        @*<form action="#">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" placeholder="Nhập tên tài khoản">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" placeholder="Nhập Email">
+                </div>
+                <div class="col-lg-12 text-center">
+                    <textarea placeholder="Nhập nội dung liên hệ"></textarea>
+                    <button type="submit" class="site-btn">Gửi</button>
+                </div>
+            </div>
+        </form>*@
+    </div>
+</div>
