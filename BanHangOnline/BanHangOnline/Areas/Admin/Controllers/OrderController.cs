@@ -94,6 +94,25 @@ namespace BanHangOnline.Areas.Admin.Controllers
                     }
 
                 }
+                if (model.OrderStatusId == 2)
+                {
+                    var orderD = _dbContext.Orders.Where(o => o.Id == model.Id).Include(x => x.OrderDetails).FirstOrDefault();
+                    if (orderD != null)
+                    {
+                        foreach (var item_details in orderD.OrderDetails)
+                        {
+                            var product = _dbContext.Products.Where(x => x.Id == item_details.ProductId).FirstOrDefault();
+                            if (product != null)
+                            {
+                                product.ProductSold += item_details.Quantity;
+                                _dbContext.Products.Attach(product);
+                                _dbContext.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                                _dbContext.SaveChanges();
+                            }
+                        }
+                    }
+
+                }
 
                 return RedirectToAction("Index");
             }

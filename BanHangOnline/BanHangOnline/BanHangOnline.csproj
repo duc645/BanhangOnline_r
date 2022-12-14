@@ -246,6 +246,10 @@
     <Compile Include="Migrations\202212140855243_suabangcontactThemIsRead.Designer.cs">
       <DependentUpon>202212140855243_suabangcontactThemIsRead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.cs" />
+    <Compile Include="Migrations\202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.Designer.cs">
+      <DependentUpon>202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3552,6 +3556,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212140855243_suabangcontactThemIsRead.resx">
       <DependentUpon>202212140855243_suabangcontactThemIsRead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.resx">
+      <DependentUpon>202212141605079_themTruongProductSoldBodiRequiredTruongCodeBangOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

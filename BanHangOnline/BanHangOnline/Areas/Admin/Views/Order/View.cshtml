@@ -29,7 +29,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Code đơn hàng</th>
+                    <th>Mã đơn hàng</th>
                     <th>Họ tên khách</th>
                     <th>Tổng tiền</th>
                     <th>Số điện thoại</th>
@@ -41,7 +41,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>@Model.Code</td>
+                    <td>ĐH @Model.Id</td>
                     <td>@Model.CustomerName</td>
                     <td>@BanHangOnline.Common.Common.FormatNumber(Model.TotalAmount, 0) Đ</td>
                     <td>@Model.Phone</td>

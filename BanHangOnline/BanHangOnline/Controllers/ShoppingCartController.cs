@@ -91,8 +91,8 @@ namespace BanHangOnline.Controllers
                     order.ModifiedDate = DateTime.Now;
                     order.OrderStatusId = 1;
                     //order.CreatedBy = req.Phone;
-                    Random rd = new Random();
-                    order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
+                    //Random rd = new Random();
+                    //order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
                     _dbContext.Orders.Add(order);
                     _dbContext.SaveChanges();
 
@@ -111,7 +111,7 @@ namespace BanHangOnline.Controllers
                     }
                     TongTien = thanhtien;
                     string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send2.html"));
-                    contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Code);
+                    contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Id.ToString());
                     contentCustomer = contentCustomer.Replace("{{SanPham}}", strSanPham);
                     contentCustomer = contentCustomer.Replace("{{NgayDat}}", DateTime.Now.ToString("dd/MM/yyyy"));
                     contentCustomer = contentCustomer.Replace("{{TenKhachHang}}", order.CustomerName);
@@ -120,7 +120,7 @@ namespace BanHangOnline.Controllers
                     contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentCustomer = contentCustomer.Replace("{{ThanhTien}}", BanHangOnline.Common.Common.FormatNumber(thanhtien, 0));
                     contentCustomer = contentCustomer.Replace("{{TongTien}}", BanHangOnline.Common.Common.FormatNumber(TongTien, 0));
-                    BanHangOnline.Common.Common.SendMail("SachARS", "Đơn hàng #" + order.Code, contentCustomer.ToString(), req.Email);
+                    BanHangOnline.Common.Common.SendMail("SachARS", "Đơn hàng #" + order.Id.ToString(), contentCustomer.ToString(), req.Email);
 
                     //string contentAdmin = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send1.html"));
                     //contentAdmin = contentAdmin.Replace("{{MaDon}}", order.Code);

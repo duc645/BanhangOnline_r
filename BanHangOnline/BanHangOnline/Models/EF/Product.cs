@@ -70,5 +70,7 @@ namespace BanHangOnline.Models.EF
         public ICollection<ProductImage>  ProductImages { get; set; }
 
         public int ViewCout { get; set; }
+
+        public int ProductSold { get; set; }
     }
 }

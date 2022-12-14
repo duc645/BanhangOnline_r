@@ -53,7 +53,7 @@
                         {
                     <tr>
                         <td>@i</td>
-                        <td>@item.Code</td>
+                        <td>ĐH @item.Id</td>
                         <td>@item.CustomerName</td>
                         <td>@item.Phone</td>
                         <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
@@ -74,7 +74,12 @@
                         <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                         <td>
                             <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                            <a href="/admin/order/Editstatus/@item.Id" class="btn btn-sm btn-info btnCapNhat" data-id="@item.Id">Chỉnh sửa</a>
+                            @if (item.OrderStatusId != 2)
+                            {
+                                <a href="/admin/order/Editstatus/@item.Id" class="btn btn-sm btn-info btnCapNhat" data-id="@item.Id">Chỉnh sửa</a>
+                            }
+
+
                         </td>
                     </tr>
                             i++;
