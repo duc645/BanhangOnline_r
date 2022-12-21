@@ -3173,6 +3173,7 @@
     <Content Include="Content\login\images\icons\arsenal.png" />
     <Content Include="Content\login\images\icons\arsenal_17995.png" />
     <Content Include="Content\login\images\icons\favicon.ico" />
+    <Content Include="Content\login\images\james_cameron_noi_gi_ve_thach_th_1_.jpg" />
     <Content Include="Content\login\js\main.js" />
     <Content Include="Content\login\vendor\animate\animate.css" />
     <Content Include="Content\login\vendor\animsition\css\animsition.css" />
@@ -3428,6 +3429,8 @@
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\ViewCancel.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Partial_SanPham_Cancel.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

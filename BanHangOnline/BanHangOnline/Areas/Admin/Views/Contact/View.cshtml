@@ -58,7 +58,7 @@
             <div class="row" style="margin-bottom: 20px;">
                 <textarea style="border:solid 1px; border-radius:7px;" rows="10" cols="50" class="col-md-12" readonly>@Model.Message</textarea>
             </div>
-            <a href="/admin/contact/index" class="btn btn-success">Quay về</a>
+            <a href="/admin/contact/index/?page=@int.Parse(Session["pageAdminContact"].ToString())" class="btn btn-success">Quay về</a>
             @*<div class="row">
             <div class="col-md-6">
                 <div class="form-group">

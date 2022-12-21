@@ -16,7 +16,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         // GET: Admin/News
         public ActionResult Index(string searchText, int? page)
         {
-            var pageSize = 10;
+            var pageSize = 5;
             if (page == null)
             {
                 page = 1;
@@ -31,6 +31,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
             ViewBag.SearchText = searchText;
+            Session["pageAdminProductNews"] = page;
             return View(items);
         }
         public ActionResult Add()
@@ -74,7 +75,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.News.Attach(model);
                 _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { page = int.Parse(Session["pageAdminProductNews"].ToString()) });
             }
             ViewBag.Category = new SelectList(_dbContext.Categories.ToList(), "Id", "Title");
             return View(model);

@@ -31,6 +31,8 @@ namespace BanHangOnline.Areas.Admin.Controllers
             items = items.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
+            Session["pageAdminProduct"] = page;
+            Session["pageAdminSearch"] = searchText;
             ViewBag.SearchText = searchText;
             return View(items);
         }
@@ -127,7 +129,8 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.Products.Attach(model);
                 _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                var avcd = int.Parse(Session["pageAdminProduct"].ToString());
+                return RedirectToAction("Index" , new { page = int.Parse(Session["pageAdminProduct"].ToString())});
             }
             return View(model);
         }

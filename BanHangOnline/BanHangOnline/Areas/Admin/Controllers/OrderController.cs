@@ -26,6 +26,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             var pageSize = 5;
             ViewBag.PageSize = pageSize;
             ViewBag.Page = pageNumber;
+            Session["pageOrderAdmin"] = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
         }
 
@@ -41,7 +42,18 @@ namespace BanHangOnline.Areas.Admin.Controllers
             var pageSize = 5;
             ViewBag.PageSize = pageSize;
             ViewBag.Page = pageNumber;
+            Session["pageOrderCancelAdmin"] = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult ViewCancel(int id)
+        {
+            var item = _dbContext.Orders.Find(id);
+            return View(item);
+        }
+        public ActionResult Partial_SanPham_Cancel(int id)
+        {
+            var items = _dbContext.OrderDetails.Where(x => x.OrderId == id).ToList();
+            return PartialView(items);
         }
 
         public ActionResult View(int id)
@@ -113,8 +125,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                     }
 
                 }
-
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { page = int.Parse(Session["pageOrderAdmin"].ToString()) });
             }
             return View(model);
         }

@@ -37,7 +37,7 @@
                         <th>Mã đơn hàng</th>
                         <th>Tên Khách hàng</th>
                         <th>Số điện thoại</th>
-                        <th>Tiền</th>
+                        <th>Tổng tiền</th>
                         <th>Phương thức TT</th>
                         <th>Trạng thái</th>
                         <th>Ngày tạo</th>
@@ -56,7 +56,7 @@
                         <td>ĐH @item.Id</td>
                         <td>@item.CustomerName</td>
                         <td>@item.Phone</td>
-                        <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                        <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0) Đ</td>
                         <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
                         @if (item.OrderStatusId == 1)
                         {

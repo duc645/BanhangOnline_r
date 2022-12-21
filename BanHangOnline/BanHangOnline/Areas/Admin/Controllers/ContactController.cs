@@ -24,6 +24,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             var pageSize = 5;
             ViewBag.PageSize = pageSize;
             ViewBag.Page = pageNumber;
+            Session["pageAdminContact"] = page;
             return View(items.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult View(int id)

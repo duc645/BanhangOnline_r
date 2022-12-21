@@ -15,7 +15,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         public ActionResult Index(int? page)
         {
-            var pageSize = 10;
+            var pageSize = 5;
             if (page == null)
             {
                 page = 1;
@@ -27,6 +27,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
             ViewBag.Status = TempData["message"];
+            TempData["pageAdminProductCategory"] = page;
             return View(items);
         }
         public ActionResult Add()
@@ -75,7 +76,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();
                 TempData["message"] = "Sửa thành công";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { page = int.Parse(TempData["pageAdminProductCategory"].ToString()) });
 
             }
             return View(model);

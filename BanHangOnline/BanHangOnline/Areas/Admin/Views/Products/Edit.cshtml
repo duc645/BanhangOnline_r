@@ -121,6 +121,8 @@
                         @Html.HiddenFor(x => x.Id)
                         @Html.HiddenFor(x => x.CreatedDate)
                         @Html.HiddenFor(x => x.Image)
+                        @Html.HiddenFor(x=>x.ProductSold)
+                        @Html.HiddenFor(x=>x.ViewCout)
                         <!-- your steps content here -->
                         @*<div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
                                 <div class="form-group">
@@ -308,7 +310,7 @@
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Lưu</button>
-                                <a href="/admin/products" class="btn btn-info">Quay về</a>
+                                <a href="/admin/products/index?page=@int.Parse(Session["pageAdminProduct"].ToString())" class="btn btn-info">Quay về</a>
                             </div>
                         </div>
 

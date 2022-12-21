@@ -13,7 +13,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/contact/view/@Model.Id" class="nav-link">Chi tiết đơn hàng @Model.Id</a>
+            <a href="/admin/order/view/@Model.Id" class="nav-link">Chi tiết đơn hàng @Model.Id</a>
         </li>
     </ul>
 }
@@ -47,7 +47,7 @@
                     <td>@Model.Phone</td>
                     <td>@Model.CreatedDate.ToString("dd/MM/yyyy")</td>
                     <td>@Model.Email</td>
-                    <td>@(Model.TypePayment == 1 ? "Chua thanh toán" : "Đã thanh toán")</td>
+                    <td>@(Model.TypePayment == 1 ? "COD" : "Chuyển khoản")</td>
                 </tr>
 
 

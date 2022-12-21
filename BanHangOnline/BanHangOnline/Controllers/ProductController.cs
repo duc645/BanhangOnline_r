@@ -14,7 +14,7 @@ namespace BanHangOnline.Controllers
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index(int? page, int? category,string searchText)
+        public ActionResult Index(int? page, int? category,string searchText,string sortText)
         {
             var pageSize = 2;
             if (page == null)
@@ -32,6 +32,38 @@ namespace BanHangOnline.Controllers
                 ViewBag.SearchText = searchText;
                 items = items.Where(p => p.Alias.Contains(searchText) || p.Title.Contains(searchText));
             }
+            if (!string.IsNullOrEmpty(sortText))
+            {
+                switch (sortText)
+                {
+                    case "price_desc":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderByDescending(s => s.PriceM);
+                        break;
+                    case "price_asc":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderBy(s => s.PriceM);
+                        break;
+                    case "product_sold":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderByDescending(s => s.ProductSold);
+                        break;
+                    case "view_count":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderByDescending(s => s.ViewCout);
+                        break;
+                    case "z-a":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderByDescending(s => s.Title);
+                        break;
+                    case "a-z":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderBy(s => s.Title);
+                        break;
+                }
+
+            }
+
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
