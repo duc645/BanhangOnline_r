@@ -4,4 +4,76 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+    <h1>Chọn danh sách tỉnh</h1>
+
+        <select name="" id="province">
+        </select>
+        <select name="" id="district">
+            <option value="">chọn quận</option>
+        </select>
+        <select name="" id="ward">
+            <option value="">chọn phường</option>
+        </select>
+
+
+
+    <h2 id="result"></h2>
+</div>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            const host = "https://provinces.open-api.vn/api/";
+            var callAPI = (api) => {
+                return axios.get(api)
+                    .then((response) => {
+                        renderData(response.data, "province");
+                    });
+            }
+            callAPI('https://provinces.open-api.vn/api/?depth=1');
+            var callApiDistrict = (api) => {
+                return axios.get(api)
+                    .then((response) => {
+                        renderData(response.data.districts, "district");
+                    });
+            }
+            var callApiWard = (api) => {
+                return axios.get(api)
+                    .then((response) => {
+                        renderData(response.data.wards, "ward");
+                    });
+            }
+
+            var renderData = (array, select) => {
+                let row = ' <option disable value="">chọn</option>';
+                array.forEach(element => {
+                    row += `<option value="${element.code}">${element.name}</option>`
+                });
+                document.querySelector("#" + select).innerHTML = row
+            }
+
+            $("#province").change(() => {
+                callApiDistrict(host + "p/" + $("#province").val() + "?depth=2");
+                printResult();
+            });
+            $("#district").change(() => {
+                callApiWard(host + "d/" + $("#district").val() + "?depth=2");
+                printResult();
+            });
+            $("#ward").change(() => {
+                printResult();
+            })
+
+            var printResult = () => {
+                if ($("#district").val() != "" && $("#province").val() != "" &&
+                    $("#ward").val() != "") {
+                    let result = $("#province option:selected").text() +
+                        " | " + $("#district option:selected").text() + " | " +
+                        $("#ward option:selected").text();
+                    $("#result").text(result)
+                }
+
+            }
+        });
+    </script>
+}

@@ -146,7 +146,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            @*<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>*@
                             <li><a href="/shoppingcart"><i class="fa fa-shopping-bag"></i> <span id="cart_cout">0</span></a></li>
                         </ul>
                         @*<div class="header__cart__price">item: <span>$150.00</span></div>*@
@@ -268,9 +268,10 @@
 
     @*@Scripts.Render("~/bundles/jquery")*@
     <!-- Js Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="~/Content/assets/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/assets/js/bootstrap.min.js"></script>
-    <script src="~/Content/assets/js/jquery.nice-select.min.js"></script>
+    @*<script src="~/Content/assets/js/jquery.nice-select.min.js"></script>*@
     <script src="~/Content/assets/js/jquery-ui.min.js"></script>
     <script src="~/Content/assets/js/jquery.slicknav.js"></script>
     <script src="~/Content/assets/js/mixitup.min.js"></script>
@@ -285,6 +286,10 @@
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script src="~/Scripts/jsShopping.js"></script>
+
+
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

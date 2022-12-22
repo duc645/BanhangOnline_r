@@ -76,7 +76,7 @@ namespace BanHangOnline.Controllers
                     Order order = new Order();
                     order.CustomerName = req.CustomerName;
                     order.Phone = req.Phone;
-                    order.Address = req.Address;
+                    order.Address = req.Address + req.subAddress;
                     order.Email = req.Email;
                     order.UserId = User.Identity.GetUserId();
                     cart.items.ForEach(x => order.OrderDetails.Add(new OrderDetail
@@ -154,6 +154,13 @@ namespace BanHangOnline.Controllers
 
         public ActionResult Partial_CheckOut()
         {
+            if (User.Identity.GetUserId() != null)
+            {
+
+                var id = User.Identity.GetUserId();
+                var item = _dbContext.Users.Where(x => x.Id == id).FirstOrDefault();
+                ViewBag.User = item;
+            }
             return PartialView();
         }
         public ActionResult Partial_Item_Thanhtoan()

@@ -42,6 +42,23 @@ namespace BanHangOnline.Controllers
             var items = _dbContext.ProductCategories.ToList();
             return PartialView("_MenuLeftProductCategories", items);
         }
+        public ActionResult MenuMainProductCategories(int? id, string SearchText, string SortText)
+        {
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                ViewBag.SearchText = SearchText;
+            }
+            if (!string.IsNullOrEmpty(SortText))
+            {
+                ViewBag.SortText = SortText;
+            }
+            if (id != null)
+            {
+                ViewBag.category = id;
+            }
+            var items = _dbContext.ProductCategories.ToList();
+            return PartialView("_MenuMainProductCategories", items);
+        }
         public ActionResult MenuLeftCategories(int? id, string SearchText)
         {
             if (!string.IsNullOrEmpty(SearchText))

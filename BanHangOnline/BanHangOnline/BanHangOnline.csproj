@@ -258,6 +258,10 @@
     <Compile Include="Migrations\202212141748512_BodiTruongCodelan2.Designer.cs">
       <DependentUpon>202212141748512_BodiTruongCodelan2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212211754346_ThemTruongBlockBangUser.cs" />
+    <Compile Include="Migrations\202212211754346_ThemTruongBlockBangUser.Designer.cs">
+      <DependentUpon>202212211754346_ThemTruongBlockBangUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3517,12 +3521,13 @@
     <Content Include="Views\Product\Partial_TopProductSold.cshtml" />
     <Content Include="Views\Product\Partial_TopViewCount.cshtml" />
     <Content Include="Views\Product\Partial_TopProductNew.cshtml" />
+    <Content Include="Views\test2\Index.cshtml" />
+    <Content Include="Views\Menu\_MenuMainProductCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
-    <Folder Include="Views\test2\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -3579,6 +3584,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212141748512_BodiTruongCodelan2.resx">
       <DependentUpon>202212141748512_BodiTruongCodelan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212211754346_ThemTruongBlockBangUser.resx">
+      <DependentUpon>202212211754346_ThemTruongBlockBangUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

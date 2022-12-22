@@ -17,6 +17,7 @@ namespace BanHangOnline.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -80,6 +81,15 @@ namespace BanHangOnline.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+            var item = _dbContext.Users.Where(p => p.UserName == model.UserName).FirstOrDefault();
+            if(item != null)
+            {
+                if (item.Block == 1)
+                {
+                    ModelState.AddModelError("", "Tài khoản đã bị vô hiệu hóa!!!");
+                    return View(model);
+                }
             }
 
             // This doesn't count login failures towards account lockout

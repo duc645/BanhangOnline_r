@@ -1,49 +1,186 @@
 ﻿@model BanHangOnline.Models.CustomerViewModel
 
-@using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
+@if (ViewBag.User == null)
 {
-    HttpMethod = "post",
-    UpdateTargetId = "load_data",
-    //OnComplete = "OnSuccessCO",
-    OnBegin ="onBegin",
-    OnSuccess = "onSuccess",
-    OnFailure ="onFailure"
-}, new { @Id = "myForm" }))
+    using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "load_data",
+        //OnComplete = "OnSuccessCO",
+        OnBegin = "onBegin",
+        OnSuccess = "onSuccess",
+        OnFailure = "onFailure"
+    }, new { @Id = "myForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label>Họ tên:<span>*</span></label>
+            <input type="text" name="CustomerName" class="form-control" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại:<span>*</span></label>
+            <input type="text" name="Phone" class="form-control" autocomplete="off">
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+            <p>Chọn tỉnh/thành phố:</p>
+            <select name="" id="province">
+            </select>
+            <select name="" id="district">
+                <option value="">chọn quận</option>
+            </select>
+            <select name="" id="ward">
+                <option value="">chọn phường</option>
+            </select>
+            <input name="subAddress" id="result" style="display:none">
+        </div>
+        <div class="form-group">
+            <label>Số nhà:<span>*</span></label>
+            <input type="text" name="Address" class="form-control" autocomplete="off" placeholder="Vd: Số 90, đường Cầu giấy" >
+        </div>
+        <div class="form-group">
+            <label>Email:<span>*</span></label>
+            <input type="text" name="Email" class="form-control" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Hình thức thành toán:</label>
+                </div>
+                <div class="col-6">
+                    <select class="form-control" name="Payment">
+                        <option value="1" selected>COD</option>
+                        <option value="2">Chuyển khoản</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <button style="color: white; float: right; background-color: #B10626;" type="submit" class="btn @*site-btn*@">Đặt hàng</button>
+        </div>
+    }
+}
+@if (ViewBag.User != null)
 {
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        <label>Họ tên:<span>*</span></label>
-        <input type="text" name="CustomerName"  class="form-control" autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label>Số điện thoại:<span>*</span></label>
-        <input type="text" name="Phone" class="form-control" autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label>Địa chỉ:<span>*</span></label>
-        <input type="text" name="Address" class="form-control" autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label>Email:<span>*</span></label>
-        <input type="text" name="Email" class="form-control" autocomplete="off">
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-3">
-                <label>Hình thức thành toán:</label>
-            </div>
-            <div class="col-6">
-                <select class="form-control" name="Payment">
-                    <option value="1" selected>COD</option>
-                    <option value="2">Chuyển khoản</option>
-                </select>
-            </div>
+    using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "load_data",
+        //OnComplete = "OnSuccessCO",
+        OnBegin = "onBegin",
+        OnSuccess = "onSuccess",
+        OnFailure = "onFailure"
+    }, new { @Id = "myForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label>Họ tên:<span>*</span></label>
+            <input type="text" name="CustomerName" class="form-control" autocomplete="off" value="@ViewBag.User.FullName">
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại:<span>*</span></label>
+            <input type="text" name="Phone" class="form-control" autocomplete="off" value="@ViewBag.User.Phone">
         </div>
 
 
-    </div>
+        <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+            <p>Chọn tỉnh/thành phố:</p>
+            <select name="" id="province">
+            </select>
+            <select name="" id="district">
+                <option value="">chọn quận</option>
+            </select>
+            <select name="" id="ward">
+                <option value="">chọn phường</option>
+            </select>
+            <input name="subAddress" id="result" style="display:none">
+        </div>
 
-    <div class="form-group">
-        <button style="color: white; float: right; background-color: #B10626;" type="submit" class="btn @*site-btn*@">Đặt hàng</button>
-    </div>
+        <div class="form-group">
+            <label>Số nhà<span>*</span></label>
+            <input type="text" name="Address" class="form-control" autocomplete="off" placeholder="Vd: Số 90, đường Cầu giấy">
+        </div>
+        <div class="form-group">
+            <label>Email:<span>*</span></label>
+            <input type="text" name="Email" class="form-control" autocomplete="off" value="@ViewBag.User.Email">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Hình thức thành toán:</label>
+                </div>
+                <div class="col-6">
+                    <select class="form-control" name="Payment">
+                        <option value="1" selected>COD</option>
+                        <option value="2">Chuyển khoản</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <button style="color: white; float: right; background-color: #B10626;" type="submit" class="btn @*site-btn*@">Đặt hàng</button>
+        </div>
+    }
 }
+
+<script>
+    $(document).ready(function () {
+        const host = "https://provinces.open-api.vn/api/";
+        var callAPI = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data, "province");
+                });
+        }
+        callAPI('https://provinces.open-api.vn/api/?depth=1');
+        var callApiDistrict = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data.districts, "district");
+                });
+        }
+        var callApiWard = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data.wards, "ward");
+                });
+        }
+
+        var renderData = (array, select) => {
+            let row = ' <option disable value="">chọn</option>';
+            array.forEach(element => {
+                row += `<option value="${element.code}">${element.name}</option>`
+            });
+            document.querySelector("#" + select).innerHTML = row
+        }
+
+        $("#province").change(() => {
+            callApiDistrict(host + "p/" + $("#province").val() + "?depth=2");
+            printResult();
+        });
+        $("#district").change(() => {
+            callApiWard(host + "d/" + $("#district").val() + "?depth=2");
+            printResult();
+        });
+        $("#ward").change(() => {
+            printResult();
+        })
+
+        var printResult = () => {
+            if ($("#district").val() != "" && $("#province").val() != "" &&
+                $("#ward").val() != "") {
+                let result = ", " + $(" #ward option:selected").text() +
+                    ", " + $("#district option:selected").text() + ", " +
+                    $("#province option:selected").text();
+                /*$("#result").val(result);*/
+                $('#result').attr('value', result);
+            }
+
+        }
+    });
+</script>

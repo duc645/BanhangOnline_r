@@ -27,7 +27,7 @@
             <h3 class="card-title">Danh sách tài khoản</h3>
 
             <div class="card-tools">
-                <a href="/admin/account/create" class="btn btn-info">Thêm</a>
+                @*<a href="/admin/account/create" class="btn btn-info">Thêm</a>*@
             </div>
         </div>
         <div class="card-body">
@@ -38,6 +38,8 @@
                         <th>Tài khoản</th>
                         <th>Họ tên</th>
                         <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Trạng thái</th>
                         @*<th>Quyền</th>*@
                         <th></th>
                     </tr>
@@ -48,16 +50,41 @@
                         var i = 1;
                         foreach (var item in Model)
                         {
-                    <tr>
-                        <td>@i</td>
-                        <td>@item.UserName</td>
-                        <td>@item.FullName</td>
-                        <td>@item.Email</td>
-                        @*<td>@item.Roles</td>*@
-                        <td><a class="btn btn-info" href="/admin/account/edit/@item.UserName">Sửa</a>
-                            <a class="btn btn-info btnDelete" data-username="@item.UserName" href="/admin/account/delete/@item.UserName" >Xóa</a>
-                        </td>
-                    </tr>
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.UserName</td>
+                                <td>@item.FullName</td>
+                                <td>@item.Email</td>
+                                <td>@item.Phone</td>
+                                @if (item.Block == 0)
+                                {
+                                    <td class="text-success">Hoạt động</td>
+                                }
+
+
+                                @if (item.Block == 1)
+                                {
+                                    <td class="text-danger">Đã chặn</td>
+                                }
+                                @*<td>@item.Roles</td>*@
+                                @*<td>
+                                            <a class="btn btn-info" href="/admin/account/edit/@item.UserName">Sửa</a>
+                                        <a class="btn btn-info btnDelete" data-username="@item.UserName" href="/admin/account/delete/@item.UserName" >Xóa</a>
+
+                                    </td>*@
+                                @if (item.Block == 0)
+                                {
+                                    <td>
+                                        <a href="#" class="btn btn-danger btnBlock" data-id="@item.Id">Chặn</a>
+                                    </td>
+                                }
+                                @if (item.Block == 1)
+                                {
+                                    <td>
+                                        <a href="#" class="btn btn-success btnUnBlock" data-id="@item.Id">Hủy chặn</a>
+                                    </td>
+                                }
+                            </tr>
                             i++;
                         }
 
@@ -75,3 +102,51 @@
 
 </section>
 <!-- /.content -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnBlock', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Bạn có chắc chắn muốn chặn thành viên này không?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/Admin/Account/BlockUser',
+                        type: 'GET',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                location.reload();
+
+                            }
+                            else {
+                                alert("Không thành công!!!");
+                            }
+                        }
+
+                    });
+                }
+            });
+            $('body').on('click', '.btnUnBlock', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Bạn có chắc chắn muốn hủy thành viên này không?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/Admin/Account/UnBlockUser',
+                        type: 'GET',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                location.reload();
+
+                            }
+                            else {
+                                alert("Không thành công!!!");
+                            }
+                        }
+
+                    });
+                }
+            });
+        });
+    </script>
+}

@@ -1,9 +1,11 @@
 ﻿using BanHangOnline.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -57,9 +59,60 @@ namespace BanHangOnline.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var items = _dbContext.Users.ToList();
-            return View(items);
-        }
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_dbContext));
+            var userRoles = roleManager.FindByName("Customer").Users;
+            var ListUser = new List<ApplicationUser>();
+            foreach(var item in userRoles)
+            {
+                foreach(var user in items)
+                {
+                    if(item.UserId == user.Id)
+                    {
+                        ListUser.Add(user);
+                    }
+                }
+            }
 
+            return View(ListUser);
+        }
+        //chặn user , hủy chặn
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public ActionResult BlockUser(string id)
+        {
+            var item = _dbContext.Users.Where(o => o.Id == id).FirstOrDefault();
+            if (item != null)
+            {
+                if(item.Block == 0)
+                {
+                    item.Block = 1;
+                }
+
+                _dbContext.Users.Attach(item);
+                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult UnBlockUser(string id)
+        {
+            var item = _dbContext.Users.Where(o => o.Id == id).FirstOrDefault();
+            if (item != null)
+            {
+                if (item.Block == 1)
+                {
+                    item.Block = 0;
+                }
+                _dbContext.Users.Attach(item);
+                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        }
 
         //
         // GET: /Account/Login

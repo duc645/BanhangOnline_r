@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BanHangOnline.Models.EF.ProductCategory>
+@if (Model != null && Model.Any())
+{
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li class="active">@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText = ViewBag.SortText }, null)</li>
+        }
+
+    </ul>
+}

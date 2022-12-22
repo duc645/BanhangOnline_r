@@ -20,7 +20,9 @@
                     <th>Số điện thoại</th>
                     <th>Ngày tạo</th>
                     <th>Email</th>
+                    <th>Địa chỉ nhận hàng</th>
                     <th>Phương thức thanh toán</th>
+
                 </tr>
 
             </thead>
@@ -32,6 +34,7 @@
                     <td>@Model.Phone</td>
                     <td>@Model.CreatedDate.ToString("dd/MM/yyyy")</td>
                     <td>@Model.Email</td>
+                    <td>@Model.Address</td>
                     <td>@(Model.TypePayment == 1 ? "COD" : "chuyển khoản")</td>
                 </tr>
 

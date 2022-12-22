@@ -37,6 +37,7 @@
                     <th>Ngày tạo</th>
                     <th>Email</th>
                     <th>Phương thức TT</th>
+                    <th>Địa chỉ</th>
                 </tr>
 
             </thead>
@@ -49,6 +50,7 @@
                     <td>@Model.CreatedDate.ToString("dd/MM/yyyy")</td>
                     <td>@Model.Email</td>
                     <td>@(Model.TypePayment == 1 ? "COD" : "Chuyển khoản")</td>
+                    <td>@Model.Address</td>
                 </tr>
 
 

@@ -16,6 +16,8 @@ namespace BanHangOnline.Models
         [Required(ErrorMessage = "Trường này không được để trống")]
         [Phone(ErrorMessage = "Hãy nhâp đúng định dạng số điện thoại")]
         public string Phone { get;set; }
+
+        public int Block { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
