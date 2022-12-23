@@ -76,7 +76,15 @@ namespace BanHangOnline.Controllers
                     Order order = new Order();
                     order.CustomerName = req.CustomerName;
                     order.Phone = req.Phone;
-                    order.Address = req.Address + req.subAddress;
+                    if (string.IsNullOrEmpty(req.subAddress) && !string.IsNullOrEmpty(req.MainAddress))
+                    {
+                        order.Address = req.MainAddress;
+                    }
+                    if (!string.IsNullOrEmpty(req.subAddress))
+                    {
+                        order.Address = req.Address + req.subAddress;
+                    }
+
                     order.Email = req.Email;
                     order.UserId = User.Identity.GetUserId();
                     cart.items.ForEach(x => order.OrderDetails.Add(new OrderDetail

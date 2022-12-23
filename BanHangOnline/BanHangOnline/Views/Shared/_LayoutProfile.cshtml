@@ -158,7 +158,7 @@
 
                 <li class="nav-item">
                     <div style="display:inline-block;border-right:solid 1px;padding-right:20px; border-left:1px solid;padding-left:12px;">
-                        Xin chào: @User.Identity.Name 
+                        Xin chào: @User.Identity.Name
                     </div>
                     <a style="display:inline-block;" class="nav-link" href="javascript:document.getElementById('logOffForm').submit()">
                         <p>Đăng xuất</p>
@@ -369,9 +369,11 @@
         document.querySelector("#actions .cancel").onclick = function () {
             myDropzone.removeAllFiles(true)
         }
-              // DropzoneJS Demo Code End</script>
+                  // DropzoneJS Demo Code End</script>
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @*<script src="~/Content/assets/js/jquery-3.3.1.min.js"></script>*@
     <script src="~/Content/ckeditor/ckeditor.js"></script>
     <script src="~/Content/ckfinder/ckfinder.js"></script>
     @RenderSection("scripts", required: false)

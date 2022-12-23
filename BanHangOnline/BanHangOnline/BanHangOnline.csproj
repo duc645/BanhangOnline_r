@@ -262,6 +262,18 @@
     <Compile Include="Migrations\202212211754346_ThemTruongBlockBangUser.Designer.cs">
       <DependentUpon>202212211754346_ThemTruongBlockBangUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212221520458_themtruongAddressBangUser.cs" />
+    <Compile Include="Migrations\202212221520458_themtruongAddressBangUser.Designer.cs">
+      <DependentUpon>202212221520458_themtruongAddressBangUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212221938031_ThemTruongSubaddressBangUser.cs" />
+    <Compile Include="Migrations\202212221938031_ThemTruongSubaddressBangUser.Designer.cs">
+      <DependentUpon>202212221938031_ThemTruongSubaddressBangUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212222147449_themTruongHideAddressbangUser.cs" />
+    <Compile Include="Migrations\202212222147449_themTruongHideAddressbangUser.Designer.cs">
+      <DependentUpon>202212222147449_themTruongHideAddressbangUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -298,6 +310,7 @@
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\fonts\ElegantIcons.svg" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assets\img\banner-doc-sach-vi-tuong-lai-amo-vietnam-2018.jpg" />
     <Content Include="Content\assets\img\banner\banner-1.jpg" />
     <Content Include="Content\assets\img\banner\banner-2.jpg" />
     <Content Include="Content\assets\img\blog\blog-1.jpg" />
@@ -3587,6 +3600,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212211754346_ThemTruongBlockBangUser.resx">
       <DependentUpon>202212211754346_ThemTruongBlockBangUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212221520458_themtruongAddressBangUser.resx">
+      <DependentUpon>202212221520458_themtruongAddressBangUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212221938031_ThemTruongSubaddressBangUser.resx">
+      <DependentUpon>202212221938031_ThemTruongSubaddressBangUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212222147449_themTruongHideAddressbangUser.resx">
+      <DependentUpon>202212222147449_themTruongHideAddressbangUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

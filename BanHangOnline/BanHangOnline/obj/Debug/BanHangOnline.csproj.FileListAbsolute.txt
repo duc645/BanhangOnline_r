@@ -242,11 +242,14 @@ D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.suabangcontactThemIsRead.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themTruongProductSoldBodiRequiredTruongCodeBangOrder.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.thubodiTruongCodeBangOrder.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.BodiTruongCodelan2.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.ThemTruongBlockBangUser.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themtruongAddressBangUser.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.ThemTruongSubaddressBangUser.resources
+D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.themTruongHideAddressbangUser.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.GenerateResource.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CoreCompileInputs.cache
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.CopyComplete
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.dll
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.pdb
-D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.BodiTruongCodelan2.resources
-D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.Migrations.ThemTruongBlockBangUser.resources
 D:\ki2_nam4\web quan trong\BanhangOnline_r\BanHangOnline\BanHangOnline\obj\Debug\BanHangOnline.csproj.AssemblyReference.cache

@@ -321,6 +321,7 @@ namespace BanHangOnline.Controllers
             {
                 return View(model);
             }
+            model.Address = model.SubAddress + model.HideAddress;
             _dbContext.Users.Attach(model);
             _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _dbContext.SaveChangesAsync();
@@ -329,7 +330,9 @@ namespace BanHangOnline.Controllers
             //{
                 //return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             ViewBag.StatusMessage = "Cập nhật thông tin thành công";
-            return View(model);
+            TempData["EditUserInfo"] = "Cập nhật thông tin thành công";
+            return RedirectToAction("EditUserInfo");
+            //return View(model);
             //}
             //AddErrors(result);
             //return View(model);

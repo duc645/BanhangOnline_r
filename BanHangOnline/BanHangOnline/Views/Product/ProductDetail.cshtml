@@ -91,14 +91,14 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3>@Model.Title</h3>
-                        <div class="product__details__rating">
+                        @*<div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
-                        </div>
+                        </div>*@
 
                             @if (Model.PriceSale > 0)
                             {
@@ -126,7 +126,7 @@
                                 <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
                         </div>
-                        <a href="#" class="btnAddToCart primary-btn" data-id="@Model.Id ">ADD TO CARD</a>
+                        <a href="#" class="btnAddToCart primary-btn" data-id="@Model.Id ">Thêm sách vào giỏ</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             @if(Model.Quantity > 0)
@@ -138,8 +138,8 @@
                                 <li><i class=" fa fa-solid fa-xmark"></i><b>  Tình trạng:  <span>Hết Hàng</span></b></li>
                              }
                             <li><i class=" fa fa-solid fa-eye"></i> <b>Lượt xem:</b>  <span>@Model.ViewCout</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            @*<li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                            <li><b>Weight</b> <span>0.5 kg</span></li>*@
                             @*<li>
                                 <b>Share on</b>
                                 <div class="share">

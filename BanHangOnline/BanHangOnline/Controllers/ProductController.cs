@@ -16,7 +16,7 @@ namespace BanHangOnline.Controllers
         // GET: Product
         public ActionResult Index(int? page, int? category,string searchText,string sortText)
         {
-            var pageSize = 2;
+            var pageSize = 9;
             if (page == null)
             {
                 page = 1;

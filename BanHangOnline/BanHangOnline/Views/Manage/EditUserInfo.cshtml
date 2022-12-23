@@ -2,13 +2,16 @@
 @{
     ViewBag.Title = "Cập nhật thông tin";
     Layout = "~/Views/Shared/_LayoutProfile.cshtml";
+    var t = TempData["EditUserInfo"];
 }
 
 <div class="row">
     <div style="margin-left:30px;margin-top:30px;" class="col-md-4">
         <h3>@ViewBag.Title</h3>
+        @if (t != null) {
+        <div style="background-color:aquamarine;font-size:20px;height:50px;width:500px;text-align:center;line-height:50px;border:1px solid;">@t</div>
+        }
 
-        <p class="text-success">@ViewBag.StatusMessage</p>
 
     </div>
     <div class="col-md-8">
@@ -26,6 +29,7 @@
             @Html.HiddenFor(m => m.Id)
             @Html.HiddenFor(m => m.PasswordHash)
             @Html.HiddenFor(m => m.SecurityStamp)
+            @Html.HiddenFor(m => m.Block)
             @Html.HiddenFor(m => m.UserName)
             @*@Html.HiddenFor(m=>m.Email)*@
 
@@ -50,10 +54,37 @@
                     @*@Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })*@
                 </div>
             </div>
+            <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+                <p>Chọn tỉnh/thành phố:</p>
+                <select name="" id="province">
+                </select>
+                <select name="" id="district">
+                    <option value="">chọn quận</option>
+                </select>
+                <select name="" id="ward">
+                    <option value="">chọn phường</option>
+                </select>
+                @Html.TextBoxFor(m => m.HideAddress, new { @class = "form-control", @style = "display:none;", @id = "result" })
+
+            </div>
 
             <div class="form-group">
+                <label class="col-md-2 control-label" for="exampleInputEmail1">Số nhà</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.SubAddress, new { @class = "form-control", @placeholder = "Vd: Số 90, đường Cầu Giấy" })
+                    @*@Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="exampleInputEmail1">Địa chỉ</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @readonly = "readonly" })
+                    @*@Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Change password" class="btn btn-success" />
+                    <input type="submit" value="Lưu" class="btn btn-success" />
                 </div>
             </div>
         }
@@ -63,3 +94,61 @@
     </div>
 </div>
 
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            const host = "https://provinces.open-api.vn/api/";
+            var callAPI = (api) => {
+                return axios.get(api)
+                    .then((response) => {
+                        renderData(response.data, "province");
+                    });
+            }
+            callAPI('https://provinces.open-api.vn/api/?depth=1');
+            var callApiDistrict = (api) => {
+                return axios.get(api)
+                    .then((response) => {
+                        renderData(response.data.districts, "district");
+                    });
+            }
+            var callApiWard = (api) => {
+                return axios.get(api)
+                    .then((response) => {
+                        renderData(response.data.wards, "ward");
+                    });
+            }
+
+            var renderData = (array, select) => {
+                let row = ' <option disable value="">chọn</option>';
+                array.forEach(element => {
+                    row += `<option value="${element.code}">${element.name}</option>`
+                });
+                document.querySelector("#" + select).innerHTML = row
+            }
+
+            $("#province").change(() => {
+                callApiDistrict(host + "p/" + $("#province").val() + "?depth=2");
+                printResult();
+            });
+            $("#district").change(() => {
+                callApiWard(host + "d/" + $("#district").val() + "?depth=2");
+                printResult();
+            });
+            $("#ward").change(() => {
+                printResult();
+            })
+
+            var printResult = () => {
+                if ($("#district").val() != "" && $("#province").val() != "" &&
+                    $("#ward").val() != "") {
+                    let result = ", " + $(" #ward option:selected").text() +
+                        ", " + $("#district option:selected").text() + ", " +
+                        $("#province option:selected").text();
+                    /*$("#result").val(result);*/
+                    $('#result').attr('value', result);
+                }
+
+            }
+        });
+    </script>
+}
