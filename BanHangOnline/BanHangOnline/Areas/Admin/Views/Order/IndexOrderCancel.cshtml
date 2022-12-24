@@ -56,7 +56,7 @@
                                 <td>ĐH @item.Id</td>
                                 <td>@item.CustomerName</td>
                                 <td>@item.Phone</td>
-                                <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                                <td>@BanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0) Đ</td>
                                 <td>@(item.TypePayment==1?"COD":"Chuyển khoản")</td>
                                 <td class="text-danger">@item.OrderStatus.Title</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>

@@ -55,6 +55,7 @@
                     @Html.ValidationSummary(true)
                     @Html.HiddenFor(x => x.Id)
                     @Html.HiddenFor(x => x.CreatedDate)
+                    @Html.HiddenFor(x=>x.Position)
                     <!-- your steps content here -->
                     <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
                         <div class="form-group">
@@ -65,22 +66,6 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả</label>
                             @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Thứ tự</label>
-                            @Html.TextBoxFor(x => x.Position, new { @class = "form-control", @Value = "1" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo title</label>
-                            @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo Description</label>
-                            @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo Keywords</label>
-                            @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Lưu</button>

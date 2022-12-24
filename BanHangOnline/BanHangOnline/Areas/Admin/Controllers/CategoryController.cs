@@ -28,6 +28,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Position = 0;
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);

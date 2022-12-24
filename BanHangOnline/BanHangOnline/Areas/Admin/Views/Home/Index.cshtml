@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Trang chủ admin";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+
 }
 
 <!-- Content Header (Page header) -->
@@ -9,12 +11,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Blank Page</h1>
+                <p style="color:red;font-size:40px;font-style:italic">Thống kê</p>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Blank Page</li>
+                    <li class="breadcrumb-item"><a href="#">Trang admin</a></li>
+                    <li class="breadcrumb-item active">Thống kê</li>
                 </ol>
             </div>
         </div>
@@ -22,9 +24,9 @@
 </section>
 
 <!-- Main content -->
-<section class="content">
+@*<section class="content">
 
-    <!-- Default box -->
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Title</h3>
@@ -41,13 +43,389 @@
         <div class="card-body">
             Start creating your amazing application!
         </div>
-        <!-- /.card-body -->
+
         <div class="card-footer">
             Footer
         </div>
-        <!-- /.card-footer-->
-    </div>
-    <!-- /.card -->
 
+    </div>
+
+
+</section>*@
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- /.content -->
+        <h5 class="mb-2 mt-4">Đơn Hàng</h5>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        @if (ViewBag.AllOrderComPlete != null)
+                        {
+                            <h3>@ViewBag.AllOrderComPlete</h3>
+                        }
+            else
+            {
+                <h3>0</h3>
+            }
+
+                        <p>Tổng số đơn hàng thành công</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        @if(ViewBag.AllOrderShipping != null)
+            {
+                        <h3>@ViewBag.AllOrderShipping</h3>
+            }
+            else
+            {
+                <h3>0</h3>
+            }
+
+                        <p>Tổng số đơn hàng đang giao</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        @if (ViewBag.AllOrderHandling != null)
+                        {
+                            <h3>@ViewBag.AllOrderHandling</h3>
+                        }
+            else
+            {
+                <h3>0</h3>
+            }
+
+                        <p>Tổng số đơn hàng mới</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        @if (ViewBag.AllOrderCancel != null)
+                        {
+                            <h3>@ViewBag.AllOrderCancel</h3>
+                        }
+            else
+            {
+                <h3>0</h3>
+            }
+
+                        <p>Tổng số đơn hàng đã hủy</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+    </div>
 </section>
-<!-- /.content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- /.content -->
+        <h5 class="mb-2 mt-4">Đơn hàng trong tháng</h5>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        @if (ViewBag.OrderOfMonthCompleted != null)
+                        {
+                            <h3>@ViewBag.OrderOfMonthCompleted</h3>
+                        }
+                        else
+                        {
+                            <h3>0</h3>
+                        }
+
+
+                        <p>Đơn hàng thành công trong tháng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        @if (ViewBag.OrderOfMonthShipping != null)
+                        {
+                        <h3>@ViewBag.OrderOfMonthShipping</h3>
+                        }
+                        else
+                        {
+                            <h3>0</h3>
+                        }
+
+
+                        <p>Đơn hàng đang giao trong tháng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        @if (ViewBag.OrderOfMonthHandling != null)
+                        {
+                            <h3>@ViewBag.OrderOfMonthHandling</h3>
+                        }
+                        else
+                        {
+                            <h3>0</h3>
+                        }
+
+
+                        <p>Đơn hàng đang xử lý trong tháng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        @if (ViewBag.OrderOfMonthCancel != null)
+                        {
+                            <h3>@ViewBag.OrderOfMonthCancel</h3>
+                        }
+                        else
+                        {
+                            <h3>0 </h3>
+                        }
+
+
+                        <p>Đơn hàng đã hủy trong tháng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <!-- /.content -->
+        <h5 class="mb-2 mt-4">Doanh thu</h5>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        @if (ViewBag.totalOrderSale != null)
+                        {
+                            <h3>@BanHangOnline.Common.Common.FormatNumber(ViewBag.totalOrderSale, 0) Đ</h3>
+                        }
+            else
+            {
+                <h3>0 Đ</h3>
+            }
+
+                        <p>Tổng doanh thu</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        @if (ViewBag.totalOrderOfDate != null)
+                        {
+                            <h3>@BanHangOnline.Common.Common.FormatNumber(ViewBag.totalOrderOfDate, 0) Đ</h3>
+                        }
+                        else
+                        {
+                            <h3>0 Đ</h3>
+                        }
+
+
+                        <p>Doanh thu ngày</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        @if (ViewBag.totalOrderOfMonth != null)
+                        {
+                            <h3>@BanHangOnline.Common.Common.FormatNumber(ViewBag.totalOrderOfMonth, 0) Đ</h3>
+                        }
+                        else
+                        {
+                            <h3>0 Đ</h3>
+                        }
+
+
+                        <p>Doanh thu Tháng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        @if (ViewBag.totalOrderOfYear != null)
+                        {
+                            <h3>@BanHangOnline.Common.Common.FormatNumber(ViewBag.totalOrderOfYear, 0) Đ</h3>
+                        }
+                        else
+                        {
+                            <h3>0 Đ</h3>
+                        }
+
+
+                        <p>Doanh thu Năm</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <!-- /.content -->
+        <h5 class="mb-2 mt-4">Thành viên</h5>
+        <div class="row">
+
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        @if (ViewBag.ListUser != null)
+                        {
+                        <h3>@ViewBag.ListUser</h3>
+                        }
+                        else
+                        {
+                            <h3>Không có thành viên nào</h3>
+                        }
+
+
+                        <p>Số thành viên</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        @if (ViewBag.ListUserBlockView != null)
+                        {
+                        <h3>@ViewBag.ListUserBlockView</h3>
+                        }
+                        else
+                        {
+                            <h3>Không có thành viên nào bị chặn</h3>
+                        }
+
+
+                        <p>Số thành viên bị chặn</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    @*<a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>*@
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

@@ -23,14 +23,14 @@
                         }
 
                         <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            @*<li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>*@
                             <li><a href="#" class="btnAddToCart" data-id="@item.Id"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="product__discount__item__text">
                         @*<span>Dried Fruit</span>*@
-                        <h5><a class="product_name" href="/product/ProductDetail/@item.Id">@item.Title</a></h5>
+                        <h5><a style="color: #B10626;font-weight:bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-style:italic" class="product_name" href="/product/ProductDetail/@item.Id">@item.Title</a></h5>
                         @if (item.PriceSale > 0)
                         {
                             <div class="product__item__price">@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ <span>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</span></div>

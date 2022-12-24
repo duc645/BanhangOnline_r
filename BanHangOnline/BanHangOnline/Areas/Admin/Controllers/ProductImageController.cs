@@ -38,6 +38,10 @@ namespace BanHangOnline.Areas.Admin.Controllers
         public ActionResult Delete(int id) 
         {
             var item = _dbContext.ProductImages.Find(id);
+            if (item.IsDefault == true)
+            {
+                return Json(new { success = false });
+            }
             _dbContext.ProductImages.Remove(item);
             _dbContext.SaveChanges();
             return Json(new {success =true });

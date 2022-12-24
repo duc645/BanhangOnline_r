@@ -3448,6 +3448,8 @@
     <Content Include="Areas\Admin\Views\Contact\View.cshtml" />
     <Content Include="Areas\Admin\Views\Order\ViewCancel.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Partial_SanPham_Cancel.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\ProductOutOfStock.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\ProductSoldSale.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

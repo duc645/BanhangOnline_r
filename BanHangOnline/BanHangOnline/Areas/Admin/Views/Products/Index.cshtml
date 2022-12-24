@@ -16,7 +16,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/category" class="nav-link">@ViewBag.Title</a>
+            <a href="/admin/products" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 }<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/home">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Cập nhật sách</li>
                 </ol>
             </div>
@@ -77,9 +77,10 @@
                         <th>Danh mục</th>
                         <th>Số lượng</th>
                         <th>Giá</th>
+                        <th>Giá Sale</th>
                         <th>Ngày tạo</th>
-                        <th class="text-center">Home</th>
-                        <th class="text-center">Sale</th>
+                        @*<th class="text-center">Home</th>
+                        <th class="text-center">Sale</th>*@
                         <th class="text-center">Hiển thị</th>
                         <th></th>
                     </tr>
@@ -101,14 +102,23 @@
                         <td>@item.Title</td>
                         <td>@item.ProductCategory.Title</td>
                         <td>@item.Quantity</td>
-                        <td>@item.Price</td>
+                        <td>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</td>
+                        @if (item.PriceSale > 0)
+                        {
+                            <td>@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ</td>
+                        }
+                        else
+                    {
+                        <td>Không giảm giá</td>
+                    }
+
                         <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                        <td class="text-center">
+                        @*<td class="text-center">
                             <a href="#" data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
                         </td>
                         <td class="text-center">
                             <a href="#" data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
-                        </td>
+                        </td>*@
                         <td class="text-center">
                             <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
                         </td>

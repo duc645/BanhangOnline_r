@@ -1,11 +1,11 @@
-﻿
-@model PagedList.PagedList<BanHangOnline.Models.EF.News>
+﻿@model PagedList.PagedList<BanHangOnline.Models.EF.Product>
 @using PagedList.Mvc;
 @using PagedList;
 @{
-    ViewBag.Title = "Danh sách tin tức ";
+    ViewBag.Title = "Top sách bán chạy";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 @section naviheader{
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -16,21 +16,22 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/news" class="nav-link">@ViewBag.Title</a>
+            <a href="/admin/Products/ProductSoldSale" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 }
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cập nhật tin tức</h1>
+                <h1>Top sách bán chạy</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin/home">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                    <li class="breadcrumb-item"><a href="/admin/home">Trang chủ </a></li>
+                    <li class="breadcrumb-item active">Top sách bán chạy</li>
                 </ol>
             </div>
         </div>
@@ -43,41 +44,23 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"> @ViewBag.Title</h3>
-
-            <div class="card-tools">
-                <a href="/admin/news/add" class="btn btn-primary">Thêm</a>
-                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
-            </div>
+            @*<h3 class="card-title"> @ViewBag.Title</h3>*@
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-6">
-                    @using (Html.BeginForm("index", "News", FormMethod.Get, new { }))
-                    {
-                        <div class="form-group">
-                            <div class="input-group input-group-sm">
-                                @Html.TextBox("searchText", null, new { }@*new { @class = "form-control", @placeholder = "Nhập tìm kiếm ở đây..." }*@)
-                                @*<input type="text" name="searchtext" class="form-control">*@
-                                <span class="input-group-append">
-                                    <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
-                                </span>
-                            </div>
-                        </div>
-                    }
-
-                </div>
-            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="SelectAll" /></th>
                         <th>STT</th>
                         <th>Hình ảnh</th>
-                        <th>Tiêu đề</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng bán được</th>
+                        <th>Danh mục</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Giá Sale</th>
                         <th>Ngày tạo</th>
                         <th class="text-center">Hiển thị</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,19 +70,30 @@
                         foreach (var item in Model)
                         {
                             var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckHome = item.IsHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckSale = item.IsSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+
                             <tr id="trow_@item.Id">
                                 <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
                                 <td>@i</td>
-                                <td><img src="@item.Image" width="60" /></td>
+                                <td><img class="imgproduct" data-id="@item.Id" src="@item.Image" width="60" /></td>
                                 <td>@item.Title</td>
+                                <td style="color:red;font-weight:bold;text-align:center;">@item.ProductSold</td>
+                                <td>@item.ProductCategory.Title</td>
+                                <td>@item.Quantity</td>
+                                <td>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</td>
+                                @if (item.PriceSale > 0)
+                                {
+                                    <td>@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ</td>
+                                }
+                                else
+                                {
+                                    <td>Không giảm giá</td>
+                                }
+
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td class="text-center">
                                     <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                                </td>
-                                <td>
-                                    <a href="/admin/news/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                    @*@Html.Raw(@item.Detail)*@
                                 </td>
                             </tr>
                             i++;
@@ -121,7 +115,7 @@
 
                 </div>
                 <div class="col-6" style="text-align:right;">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { ViewBag.SearchText, page }))
+                    @Html.PagedListPager(Model, page => Url.Action("ProductSoldSale", new { page }))
 
                 </div>
             </div>
@@ -136,50 +130,10 @@
     <!-- /.card -->
 
 </section>
-<!-- /.content -->
 @section scripts{
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
-            $('body').on('click', '#BtnDeleteAll', function (e) {
-                e.preventDefault();
-                var str = "";
-                var checkbox = $(this).parents('.card').find('tr td input:checkbox');
-                var i = 0;
-                checkbox.each(function () {
-
-                    if (this.checked) {
-                        checkbox.attr('selected', 'checked');
-                        var _id = $(this).val();
-                        if (i === 0) {
-                            str += _id;
-                        }
-                        else {
-                            str += "," + _id;
-                        }
-                        i++;
-                    }
-                    else {
-                        checkbox.attr('selected', '');
-                    }
-
-                });
-                if (str.length > 0) {
-                    var conf = confirm('Bạn có muốn xóa các bản ghi này không? ');
-                    if (conf === true) {
-                        $.ajax({
-                            url: '/admin/news/deletedAll',
-                            type: 'POST',
-                            data: { ids: str },
-                            success: function (rs) {
-                                if (rs.success) {
-                                    location.reload();
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-
             $('body').on('change', '#SelectAll', function () {
                 var checkStatus = this.checked;
                 var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
@@ -194,23 +148,6 @@
                 });
             });
 
-            $('body').on('click', '.btnDelete', function () {
-                var id = $(this).data("id");
-                var conf = confirm('Bạn có muốn xóa bản ghi này không?');
-                if (conf === true) {
-                    $.ajax({
-                        url: '/admin/news/delete',
-                        type: 'POST',
-                        data: { id: id },
-                        success: function (rs) {
-                            if (rs.success) {
-                                $('#trow_' + id).remove();
-                            }
-                        }
-
-                    });
-                }
-            });
 
 
             $('body').on('click', '.btnActive', function (e) {
@@ -219,7 +156,7 @@
                 var id = btn.data("id");
 
                 $.ajax({
-                    url: '/admin/news/IsActive',
+                    url: '/admin/products/IsActive',
                     type: 'POST',
                     data: { id: id },
                     success: function (rs) {
@@ -243,8 +180,8 @@
             });
 
 
+
+
         });
     </script>
 }
-
-

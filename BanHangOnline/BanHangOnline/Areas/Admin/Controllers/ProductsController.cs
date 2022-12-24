@@ -36,6 +36,36 @@ namespace BanHangOnline.Areas.Admin.Controllers
             ViewBag.SearchText = searchText;
             return View(items);
         }
+        public ActionResult ProductOutOfStock( int? page)
+        {
+            var pageSize = 5;
+            if (page == null)
+            {
+                page = 1;
+            }
+            IEnumerable<Product> items = _dbContext.Products.Where(x=> x.Quantity <20).OrderByDescending(x=>x.Quantity);
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+            return View(items);
+        }
+
+        public ActionResult ProductSoldSale(int? page)
+        {
+            var pageSize = 10;
+            if (page == null)
+            {
+                page = 1;
+            }
+            IEnumerable<Product> items = _dbContext.Products.OrderByDescending(x => x.ProductSold).Take(10);
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+            return View(items);
+        }
+
         public ActionResult Add()
         {
             ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
@@ -73,6 +103,12 @@ namespace BanHangOnline.Areas.Admin.Controllers
                         }
                     }
                 }
+                //loai
+                model.IsHome = false;
+                model.IsSale = false;
+                model.IsFeature = false;
+                model.IsHot = false;
+                //loai
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 if (string.IsNullOrEmpty(model.SeoTitle))

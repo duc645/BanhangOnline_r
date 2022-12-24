@@ -14,7 +14,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/products" class="nav-link">Sản phẩm</a>
+            <a href="/admin/products" class="nav-link">Sách</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Thêm mới</a>
@@ -27,11 +27,11 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Thêm mới sản phẩm</h1>
+                <h1>Thêm mới sách</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/products">Sách</a></li>
                     <li class="breadcrumb-item active">Thêm mới</li>
                 </ol>
             </div>
@@ -45,7 +45,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Thêm mới sản phẩm</h3>
+            <h3 class="card-title">Thêm mới sách</h3>
 
         </div>
         <div class="card-body">
@@ -105,29 +105,29 @@
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin chung</a></li>
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin sách</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Hình ảnh</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>
+                                @*<li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>*@
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên sản phẩm" })
+                                        <label for="exampleInputEmail1">Tên sách</label>
+                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên sách" })
                                         @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Alias</label>
-                                        @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias" })
+                                        <label for="exampleInputEmail1">Tên gạch ngang</label>
+                                        @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Tên gạch ngang" })
                                         @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                                     </div>
-                                    <div class="form-group">
+                                    @*<div class="form-group">
                                         <label for="exampleInputEmail1">CODE SKU</label>
                                         @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "Code" })
                                         @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
-                                    </div>
+                                    </div>*@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Danh mục</label>
@@ -157,7 +157,7 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Giá</label>
-                                                <input type="text" name="demoPrice" id="demoPrice" value="0" class="auto form-control" data-a-dec="," data-a-sep=".">
+                                                <input type="text" name="demoPrice" id="demoPrice" @*value="0"*@ class="auto form-control" data-a-dec="," data-a-sep=".">
                                                 @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "Giá" })
                                                 @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                             </div>
@@ -165,7 +165,7 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Giá khuyến mại</label>
-                                                <input type="text" name="demoPriceSale" value="0" id="demoPriceSale" class="auto form-control" data-a-dec="," data-a-sep=".">
+                                                <input type="text" name="demoPriceSale" @*value="0"*@ id="demoPriceSale" class="auto form-control" data-a-dec="," data-a-sep=".">
                                                 @Html.HiddenFor(x => x.PriceSale, new { @class = "", @placeholder = "Giá khuyến mại" })
                                                 @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
                                             </div>
@@ -180,7 +180,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        @*<div class="col-3">
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
                                                     @Html.CheckBoxFor(x => x.IsHot, new { @class = "custom-control-input", @id = "IsHotCheckbox" })
@@ -204,7 +204,7 @@
                                                     <label for="IsSaleCheckbox" class="custom-control-label">Khuyến mãi</label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                                 <!-- /.tab-pane -->
@@ -220,7 +220,7 @@
                                                         <th class="text-center">#</th>
                                                         <th class="text-center">Ảnh</th>
                                                         <th class="text-center">Ảnh đại diện</th>
-                                                        <th class="text-center">Thao tác</th>
+                                                        <th class="text-center">Hành động</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tbHtml">
@@ -232,7 +232,7 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="settings">
+                                @*<div class="tab-pane" id="settings">
                                     <form class="form-horizontal">
                                         <div class="form-group row">
                                             <label for="inputName" class="col-sm-2 col-form-label">SEO title</label>
@@ -256,7 +256,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div>*@
                                 <!-- /.tab-pane -->
                             </div>
                             <!-- /.tab-content -->
@@ -307,7 +307,7 @@
             });
             //kich vao the a xoa thi xoa di cai trow co id (dc set ben duoi)
             $('body').on('click', '.btnXoaAnh', function () {
-                var conf = confirm();
+                var conf = confirm("Bạn có chắc chắn muốn xóa?");
                 if (conf === true) {
                     var _id = $(this).data('id');
                     //animation - fadeto

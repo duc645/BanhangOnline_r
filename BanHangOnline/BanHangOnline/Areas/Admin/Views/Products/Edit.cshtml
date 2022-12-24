@@ -1,6 +1,6 @@
 ﻿@model BanHangOnline.Models.EF.Product
 @{
-    ViewBag.Title = "Cập nhật sản phẩm";
+    ViewBag.Title = "Cập nhật thông tin sách";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -47,7 +47,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cập nhật sản phẩm</h1>
+                <h1>Cập nhật thông tin sách</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -64,7 +64,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Ảnh sản phẩm  </h3>
+            <h3 class="card-title">Ảnh sách  </h3>
             <div class="card-tools">
                 @*<button type="button" class="btn btn-danger" title="Collapse">
                     Xóa hết
@@ -121,81 +121,86 @@
                         @Html.HiddenFor(x => x.Id)
                         @Html.HiddenFor(x => x.CreatedDate)
                         @Html.HiddenFor(x => x.Image)
-                        @Html.HiddenFor(x=>x.ProductSold)
-                        @Html.HiddenFor(x=>x.ViewCout)
+                        @Html.HiddenFor(x => x.ProductSold)
+                        @Html.HiddenFor(x => x.ViewCout)
+                        @Html.HiddenFor(x => x.IsHot)
+                        @Html.HiddenFor(x => x.IsHome)
+                        @Html.HiddenFor(x => x.IsFeature)
+                        @Html.HiddenFor(x => x.IsSale)
+
                         <!-- your steps content here -->
                         @*<div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Tiêu đề</label>
-                                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
-                                    @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Ảnh đại diện</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
-                                        </div>
-                                        <div class="input-group-append">
-                                            <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Mô tả</label>
-                                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Chi tiết</label>
-                                    @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Hiển thị</label>
-                                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "@checked" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Seo title</label>
-                                    @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Seo Description</label>
-                                    @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Seo Keywords</label>
-                                    @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Lưu</button>
-                                    <a href="/admin/products" class="btn btn-danger">Quay lại</a>
-                                </div>
-                            </div>*@
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tiêu đề</label>
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
+                    @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh đại diện</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
+                        </div>
+                        <div class="input-group-append">
+                            <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mô tả</label>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Chi tiết</label>
+                    @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Hiển thị</label>
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "@checked" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Seo title</label>
+                    @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Seo Description</label>
+                    @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Seo Keywords</label>
+                    @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <a href="/admin/products" class="btn btn-danger">Quay lại</a>
+                </div>
+            </div>*@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin chung</a></li>
+                                    @*<li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin sách</a></li>*@
                                     @*<li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Hình ảnh</a></li>*@
-                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>
+                                    @*<li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>*@
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên sản phẩm" })
+                                            <label for="exampleInputEmail1">Tên sách</label>
+                                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên sách" })
                                             @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Alias</label>
-                                            @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias" })
+                                            <label for="exampleInputEmail1">Tên gạch ngang</label>
+                                            @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Tên gạch ngang" })
                                             @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                                         </div>
-                                        <div class="form-group">
+                                        @*<div class="form-group">
                                             <label for="exampleInputEmail1">CODE SKU</label>
                                             @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "Code" })
                                             @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
-                                        </div>
+                                        </div>*@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Danh mục</label>
@@ -248,7 +253,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-3">
+                                            @*<div class="col-3">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         @Html.CheckBoxFor(x => x.IsHot, new { @class = "custom-control-input", @id = "IsHotCheckbox" })
@@ -272,13 +277,13 @@
                                                         <label for="IsSaleCheckbox" class="custom-control-label">Khuyến mãi</label>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>*@
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
                                     <!-- /.tab-pane -->
 
-                                    <div class="tab-pane" id="settings">
+                                    @*<div class="tab-pane" id="settings">
                                         <form class="form-horizontal">
                                             <div class="form-group row">
                                                 <label for="inputName" class="col-sm-2 col-form-label">SEO title</label>
@@ -302,7 +307,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div>*@
                                     <!-- /.tab-pane -->
                                 </div>
                                 <!-- /.tab-content -->
@@ -387,6 +392,9 @@
                         if (rs.success) {
                             $('#trow_' + id).remove();
                         }
+                        else {
+                            alert("ảnh này đang là ảnh đại diện , không thể xóa. Hãy chuyển ảnh khác làm ảnh đại diện, để xóa ảnh này!!! ");
+                        }
                     }
                 });
             }
@@ -398,7 +406,7 @@
             //alert('Ảnh này đã là ảnh đại diện!!!' + default1);
             //}
             var id = $(this).data('id');
-            var conf = confirm('Bạn có muốn đặt ảnh này làm ảnh đại diện không không?');
+            var conf = confirm('Bạn có muốn đặt ảnh này làm ảnh đại diện không?');
             if (conf === true) {
                 $.ajax({
                     url: '/admin/productimage/ChangeMainImage',
