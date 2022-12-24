@@ -51,7 +51,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
 
 
             //Tổng doanh thu
-            var totalOrderSale = await _dbContext.Orders.Where(p => p.OrderStatusId == 2).SumAsync(i => i.TotalAmount);
+            var totalOrderSale = await _dbContext.Orders.Where(p => p.OrderStatusId == 2).SumAsync(p => (decimal?)p.TotalAmount);
             ViewBag.totalOrderSale = totalOrderSale;
 
             //Doanh thu ngày

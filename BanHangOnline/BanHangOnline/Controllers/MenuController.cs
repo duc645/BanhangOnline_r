@@ -17,7 +17,7 @@ namespace BanHangOnline.Controllers
         }
         public ActionResult MenuTop()
         {
-            var items = _dbContext.Categories.OrderBy(x => x.Position).ToList();
+            var items = _dbContext.Categories.ToList();
             return PartialView("_MenuTop",items);
         }
         public ActionResult MenuProductCategory()

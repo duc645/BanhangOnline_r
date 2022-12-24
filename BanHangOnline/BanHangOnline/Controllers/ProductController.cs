@@ -88,12 +88,12 @@ namespace BanHangOnline.Controllers
         }
         //cac san pham o trang chu dc lay ra boi danh muc () nam trong phan view _MenuProductCategory
         //lay san pham o trang chu , ten ham viet sai
-        public ActionResult Partial_ItemsByCateId()
-        {
-            var items = _dbContext.Products.Where(p => p.IsHome ==true && p.IsActive ==true).Take(12).Include(c => c.ProductImages).ToList();
-            return PartialView(items);
+        //public ActionResult Partial_ItemsByCateId()
+        //{
+        //    var items = _dbContext.Products.Where(p => p.IsHome ==true && p.IsActive ==true).Take(12).Include(c => c.ProductImages).ToList();
+        //    return PartialView(items);
 
-        }
+        //}
 
         public ActionResult Partial_ProductSale()
         {

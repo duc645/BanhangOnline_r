@@ -26,15 +26,9 @@ namespace BanHangOnline.Models.EF
         public string Alias { get; set; }
 
         public string Description { get; set; }
-        [StringLength(150)]
-        public string SeoTitle { get; set; }
-        [StringLength(250)]
-        public string SeoDescription { get; set; }
-        [StringLength(150)]
-        public string SeoKeywords { get; set; }
+
         public bool IsActive { get; set; }
 
-        public int Position { get; set; }
 
         public ICollection<News> News { get; set; }
 

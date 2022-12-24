@@ -274,6 +274,14 @@
     <Compile Include="Migrations\202212222147449_themTruongHideAddressbangUser.Designer.cs">
       <DependentUpon>202212222147449_themTruongHideAddressbangUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212240837347_BoditruongProductCodeIsHotIsSaleIsFeatureIsHome.cs" />
+    <Compile Include="Migrations\202212240837347_BoditruongProductCodeIsHotIsSaleIsFeatureIsHome.Designer.cs">
+      <DependentUpon>202212240837347_BoditruongProductCodeIsHotIsSaleIsFeatureIsHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212240852373_xoadicactruongSeo.cs" />
+    <Compile Include="Migrations\202212240852373_xoadicactruongSeo.Designer.cs">
+      <DependentUpon>202212240852373_xoadicactruongSeo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3611,6 +3619,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212222147449_themTruongHideAddressbangUser.resx">
       <DependentUpon>202212222147449_themTruongHideAddressbangUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212240837347_BoditruongProductCodeIsHotIsSaleIsFeatureIsHome.resx">
+      <DependentUpon>202212240837347_BoditruongProductCodeIsHotIsSaleIsFeatureIsHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212240852373_xoadicactruongSeo.resx">
+      <DependentUpon>202212240852373_xoadicactruongSeo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -104,17 +104,17 @@ namespace BanHangOnline.Areas.Admin.Controllers
                     }
                 }
                 //loai
-                model.IsHome = false;
-                model.IsSale = false;
-                model.IsFeature = false;
-                model.IsHot = false;
+                //model.IsHome = false;
+                //model.IsSale = false;
+                //model.IsFeature = false;
+                //model.IsHot = false;
                 //loai
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
-                if (string.IsNullOrEmpty(model.SeoTitle))
-                {
-                    model.SeoTitle = model.Title;
-                }
+                //if (string.IsNullOrEmpty(model.SeoTitle))
+                //{
+                //    model.SeoTitle = model.Title;
+                //}
 
                 if (string.IsNullOrEmpty(model.Alias))
                 {
@@ -198,32 +198,32 @@ namespace BanHangOnline.Areas.Admin.Controllers
             }
             return Json(new { success = false });
         }
-        [HttpPost]
-        public ActionResult IsHome(int id)
-        {
-            var item = _dbContext.Products.Find(id);
-            if (item != null)
-            {
-                item.IsHome = !item.IsHome;
-                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                _dbContext.SaveChanges();
-                return Json(new { success = true, isHome = item.IsHome });
-            }
-            return Json(new { success = false });
-        }
+        //[HttpPost]
+        //public ActionResult IsHome(int id)
+        //{
+        //    var item = _dbContext.Products.Find(id);
+        //    if (item != null)
+        //    {
+        //        item.IsHome = !item.IsHome;
+        //        _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+        //        _dbContext.SaveChanges();
+        //        return Json(new { success = true, isHome = item.IsHome });
+        //    }
+        //    return Json(new { success = false });
+        //}
 
-        [HttpPost]
-        public ActionResult IsSale(int id)
-        {
-            var item = _dbContext.Products.Find(id);
-            if (item != null)
-            {
-                item.IsSale = !item.IsSale;
-                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                _dbContext.SaveChanges();
-                return Json(new { success = true, isSale = item.IsSale });
-            }
-            return Json(new { success = false });
-        }
+        //[HttpPost]
+        //public ActionResult IsSale(int id)
+        //{
+        //    var item = _dbContext.Products.Find(id);
+        //    if (item != null)
+        //    {
+        //        item.IsSale = !item.IsSale;
+        //        _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+        //        _dbContext.SaveChanges();
+        //        return Json(new { success = true, isSale = item.IsSale });
+        //    }
+        //    return Json(new { success = false });
+        //}
     }
 }

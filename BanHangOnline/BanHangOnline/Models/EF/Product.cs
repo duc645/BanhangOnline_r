@@ -28,7 +28,6 @@ namespace BanHangOnline.Models.EF
         public string Alias { get; set; }
         [StringLength(50)]
 
-        public string ProductCode { get; set; }
         public string Description { get; set; }
         [AllowHtml]
 
@@ -42,24 +41,12 @@ namespace BanHangOnline.Models.EF
         public decimal? PriceSale { get; set; }
         public decimal PriceM { get; set; }
 
-        public bool IsHome { get; set; }
-        public bool IsSale { get; set; }
 
-        public bool IsFeature { get; set; }
-
-        public bool IsHot { get; set; }
 
         public bool IsActive { get; set; }
 
 
-        [StringLength(250)]
-        public string SeoTitle { get; set; }
-        [StringLength(500)]
 
-        public string SeoDescription { get; set; }
-        [StringLength(200)]
-
-        public string SeoKeywords { get; set; }
 
 
         public int ProductCategoryId { get; set; }

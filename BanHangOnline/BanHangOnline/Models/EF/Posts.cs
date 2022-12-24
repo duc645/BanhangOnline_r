@@ -29,15 +29,7 @@ namespace BanHangOnline.Models.EF
         public string Image { get; set; }
 
         public int CategoryId { get; set; }
-        [StringLength(250)]
 
-        public string SeoTitle { get; set; }
-
-        [StringLength(500)]
-        public string SeoDescription { get; set; }
-        [StringLength(200)]
-
-        public string SeoKeywords { get; set; }
         public bool IsActive { get; set; }
 
 

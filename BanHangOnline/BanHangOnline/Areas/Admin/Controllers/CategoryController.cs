@@ -28,7 +28,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Position = 0;
+                //model.Position = 0;
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = BanHangOnline.Models.Common.Filter.FilterChar(model.Title);
@@ -61,10 +61,10 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.Entry(model).Property(x => x.Title).IsModified = true;
                 _dbContext.Entry(model).Property(x => x.Description).IsModified = true;
                 _dbContext.Entry(model).Property(x => x.Alias).IsModified = true;
-                _dbContext.Entry(model).Property(x => x.SeoDescription).IsModified = true;
-                _dbContext.Entry(model).Property(x => x.SeoKeywords).IsModified = true;
-                _dbContext.Entry(model).Property(x => x.SeoTitle).IsModified = true;
-                _dbContext.Entry(model).Property(x => x.Position).IsModified = true;
+                //_dbContext.Entry(model).Property(x => x.SeoDescription).IsModified = true;
+                //_dbContext.Entry(model).Property(x => x.SeoKeywords).IsModified = true;
+                //_dbContext.Entry(model).Property(x => x.SeoTitle).IsModified = true;
+                //_dbContext.Entry(model).Property(x => x.Position).IsModified = true;
                 _dbContext.Entry(model).Property(x => x.ModifiedDate).IsModified = true;
                 _dbContext.Entry(model).Property(x => x.ModifiedBy).IsModified = true;
                 _dbContext.SaveChanges();
