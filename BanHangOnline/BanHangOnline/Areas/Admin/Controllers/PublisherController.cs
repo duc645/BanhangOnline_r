@@ -1,0 +1,127 @@
+﻿using BanHangOnline.Models;
+using BanHangOnline.Models.EF;
+using PagedList;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace BanHangOnline.Areas.Admin.Controllers
+{
+    public class PublisherController : Controller
+    {
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
+        // GET: Admin/Publisher
+        public ActionResult Index(int? page)
+        {
+            var pageSize = 10;
+            if (page == null)
+            {
+                page = 1;
+            }
+            IEnumerable<Publisher> items = _dbContext.Publishers.OrderByDescending(x => x.Id).Include(p => p.Products);
+
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+            ViewBag.Status = TempData["message"];
+            Session["pageAdminPublisher"] = page;
+
+            return View(items);
+        }
+        public ActionResult Add()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(Publisher model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.CreatedDate = DateTime.Now;
+                model.ModifiedDate = DateTime.Now;
+
+                _dbContext.Publishers.Add(model);
+                _dbContext.SaveChanges();
+                TempData["message"] = "Thêm thành công";
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var item = _dbContext.Publishers.Find(id);
+            return View(item);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Publisher model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                model.ModifiedDate = DateTime.Now;
+
+                _dbContext.Publishers.Attach(model);
+                _dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+                TempData["message"] = "Sửa thành công";
+                return RedirectToAction("Index", new { page = int.Parse(Session["pageAdminPublisher"].ToString()) });
+
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var item = _dbContext.Publishers.Find(id);
+            if (item != null)
+            {
+                _dbContext.Publishers.Remove(item);
+                _dbContext.SaveChanges();
+                //TempData["message"] = "Xóa thành công";
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+        [HttpPost]
+        public ActionResult deletedAll(string ids)
+        {
+            if (!string.IsNullOrEmpty(ids))
+            {
+                var items = ids.Split(',');
+                if (items != null && items.Any())
+                {
+                    foreach (var item in items)
+                    {
+                        var obj = _dbContext.Publishers.Find(Convert.ToInt32(item));
+                        _dbContext.Publishers.Remove(obj);
+                        _dbContext.SaveChanges();
+                    }
+
+                }
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+        [HttpPost]
+        public ActionResult IsActive(int id)
+        {
+            var item = _dbContext.Publishers.Find(id);
+            if (item != null)
+            {
+                item.IsActive = !item.IsActive;
+                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+                return Json(new { success = true, isActive = item.IsActive });
+            }
+            return Json(new { success = false });
+        }
+    }
+}

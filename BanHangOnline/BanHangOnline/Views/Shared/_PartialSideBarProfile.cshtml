@@ -2,7 +2,7 @@
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-             <img src="~/Content/clients/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+             <img src="~/Content/clients/dist/img/1053244.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
             <a href="/manage/index" class="d-block">Thông tin hồ sơ</a>
@@ -28,45 +28,45 @@
     with font-awesome or any other icon font library -->
 
             <li class="nav-item">
-                @*<a href="/admin/news" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <a href="/Manage/ChangePassword" class="nav-link">
+                    <i class="nav-icon fa fa-key" aria-hidden="true"></i>
                 <p>
-                    Tin tức
+                    Thay đổi mật khẩu
                 </p>
-            </a>*@
-                <i class="nav-icon fas fa-th"></i>
-                @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword")
+            </a>
+                @*<i class="nav-icon fas fa-th"></i>
+                @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword",null,new {@class= "nav-link" })*@
             </li>
             <li class="nav-item">
-                @*<a href="/admin/news" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <a href="/Manage/EditUserInfo" class="nav-link">
+                    <i class="nav-icon fas fa-user"></i>
                 <p>
-                    Tin tức
+                    Thông tin cá nhân
                 </p>
-            </a>*@
-                <i class="nav-icon fas fa-th"></i>
+            </a>
+                @*<i class="nav-icon fas fa-th"></i>
 
-                @Html.ActionLink("Thông tin cá nhân", "EditUserInfo")
+                @Html.ActionLink("Thông tin cá nhân", "EditUserInfo")*@
             </li>
             <li class="nav-item">
-                @*<a href="/admin/news" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <a href="/Manage/ListOrder" class="nav-link">
+                    <i class="nav-icon fa fa-shopping-cart" aria-hidden="true"></i>
                 <p>
-                    Tin tức
+                    Đơn hàng
                 </p>
-            </a>*@
-                <i class="nav-icon fas fa-th"></i>
-                @Html.ActionLink("Đơn hàng", "ListOrder")
+            </a>
+                @*<i class="nav-icon fas fa-th"></i>
+                @Html.ActionLink("Đơn hàng", "ListOrder")*@
             </li>
             <li class="nav-item">
-                @*<a href="/admin/news" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <a href="/Manage/ListOrderCancel" class="nav-link">
+                    <i class="nav-icon fa fa-times" aria-hidden="true"></i>
                 <p>
-                    Tin tức
+                    Đơn hàng đã hủy
                 </p>
-            </a>*@
-                <i class="nav-icon fas fa-th"></i>
-                @Html.ActionLink("Đơn hàng đã hủy", "ListOrderCancel")
+            </a>
+                @*<i class="nav-icon fas fa-th"></i>
+                @Html.ActionLink("Đơn hàng đã hủy", "ListOrderCancel")*@
             </li>
         </ul>
     </nav>

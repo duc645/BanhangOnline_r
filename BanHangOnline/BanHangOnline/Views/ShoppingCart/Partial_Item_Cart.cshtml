@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<BanHangOnline.Models.ShoppingCartItem>
 @using BanHangOnline.Common
+@{
+    var checkCheckOutSuccess = Session["CheckOutSuccess"];
+}
 <div class="row">
     <div class="col-lg-12">
         <div class="shoping__cart__table">
@@ -17,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model != null && Model.Any())
+                    @if (Model != null && Model.Any() && (Int32)checkCheckOutSuccess == 0)
                     {
                         var i = 0;
                         var tongtien = decimal.Zero;
@@ -74,7 +77,7 @@
     </div>
     <div class="col-lg-12">
         <div class="shoping__cart__btns">
-            @if (ViewBag.CheckCart != null)
+            @if (ViewBag.CheckCart != null && (Int32)checkCheckOutSuccess == 0)
             {
                 <a href="/product" class="primary-btn cart-btn">Tiếp tục mua sách</a>
                 <a href="/Shoppingcart/checkout" class="primary-btn cart-btn cart-btn-right">
@@ -86,9 +89,17 @@
         </div>
     </div>
 </div>
-@if (Model == null)
+@if (Model == null && (Int32)checkCheckOutSuccess == 0)
 {
     <div style="margin-bottom:100px;margin-top:100px">
-        <h1 style="color:darkred;text-align:center">Giỏ hàng trống!!!</h1>
+        <h1 style="color:darkred;text-align:center">Không có sách nào trong giỏ!!!</h1>
+    </div>
+}
+
+@* trả ra trang giỏ hàng - thanh toán thành công- sửa lỗi báo cáo *@
+@if (Model == null && (Int32)checkCheckOutSuccess == 1)
+{
+    <div style="margin-bottom:100px;margin-top:100px">
+        <h1 style="color:darkred;text-align:center">Cảm ơn bạn đã mua hàng. Bạn Vui lòng mở email để kiểm tra lại đơn hàng!!!</h1>
     </div>
 }
