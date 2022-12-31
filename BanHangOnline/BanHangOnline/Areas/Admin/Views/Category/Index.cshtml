@@ -26,7 +26,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/home">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Danh mục tin tức</li>
                 </ol>
             </div>
@@ -40,7 +40,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách danh mục</h3>
+            <h3 class="card-title">Danh sách danh mục tin tức</h3>
 
             <div class="card-tools">
                 <a href="/admin/category/add" class="btn btn-primary">Thêm</a>
@@ -52,7 +52,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Tên danh mục</th>
-
+                        <th class="text-center">Hiển thị</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -62,16 +62,19 @@
                         var i = 1;
                         foreach (var item in Model)
                         {
-                            <tr id="trow_@item.Id">
-                                <td>@i</td>
-                                <td>@item.Title</td>
+                            var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                    <tr id="trow_@item.Id">
+                        <td>@i</td>
+                        <td>@item.Title</td>
+                        <td class="text-center">
+                            <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                        </td>
+                        <td>
+                            <a href="/admin/category/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
+                            <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
 
-                                <td>
-                                    <a href="/admin/category/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-
-                                </td>
-                            </tr>
+                        </td>
+                    </tr>
                             i++;
                         }
 
@@ -118,6 +121,34 @@
 
                     });
                 }
+            });
+            $('body').on('click', '.btnActive', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+
+                $.ajax({
+                    url: '/admin/category/IsActive',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+
+                            if (rs.isActive) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                                //$(this).find("i").removeClass("fa fa-times text-danger");
+                                //$(this).find("i").addClass("fas fa-check text-success");/*.html("<i class='fas fa-check text-success'></i>");*/
+                            }
+                            else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                                //$(this).find("i").removeClass("fas fa-check text-success");
+                                //$(this).find("i").addClass("fa fa-times text-danger");
+                            }
+                        }
+
+                    }
+
+                });
             });
         });
     </script>    

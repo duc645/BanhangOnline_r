@@ -76,6 +76,7 @@
                         <th><input type="checkbox" id="SelectAll" /></th>
                         <th>STT</th>
                         <th>Tiêu đề</th>
+                        <th>Số sách</th>
                         <th>Ngày tạo</th>
                         @*<th class="text-center">Hiển thị</th>*@
                         <th></th>
@@ -88,20 +89,21 @@
                         foreach (var item in Model)
                         {
                             //var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-                                <td>@i</td>
-                                <td>@item.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                @*<td class="text-center">
-                                <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                            </td>*@
-                                <td>
-                                    <a href="/admin/productcategory/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                    @*@Html.Raw(@item.Detail)*@
-                                </td>
-                            </tr>
+                    <tr id="trow_@item.Id">
+                        <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                        <td>@i</td>
+                        <td>@item.Title</td>
+                        <td style="font-weight:bold;color:red;">@item.Products.Count</td>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        @*<td class="text-center">
+            <a href="#" data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+        </td>*@
+                        <td>
+                            <a href="/admin/productcategory/edit/@item.Id" class="btn btn-sm btn-info">Sửa</a>
+                            <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                            @*@Html.Raw(@item.Detail)*@
+                        </td>
+                    </tr>
                             i++;
                         }
 

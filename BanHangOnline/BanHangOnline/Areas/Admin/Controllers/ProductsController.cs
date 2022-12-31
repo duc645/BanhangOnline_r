@@ -43,7 +43,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             {
                 page = 1;
             }
-            IEnumerable<Product> items = _dbContext.Products.Where(x=> x.Quantity <20).OrderByDescending(x=>x.Quantity);
+            IEnumerable<Product> items = _dbContext.Products.Where(x=> x.Quantity <20).OrderBy(x=>x.Quantity);
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
@@ -69,6 +69,8 @@ namespace BanHangOnline.Areas.Admin.Controllers
         public ActionResult Add()
         {
             ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
+            ViewBag.Author = new SelectList(_dbContext.Authors.ToList(), "Id", "FullName");
+            ViewBag.Publisher = new SelectList(_dbContext.Publishers.ToList(), "Id", "FullName");
             return View();
         }
 
@@ -129,10 +131,33 @@ namespace BanHangOnline.Areas.Admin.Controllers
                     model.PriceM = model.Price;
                 }
                 _dbContext.Products.Add(model);
-                _dbContext.SaveChanges();
+                try
+                {
+                    _dbContext.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting
+                            // the current instance as InnerException
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
+                }
+
                 return RedirectToAction("Index");
             }
             ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
+            ViewBag.Author = new SelectList(_dbContext.Authors.ToList(), "Id", "FullName");
+            ViewBag.Publisher = new SelectList(_dbContext.Publishers.ToList(), "Id", "FullName");
             return View(model);
         }
 
@@ -140,6 +165,8 @@ namespace BanHangOnline.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
+            ViewBag.Author = new SelectList(_dbContext.Authors.ToList(), "Id", "FullName");
+            ViewBag.Publisher = new SelectList(_dbContext.Publishers.ToList(), "Id", "FullName");
             var item = _dbContext.Products.Where(x=> x.Id ==id).Include(a => a.ProductImages).FirstOrDefault();
             ViewBag.ProductId = id;
             return View(item);
@@ -168,6 +195,9 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 var avcd = int.Parse(Session["pageAdminProduct"].ToString());
                 return RedirectToAction("Index" , new { page = int.Parse(Session["pageAdminProduct"].ToString())});
             }
+            ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
+            ViewBag.Author = new SelectList(_dbContext.Authors.ToList(), "Id", "FullName");
+            ViewBag.Publisher = new SelectList(_dbContext.Publishers.ToList(), "Id", "FullName");
             return View(model);
         }
 

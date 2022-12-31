@@ -2,7 +2,7 @@
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="~/Content/clients/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="~/Content/clients/dist/img/1053244.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
             <a href="/admin/home/index" class="d-block">Trang quản lý</a>
@@ -27,8 +27,27 @@
             <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
             <li class="nav-item">
+                <a href="/admin/publisher" class="nav-link">
+                    <i class=" nav-icon fas fa-user"></i>
+                    <p>
+                        Nhà xuất bản
+                        @*<span class="right badge badge-danger">New</span>*@
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/author" class="nav-link">
+                    <i class="nav-icon fas fa-user-tie"></i>
+                    <p>
+                        Tác giả
+                        @*<i class="right fas fa-angle-left"></i>*@
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+
                 <a href="/admin/category" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
                     <p>
                         Danh mục tin tức
                         @*<i class="right fas fa-angle-left"></i>*@
@@ -57,7 +76,7 @@
             </li>
             <li class="nav-item">
                 <a href="/admin/news" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-newspaper"></i>
                     <p>
                         Tin tức
                         @*<span class="right badge badge-danger">New</span>*@
@@ -65,21 +84,21 @@
                 </a>
             </li>
             @*<li class="nav-item">
-                <a href="/admin/posts" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Bài viết
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/admin/posts" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Quảng cáo
-                    </p>
-                </a>
-            </li>*@
+            <a href="/admin/posts" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Bài viết
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/admin/posts" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Quảng cáo
+                </p>
+            </a>
+        </li>*@
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -91,25 +110,25 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="/admin/productcategory" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
                             <p>Danh mục sách </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/admin/products" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="nav-icon fa fa-book" aria-hidden="true"></i>
                             <p>Sách</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/admin/products/ProductOutOfStock" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="nav-icon fas fa-battery-quarter" aria-hidden="true"></i>
                             <p>Sách sắp hết</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/admin/products/ProductSoldSale" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                            <i class="fas fa-sort-amount-up nav-icon"></i>
                             <p>Top sách bán chạy</p>
                         </a>
                     </li>
@@ -117,7 +136,7 @@
             </li>
             <li class="nav-item">
                 <a href="/admin/order" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fa fa-shopping-cart" aria-hidden="true"></i>
                     <p>
                         Đơn Hàng
                         @*<span class="right badge badge-danger">New</span>*@
@@ -126,7 +145,7 @@
             </li>
             <li class="nav-item">
                 <a href="/admin/order/IndexOrderCancel" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fa fa-times nav-icon" aria-hidden="true"></i>
                     <p>
                         Đơn Hàng đã hủy
                         @*<span class="right badge badge-danger">New</span>*@
@@ -135,7 +154,7 @@
             </li>
             <li class="nav-item">
                 <a href="/admin/role" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-user-friends nav-icon"></i>
                     <p>
                         Quyền
                         @*<span class="right badge badge-danger">New</span>*@
@@ -144,7 +163,7 @@
             </li>
             <li class="nav-item">
                 <a href="/admin/account" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-user-check"></i>
                     <p>
                         Tài khoản
                         @*<span class="right badge badge-danger">New</span>*@
@@ -152,16 +171,16 @@
                 </a>
             </li>
             @*<li class="nav-item">
-                <a href="/posts" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Hệ thống
-                    </p>
-                </a>
-            </li>*@
+            <a href="/posts" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Hệ thống
+                </p>
+            </a>
+        </li>*@
             <li class="nav-item">
                 <a href="/admin/contact" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fa fa-phone" aria-hidden="true"></i>
                     <p>
                         Liên hệ
                         @*<span class="right badge badge-danger">New</span>*@

@@ -73,16 +73,19 @@
                         <th><input type="checkbox" id="SelectAll" /></th>
                         <th>STT</th>
                         <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
+                        <th style="width:170px;">Tên sách</th>
                         <th>Danh mục</th>
+                        <th>Tác giả</th>
+                        <th>Nhà xuất bản</th>
+                        <th>NXB</th>
                         <th>Số lượng</th>
                         <th>Giá</th>
                         <th>Giá Sale</th>
-                        <th>Ngày tạo</th>
+                        @*<th>Ngày tạo</th>*@
                         @*<th class="text-center">Home</th>
                         <th class="text-center">Sale</th>*@
                         <th class="text-center">Hiển thị</th>
-                        <th></th>
+                        <th style="width: 107px;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,18 +104,21 @@
                         <td><img class="imgproduct" data-id="@item.Id" src="@item.Image" width="60" /></td>
                         <td>@item.Title</td>
                         <td>@item.ProductCategory.Title</td>
+                        <td>@item.Author.FullName</td>
+                        <td>@item.Publisher.FullName</td>
+                        <td style="text-align:center;">@item.PublishedYear</td>
                         <td>@item.Quantity</td>
-                        <td>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</td>
+                        <td>@BanHangOnline.Common.Common.FormatNumber(item.Price, 0) Đ</td>
                         @if (item.PriceSale > 0)
                         {
-                            <td>@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) VNĐ</td>
+                            <td>@BanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) Đ</td>
                         }
                         else
                     {
                         <td>Không giảm giá</td>
                     }
 
-                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        @*<td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>*@
                         @*<td class="text-center">
                             <a href="#" data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
                         </td>

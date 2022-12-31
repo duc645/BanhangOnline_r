@@ -167,7 +167,7 @@ ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	background: #7fad39;
+	background: #B10626;
 	letter-spacing: 2px;
 }
 
@@ -1282,7 +1282,8 @@ ol {
 }
 
 .product__discount__item__pic {
-	height: 300px;
+	/*	height: 300px;*/
+	height: 255px;
 	position: relative;
 	overflow: hidden;
 }
@@ -1325,10 +1326,10 @@ ol {
 	margin-right: 0;
 }
 
-.product__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
-}
+	.product__item__pic__hover li:hover a {
+		background: #B10626 !important;
+		border-color: #B10626 !important;
+	}
 
 .product__item__pic__hover li:hover a i {
 	color: #ffffff;
@@ -1669,9 +1670,13 @@ ol {
 	margin-bottom: 20px;
 }
 
-.product__details__pic__item img {
-	min-width: 100%;
-}
+	.product__details__pic__item img {
+		min-width: 100%;
+		/*cho anh co chieu cao ngan lai va co vien*/
+		height:680px;
+		max-height: 715px;
+		border: solid 1px #9e9d9b;
+	}
 
 .product__details__pic__slider img {
 	cursor: pointer;
@@ -1679,7 +1684,9 @@ ol {
 
 .product__details__pic__slider.owl-carousel .owl-item img {
 	width: auto;
-	min-height:170px;
+	min-height: 170px;
+	border: solid 1px #9e9d9b;
+	max-height:100px;
 }
 
 .product__details__text h3 {

@@ -67,6 +67,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 //_dbContext.Entry(model).Property(x => x.Position).IsModified = true;
                 _dbContext.Entry(model).Property(x => x.ModifiedDate).IsModified = true;
                 _dbContext.Entry(model).Property(x => x.ModifiedBy).IsModified = true;
+                _dbContext.Entry(model).Property(x => x.IsActive).IsModified = true;
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -83,6 +84,19 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.Categories.Remove(item);
                 _dbContext.SaveChanges();
                 return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+        [HttpPost]
+        public ActionResult IsActive(int id)
+        {
+            var item = _dbContext.Categories.Find(id);
+            if (item != null)
+            {
+                item.IsActive = !item.IsActive;
+                _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                _dbContext.SaveChanges();
+                return Json(new { success = true, isActive = item.IsActive });
             }
             return Json(new { success = false });
         }

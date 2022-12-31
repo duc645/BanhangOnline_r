@@ -1,7 +1,9 @@
 ﻿using BanHangOnline.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,8 +27,67 @@ namespace BanHangOnline.Controllers
             var items = _dbContext.ProductCategories.ToList();
             return PartialView("_MenuProductCategory",items);
         }
-        public ActionResult MenuLeftProductCategories(int? id,string SearchText, string SortText)
+        public ActionResult MenuLeftAuthor(int? id, string SearchText, string SortText,int? category, int? publisher)
         {
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                ViewBag.SearchText = SearchText;
+            }
+            if (!string.IsNullOrEmpty(SortText))
+            {
+                ViewBag.SortText = SortText;
+            }
+            if (publisher != null)
+            {
+                ViewBag.publisher = publisher;
+            }
+            if (category != null)
+            {
+                ViewBag.category = category;
+            }
+            if (id != null)
+            {
+                ViewBag.author = id;
+            }
+            var items = _dbContext.Authors.ToList();
+            return PartialView("_MenuLeftAuthor", items);
+        }
+        public ActionResult MenuLeftPublisher(int? id, string SearchText, string SortText, int? category, int? author)
+        {
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                ViewBag.SearchText = SearchText;
+            }
+            if (!string.IsNullOrEmpty(SortText))
+            {
+                ViewBag.SortText = SortText;
+            }
+            if (author != null)
+            {
+                ViewBag.author = author;
+            }
+            if (category != null)
+            {
+                ViewBag.category = category;
+            }
+            if (id != null)
+            {
+                ViewBag.publisher = id;
+            }
+            var items = _dbContext.Publishers.ToList();
+            return PartialView("_MenuLeftPublisher", items);
+        }
+
+        public ActionResult MenuLeftProductCategories(int? id,string SearchText, string SortText, int? author, int? publisher)
+        {
+            if (publisher != null)
+            {
+                ViewBag.publisher = publisher;
+            }
+            if (author != null)
+            {
+                ViewBag.author = author;
+            }
             if (!string.IsNullOrEmpty(SearchText))
             {
                 ViewBag.SearchText = SearchText;

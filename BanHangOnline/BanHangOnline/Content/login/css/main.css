@@ -216,15 +216,15 @@ iframe {
 }
 
 .label-input100 {
-  font-family: Poppins-Regular;
-  font-size: 14px;
+/*  font-family: Poppins-Regular;*/
+  font-size: 18px;
   color: #333333;
   line-height: 1.5;
   padding-left: 7px;
 }
 
 .input100 {
-  font-family: Poppins-Medium;
+  /*font-family: Poppins-Medium;*/
   font-size: 16px;
   color: #333333;
   line-height: 1.2;
@@ -397,7 +397,7 @@ iframe {
   right: 2px;
   pointer-events: none;
 
-  font-family: Poppins-Regular;
+/*  font-family: Poppins-Regular;*/
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;

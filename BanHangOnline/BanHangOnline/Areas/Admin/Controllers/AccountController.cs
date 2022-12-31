@@ -148,7 +148,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Đăng nhập không thành công");
+                    ModelState.AddModelError("", "Đăng nhập không thành công,tài khoản hoặc mật khẩu không đúng!");
                     return View(model);
             }
         }

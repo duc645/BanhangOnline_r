@@ -16,7 +16,6 @@ namespace BanHangOnline.Controllers
         public ActionResult Index()
         {
 
-            //string userId = User.Identity.GetUserId();
             return View();
         }
 

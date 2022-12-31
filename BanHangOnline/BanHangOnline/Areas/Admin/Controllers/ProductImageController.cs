@@ -72,7 +72,27 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.Products.Attach(product);
                 _dbContext.Entry(product).State = System.Data.Entity.EntityState.Modified;
                 //da xong phan chuyen anh dai dien thi cung chuyen du lieu sang truong Image bảng product
-                _dbContext.SaveChanges();
+                try
+                {
+                    _dbContext.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting
+                            // the current instance as InnerException
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
+                }
             }
 
             return Json(new { success = true });

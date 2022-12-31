@@ -3,6 +3,7 @@ using BanHangOnline.Models.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,12 +16,12 @@ namespace BanHangOnline.Areas.Admin.Controllers
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         public ActionResult Index(int? page)
         {
-            var pageSize = 5;
+            var pageSize = 10;
             if (page == null)
             {
                 page = 1;
             }
-            IEnumerable<ProductCategory> items = _dbContext.ProductCategories.OrderByDescending(x => x.Id);
+            IEnumerable<ProductCategory> items = _dbContext.ProductCategories.OrderByDescending(x => x.Id).Include(p => p.Products);
 
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);

@@ -179,6 +179,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -282,12 +284,21 @@
     <Compile Include="Migrations\202212240852373_xoadicactruongSeo.Designer.cs">
       <DependentUpon>202212240852373_xoadicactruongSeo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212241020310_bangtacgiaNhaxuatbanNoteCustomerNoteOrderlan2.cs" />
+    <Compile Include="Migrations\202212241020310_bangtacgiaNhaxuatbanNoteCustomerNoteOrderlan2.Designer.cs">
+      <DependentUpon>202212241020310_bangtacgiaNhaxuatbanNoteCustomerNoteOrderlan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212250753172_themtruongIsActiveNXBTacgia.cs" />
+    <Compile Include="Migrations\202212250753172_themtruongIsActiveNXBTacgia.Designer.cs">
+      <DependentUpon>202212250753172_themtruongIsActiveNXBTacgia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
     <Compile Include="Models\Common\Filter.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\EF\Adv.cs" />
+    <Compile Include="Models\EF\Author.cs" />
     <Compile Include="Models\EF\Category.cs" />
     <Compile Include="Models\EF\Contact.cs" />
     <Compile Include="Models\EF\keyAttribute.cs" />
@@ -299,6 +310,7 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
+    <Compile Include="Models\EF\Publisher.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -333,6 +345,9 @@
     <Content Include="Content\assets\img\blog\sidebar\sr-1.jpg" />
     <Content Include="Content\assets\img\blog\sidebar\sr-2.jpg" />
     <Content Include="Content\assets\img\blog\sidebar\sr-3.jpg" />
+    <Content Include="Content\assets\img\DECOM-LOGO-02-1024x342.png" />
+    <Content Include="Content\clients\dist\img\1053244.png" />
+    <Content Include="Content\login\images\icons\books-icon.png" />
     <Content Include="Content\assets\img\breadcrumb.jpg" />
     <Content Include="Content\assets\img\cart\cart-1.jpg" />
     <Content Include="Content\assets\img\cart\cart-2.jpg" />
@@ -3458,6 +3473,12 @@
     <Content Include="Areas\Admin\Views\Order\Partial_SanPham_Cancel.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductOutOfStock.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductSoldSale.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3546,6 +3567,8 @@
     <Content Include="Views\Product\Partial_TopProductNew.cshtml" />
     <Content Include="Views\test2\Index.cshtml" />
     <Content Include="Views\Menu\_MenuMainProductCategories.cshtml" />
+    <Content Include="Views\Menu\_MenuLeftAuthor.cshtml" />
+    <Content Include="Views\Menu\_MenuLeftPublisher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3625,6 +3648,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212240852373_xoadicactruongSeo.resx">
       <DependentUpon>202212240852373_xoadicactruongSeo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212241020310_bangtacgiaNhaxuatbanNoteCustomerNoteOrderlan2.resx">
+      <DependentUpon>202212241020310_bangtacgiaNhaxuatbanNoteCustomerNoteOrderlan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212250753172_themtruongIsActiveNXBTacgia.resx">
+      <DependentUpon>202212250753172_themtruongIsActiveNXBTacgia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
