@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="~/Content/assets/css/style.css" type="text/css">
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="Content/assets/img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="/Content/assets/img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Organi Shop</h2>
+                    <h2>Sách</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Trang chủ</a>
+                        <a href="/">Trang chủ</a>
                         <span>Sách</span>
                     </div>
                 </div>
@@ -32,110 +32,38 @@
                 <div class="sidebar">
                     <div class="sidebar__item">
                         @* dat partial menuleft o day *@
-                        @Html.Action("MenuLeftProductCategories", "Menu", new { id = ViewBag.category, SearchText = ViewBag.SearchText , SortText= ViewBag.SortText })
+                        @Html.Action("MenuLeftProductCategories", "Menu", new { id = ViewBag.category, SearchText = ViewBag.SearchText, SortText = ViewBag.SortText, author = ViewBag.author, publisher = ViewBag.publisher })
                     </div>
                     <div class="sidebar__item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                 data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sidebar__item sidebar__item__color--option">
-                        <h4>Colors</h4>
-                        <div class="sidebar__item__color sidebar__item__color--white">
-                            <label for="white">
-                                White
-                                <input type="radio" id="white">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--gray">
-                            <label for="gray">
-                                Gray
-                                <input type="radio" id="gray">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--red">
-                            <label for="red">
-                                Red
-                                <input type="radio" id="red">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--black">
-                            <label for="black">
-                                Black
-                                <input type="radio" id="black">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--blue">
-                            <label for="blue">
-                                Blue
-                                <input type="radio" id="blue">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--green">
-                            <label for="green">
-                                Green
-                                <input type="radio" id="green">
-                            </label>
-                        </div>
+                        @Html.Action("MenuLeftAuthor", "Menu", new { id = ViewBag.author, SearchText = ViewBag.SearchText, SortText = ViewBag.SortText, category = ViewBag.category, publisher = ViewBag.publisher })
                     </div>
                     <div class="sidebar__item">
-                        <h4>Popular Size</h4>
-                        <div class="sidebar__item__size">
-                            <label for="large">
-                                Large
-                                <input type="radio" id="large">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="medium">
-                                Medium
-                                <input type="radio" id="medium">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="small">
-                                Small
-                                <input type="radio" id="small">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="tiny">
-                                Tiny
-                                <input type="radio" id="tiny">
-                            </label>
-                        </div>
+                        @Html.Action("MenuLeftPublisher", "Menu", new { id = ViewBag.publisher, SearchText = ViewBag.SearchText, SortText = ViewBag.SortText, category = ViewBag.category, author = ViewBag.author })
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-9 col-md-7">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-5">
                         @using (Html.BeginForm("index", "Product", FormMethod.Get, new { }))
                         {
                             @Html.Hidden("category", (object)ViewBag.category)
                             @Html.Hidden("sortText", (object)ViewBag.SortText)
-                            <div class="form-group">
-                                <div class="input-group input-group-sm">
-                                    @Html.TextBox("searchText", null, new { }@*new { @class = "form-control", @placeholder = "Nhập tìm kiếm ở đây..." }*@)
-                                    @*<input type="text" name="searchtext" class="form-control">*@
-                                    <span class="input-group-append">
-                                        <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
-                                    </span>
-                                </div>
+                            @Html.Hidden("author", (object)ViewBag.author)
+                            @Html.Hidden("publisher", (object)ViewBag.publisher)
+                        <div class="form-group">
+                            <div class="input-group input-group-sm">
+                                @Html.TextBox("searchText", null, new { }@*new { @class = "form-control", @placeholder = "Nhập tìm kiếm ở đây..." }*@)
+                                @*<input type="text" name="searchtext" class="form-control">*@
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                                </span>
+                                @Html.ActionLink("X", "Index", "Product", new { page = 1, sortText = ViewBag.SortText, category = ViewBag.category, author = ViewBag.author }, new { @style = "font-size:16px;display:inline-block;padding:7px 16px;font-weight:bold;color:white;font-weight: bold;margin-left: 10px;background-color: #28a745;border-radius: 5px;" })
                             </div>
+                            </div>
+                            
+                            
                         }
 
                     </div>
@@ -145,12 +73,93 @@
                 </div>
                 <div class="filter__item">
                     <div class="row">
-                        @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc" }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
-                        @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc" }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
-                        @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold" }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
-                        @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count" }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
-                        @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z" }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
-                        @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a" }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        @if (string.IsNullOrEmpty(ViewBag.SortText))
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+
+
+                        @if (ViewBag.SortText == "price_desc")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+
+                        @if (ViewBag.SortText == "price_asc")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+                        @if (ViewBag.SortText == "product_sold")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+                        @if (ViewBag.SortText == "view_count")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+                        @if (ViewBag.SortText == "a-z")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+                        @if (ViewBag.SortText == "z-a")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                        }
+                        @if (ViewBag.SortText == "pub_year")
+                        {
+                            @Html.ActionLink("Giá giảm dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_desc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;" })
+                            @Html.ActionLink("Giá tăng dần", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "price_asc", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Bán chạy", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "product_sold", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Xem nhiều", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "view_count", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("A-Z", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "a-z", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Z-A", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "z-a", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;" })
+                            @Html.ActionLink("Năm xuất bản giảm", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, sortText = "pub_year", author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-danger", @style = "display:inline-block;margin-right:5px;" })
+                        }
+
+                        @Html.ActionLink("X", "Index", new { category = ViewBag.category, SearchText = ViewBag.SearchText, author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "btn btn-success", @style = "display:inline-block;margin-right:5px;margin-left:10px;font-weight:bold;" })
+
+
                         @*<div class="col-lg-4 col-md-5">
             <div class="filter__sort">
                 <span>Sort By</span>
@@ -185,7 +194,7 @@
                             //{
                             //    strImge = img.Image;
                             //}
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div style="margin-bottom:30px;border:1px solid #808080;" class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
                                          @*data-setbg="Content/assets/img/product/discount/pd-1.jpg"*@>
@@ -227,7 +236,7 @@
                             </div>*@
 
                         <div class="col-6" style="text-align:right;">
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ViewBag.category, ViewBag.SearchText, ViewBag.SortText }))
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ViewBag.category, ViewBag.SearchText, ViewBag.SortText, ViewBag.author, ViewBag.publisher }))
 
                         </div>
 

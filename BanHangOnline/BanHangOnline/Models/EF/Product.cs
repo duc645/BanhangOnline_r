@@ -52,6 +52,12 @@ namespace BanHangOnline.Models.EF
         public int ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
 
+        public int AuthorId { get; set; }
+        public virtual Author Author { get; set; }
+        
+        public int PublisherId { get; set; }
+        public virtual Publisher Publisher { get; set; }
+
         public ICollection<OrderDetail> OrderDetails { get; set; }
 
         public ICollection<ProductImage>  ProductImages { get; set; }
@@ -59,5 +65,7 @@ namespace BanHangOnline.Models.EF
         public int ViewCout { get; set; }
 
         public int ProductSold { get; set; }
+        [Required(ErrorMessage = "Trường này không được để trống")]
+        public int PublishedYear { get; set; }
     }
 }

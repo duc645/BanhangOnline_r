@@ -41,7 +41,11 @@ namespace BanHangOnline.Models.EF
 
         public string UserId { get; set; }
 
+        [StringLength(250, MinimumLength = 3, ErrorMessage = " Ghi chú phải nằm từ {1} đến {0} ký tự")]
+        public string Note { get; set; }
 
+        [StringLength(250, MinimumLength = 3, ErrorMessage = " Ghi chú phải nằm từ {1} đến {0} ký tự")]
+        public string CustomerNote { get; set; }
 
     }
 }

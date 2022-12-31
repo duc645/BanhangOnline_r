@@ -11,7 +11,7 @@
                 <div class="breadcrumb__text">
                     <h2>Chi tiết tin tức</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Trang chủ</a>
+                        <a href="/">Trang chủ</a>
                         <span> Chi tiết tin tức</span>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="blog__sidebar__item">
                         @Html.Action("MenuLeftCategories", "Menu", new { id = ViewBag.category, SearchText = ViewBag.SearchText })
                     </div>
-                    <div class="blog__sidebar__item">
+                    @*<div class="blog__sidebar__item">
                         <h4>Recent News</h4>
                         <div class="blog__sidebar__recent">
                             <a href="#" class="blog__sidebar__recent__item">
@@ -60,7 +60,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
             <div class="col-lg-8 col-md-7 order-md-1 order-1">

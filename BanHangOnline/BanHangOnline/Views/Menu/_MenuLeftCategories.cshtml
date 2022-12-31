@@ -7,7 +7,7 @@
         {
             if (ViewBag.category == item.Id)
             {
-                <li class="active">@Html.ActionLink(">>> " + item.Title, "Index", "News", new { page = 1, category = item.Id, searchText = ViewBag.SearchText }, null)</li>
+                <li class="active">@Html.ActionLink(">>> " + item.Title +" <<<", "Index", "News", new { page = 1, category = item.Id, searchText = ViewBag.SearchText }, null)</li>
             }
             else
             {

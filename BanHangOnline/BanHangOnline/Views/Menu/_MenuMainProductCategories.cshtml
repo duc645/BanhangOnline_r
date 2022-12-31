@@ -1,11 +1,20 @@
 ﻿@model IEnumerable<BanHangOnline.Models.EF.ProductCategory>
+    <style>
+        li .cateMain:hover{
+            display:block;
+            background-color:black;
+            color:white;
+            border-radius:5px;
+            padding-left:6px;
+        }
+    </style>
 @if (Model != null && Model.Any())
 {
 
-    <ul>
+    <ul style="padding-right: 40px;">
         @foreach (var item in Model)
         {
-            <li class="active">@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText = ViewBag.SortText }, null)</li>
+            <li class="active">@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText = ViewBag.SortText }, new {@class="cateMain" })</li>
         }
 
     </ul>

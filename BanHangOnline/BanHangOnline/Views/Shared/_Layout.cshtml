@@ -6,11 +6,11 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@ViewBag.Title - Web</title>
+    <title>@ViewBag.Title </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="~/Content/login/images/icons/arsenal_17995.png" />
+    <link rel="icon" type="image/png" href="~/Content/login/images/icons/books-icon.png" />
     <!-- Css Styles -->
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/assets/css/font-awesome.min.css" type="text/css">
@@ -135,12 +135,33 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="Content/assets/img/logo.png" alt=""></a>
+                        <a href="./index.html"><img style="margin-left: -8px; width: 180px;" src="/Content/assets/img/DECOM-LOGO-02-1024x342.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
-                        @Html.Action("MenuTop", "Menu")
+                        @*@Html.Action("MenuTop", "Menu")*@
+                        <ul>
+                            <li class="active"><a href="/">Trang chủ</a></li>
+                            @*@foreach (var item in Model)
+            {
+                <li class="active"><a href="/@item.Alias">@item.Title</a></li>
+            }*@
+                            <li><a href="/Product">Sách</a></li>
+                            @*<li>@Html.ActionLink(Sản Phẩm,"Index")</li>*@
+
+                            @*<li>
+                <a href="#">Tin Tức</a>
+                <ul class="header__menu__dropdown">
+                    <li><a href="./shop-details.html">shop details</a></li>
+                    <li><a href="./shoping-cart.html">shoping cart</a></li>
+                    <li><a href="./checkout.html">check out</a></li>
+                    <li><a href="./blog-details.html">blog details</a></li>
+                </ul>
+            </li>*@
+                            <li><a href="/News">Tin Tức</a></li>
+                            <li><a href="/Contact/AddContact">Liên Hệ</a></li>
+                        </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
@@ -164,6 +185,7 @@
 
     <!-- Hero Section End -->
     <!-- Contact Section Begin -->
+    <hr />
     <section class="contact spad">
         <div class="container">
             <div class="row">
@@ -178,7 +200,7 @@
                     <div class="contact__widget">
                         <span class="icon_pin_alt"></span>
                         <h4>Địa chỉ</h4>
-                        <p>270 Cầu Giấy, Hà Nội</p>
+                        <p>980 Giải Phóng, Hoàng Mai, Hà Nội</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -192,7 +214,7 @@
                     <div class="contact__widget">
                         <span class="icon_mail_alt"></span>
                         <h4>Email</h4>
-                        <p>anhducnguyen@gmail.com</p>
+                        <p>anhducnguyen0703@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -206,33 +228,32 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.html"><img style="margin-left: -8px;width:180px;" src="/Content/assets/img/DECOM-LOGO-02-1024x342.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Địa chỉ: 980 Giải Phóng, Hoàng Mai, Hà Nội</li>
+                            <li>Số điện thoại: +84 963704338</li>
+                            <li>Email: anhducnguyen0703@gmail.com</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                     <div class="footer__widget">
-                        <h6>Useful Links</h6>
+                        <h6>Liên kết</h6>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Giới thiệu cửa hàng</a></li>
+                            <li><a href="#">Thông tin liên hệ</a></li>
+                            <li><a href="#">Chính sách đổi trả</a></li>
+                            <li><a href="#">Chính sách vận chuyển</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Hướng dẫn mua hàng trực tuyến</a></li>
+                            <li><a href="#">Hướng dẫn thanh toán</a></li>
+                            <li><a href="#">Góp ý, khiếu nại</a></li>
+                            <li><a href="/Product/Index">Sách mới</a></li>
+                            <li><a href="/Product/Index">Sách bán chạy</a></li>
+                            <li><a href="/News/index">Tin tức</a></li>
                         </ul>
                     </div>
                 </div>
@@ -240,7 +261,7 @@
                     <div class="footer__widget">
                         @Html.Action("Partial_Subcrice", "Home")
                         <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100051249833928"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-pinterest"></i></a>
@@ -254,12 +275,12 @@
                         <div class="footer__copyright__text">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                @*Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>*@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                        @*<div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>*@
                     </div>
                 </div>
             </div>

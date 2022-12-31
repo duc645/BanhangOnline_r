@@ -87,17 +87,18 @@ namespace BanHangOnline.Controllers
 
                     order.Email = req.Email;
                     order.UserId = User.Identity.GetUserId();
+                    order.TotalAmount = cart.items.Sum(x => (x.Price * x.Quantity));
+                    order.TypePayment = req.Payment;
+                    order.CreatedDate = DateTime.Now;
+                    order.ModifiedDate = DateTime.Now;
+                    order.OrderStatusId = 1;
                     cart.items.ForEach(x => order.OrderDetails.Add(new OrderDetail
                     {
                         ProductId = x.ProductId,
                         Quantity = x.Quantity,
                         Price = x.Price
                     }));
-                    order.TotalAmount = cart.items.Sum(x => (x.Price * x.Quantity));
-                    order.TypePayment = req.Payment;
-                    order.CreatedDate = DateTime.Now;
-                    order.ModifiedDate = DateTime.Now;
-                    order.OrderStatusId = 1;
+
                     //order.CreatedBy = req.Phone;
                     //Random rd = new Random();
                     //order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
@@ -128,7 +129,7 @@ namespace BanHangOnline.Controllers
                     contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentCustomer = contentCustomer.Replace("{{ThanhTien}}", BanHangOnline.Common.Common.FormatNumber(thanhtien, 0));
                     contentCustomer = contentCustomer.Replace("{{TongTien}}", BanHangOnline.Common.Common.FormatNumber(TongTien, 0));
-                    BanHangOnline.Common.Common.SendMail("SachARS", "Đơn hàng #" + order.Id.ToString(), contentCustomer.ToString(), req.Email);
+                    BanHangOnline.Common.Common.SendMail("Decom", "Đơn hàng #" + order.Id.ToString(), contentCustomer.ToString(), req.Email);
 
                     //string contentAdmin = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send1.html"));
                     //contentAdmin = contentAdmin.Replace("{{MaDon}}", order.Code);
@@ -154,7 +155,12 @@ namespace BanHangOnline.Controllers
 
                     cart.ClearCart();
                     //return Redirect("/ShoppingCart");
-                    return Json(new { url = Url.Action("CheckOutSuccess","ShoppingCart") });
+                    //Do viết nhầm => sửa => trả ra trang giỏ hàng
+                    Session["CheckOutSuccess"] = 1;
+                    var check = Session["CheckOutSuccess"];
+                    return Json(new { url = Url.Action("Index", "ShoppingCart") });
+                    //return Json(new { url = Url.Action("CheckOutSuccess","ShoppingCart") });
+
                 }
             }
             return Json(code);
@@ -207,6 +213,7 @@ namespace BanHangOnline.Controllers
             }
             if(checkProduct != null)
             {
+                //khoi tao, lay thong tin gio
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
                 if(cart == null)
                 {
@@ -235,6 +242,8 @@ namespace BanHangOnline.Controllers
         }
         public ActionResult ShowCount()
         {
+            Session["CheckOutSuccess"] = 0;
+            var check = Session["CheckOutSuccess"];
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
             if (cart != null)
             {
@@ -266,6 +275,12 @@ namespace BanHangOnline.Controllers
         {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
             var db = new ApplicationDbContext();
+            //neu ng dung troll , co tinh nhap so luong 0
+            if(quantity <= 0)
+            {
+                return Json(new { Success = false });
+
+            }
             var checkProduct = db.Products.Where(x => x.Id == id).Include(c => c.ProductCategory).FirstOrDefault();
             if (checkProduct != null && checkProduct.Quantity < quantity)
             {

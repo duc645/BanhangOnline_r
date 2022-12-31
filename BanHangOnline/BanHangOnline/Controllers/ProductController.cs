@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,7 +15,7 @@ namespace BanHangOnline.Controllers
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index(int? page, int? category,string searchText,string sortText)
+        public ActionResult Index(int? page, int? category,string searchText,string sortText,int? author,int? publisher)
         {
             var pageSize = 9;
             if (page == null)
@@ -26,6 +27,16 @@ namespace BanHangOnline.Controllers
             {
                 ViewBag.category = category;
                 items = items.Where(p => p.ProductCategoryId == category);
+            }
+            if (author != null)
+            {
+                ViewBag.author = author;
+                items = items.Where(p => p.AuthorId == author);
+            }
+            if (publisher != null)
+            {
+                ViewBag.publisher = publisher;
+                items = items.Where(p => p.PublisherId == publisher);
             }
             if (!string.IsNullOrEmpty(searchText))
             {
@@ -60,6 +71,11 @@ namespace BanHangOnline.Controllers
                         ViewBag.SortText = sortText;
                         items = items.OrderBy(s => s.Title);
                         break;
+                    case "pub_year":
+                        ViewBag.SortText = sortText;
+                        items = items.OrderByDescending(s => s.PublishedYear);
+                        break;
+
                 }
 
             }
@@ -110,7 +126,7 @@ namespace BanHangOnline.Controllers
         }
         public ActionResult Partial_TopViewCount()
         {
-            var items = _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.ViewCout).Take(5).Include(c => c.ProductImages).ToList();
+            var items =  _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.ViewCout).Take(5).Include(c => c.ProductImages).ToList();
             return PartialView(items);
 
         }

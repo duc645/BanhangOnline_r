@@ -51,6 +51,8 @@ namespace BanHangOnline.Models
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
 
         public DbSet<ProductImage> ProductImages { get; set; }
 

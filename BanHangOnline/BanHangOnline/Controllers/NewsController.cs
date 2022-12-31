@@ -16,7 +16,7 @@ namespace BanHangOnline.Controllers
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         public ActionResult Index(int? page, int? category, string searchText)
         {
-            var pageSize = 2;
+            var pageSize = 6;
             if (page == null)
             {
                 page = 1;

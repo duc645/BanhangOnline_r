@@ -1,17 +1,29 @@
 ﻿@model IEnumerable<BanHangOnline.Models.EF.ProductCategory>
+    <style>
+        li .cateLink_hover:hover {
+            color: white;
+            background-color: black;
+            display: block;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: 18px;
+            border-radius: 15px
+        }
+    </style>
 @if (Model != null && Model.Any())
 {
     <h4>Danh mục sách</h4>
     <ul>
+        <li style="padding-left:70px;font-weight:bold;">@Html.ActionLink("X", "Index", "Product", new { page = 1,  searchText = ViewBag.SearchText, sortText = ViewBag.SortText, author= ViewBag.author, publisher = ViewBag.publisher }, new { @style = "font-size:16px;padding:0px 16px;color:white;background-color:#28a745;display:inline-block;border-radius:5px;" })</li>
         @foreach (var item in Model)
         {
             if (ViewBag.category == item.Id)
             {
-                <li class="active">@Html.ActionLink(">>> " + item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText= ViewBag.SortText }, null)</li>
+                <li style="display: block; background-color: #B10626; border-radius: 15px; padding-left: 5px; padding-right: 5px;margin-bottom:5px;margin-top:5px; " class="text-danger">@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText = ViewBag.SortText, author = ViewBag.author, publisher = ViewBag.publisher }, new { @style = "color: #ffffff;font-size:18px;" })</li>
             }
             else
             {
-                <li>@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText = ViewBag.SortText }, null)</li>
+                <li>@Html.ActionLink(item.Title, "Index", "Product", new { page = 1, category = item.Id, searchText = ViewBag.SearchText, sortText = ViewBag.SortText, author = ViewBag.author, publisher = ViewBag.publisher }, new { @class = "cateLink_hover", @style = "font-size:16px;" })</li>
             }
 
         }
