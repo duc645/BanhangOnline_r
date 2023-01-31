@@ -17,7 +17,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
 
         public ActionResult Index(string searchText, int? page)
         {
-            var pageSize = 5;
+            var pageSize = 10;
             if (page == null)
             {
                 page = 1;
@@ -25,7 +25,7 @@ namespace BanHangOnline.Areas.Admin.Controllers
             IEnumerable<Product> items = _dbContext.Products.OrderByDescending(x => x.Id);
             if (!string.IsNullOrEmpty(searchText))
             {
-                items = items.Where(x => x.Alias.Contains(searchText) || x.Title.Contains(searchText));
+                items = items.Where(x => x.Alias.Contains(searchText) || x.Title.ToLower().Contains(searchText));
             }
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
@@ -206,13 +206,13 @@ namespace BanHangOnline.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var item = _dbContext.Products.Find(id);
-            if (item != null)
-            {
+            //if (item != null)
+            //{
                 _dbContext.Products.Remove(item);
                 _dbContext.SaveChanges();
                 return Json(new { success = true });
-            }
-            return Json(new { success = false });
+            //}
+            //return Json(new { success = false });
         }
 
         [HttpPost]
@@ -225,6 +225,27 @@ namespace BanHangOnline.Areas.Admin.Controllers
                 _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                 _dbContext.SaveChanges();
                 return Json(new { success = true, isActive = item.IsActive });
+            }
+            return Json(new { success = false });
+        }
+
+        [HttpPost]
+        public ActionResult deletedAll(string ids)
+        {
+            if (!string.IsNullOrEmpty(ids))
+            {
+                var items = ids.Split(',');
+                if (items != null && items.Any())
+                {
+                    foreach (var item in items)
+                    {
+                        var obj = _dbContext.Products.Find(Convert.ToInt32(item));
+                        _dbContext.Products.Remove(obj);
+                        _dbContext.SaveChanges();
+                    }
+
+                }
+                return Json(new { success = true });
             }
             return Json(new { success = false });
         }

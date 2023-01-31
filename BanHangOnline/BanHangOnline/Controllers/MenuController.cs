@@ -49,7 +49,7 @@ namespace BanHangOnline.Controllers
             {
                 ViewBag.author = id;
             }
-            var items = _dbContext.Authors.ToList();
+            var items = _dbContext.Authors.Where(p => p.IsActive == true).OrderBy(p => p.FullName).ToList();
             return PartialView("_MenuLeftAuthor", items);
         }
         public ActionResult MenuLeftPublisher(int? id, string SearchText, string SortText, int? category, int? author)
@@ -74,7 +74,7 @@ namespace BanHangOnline.Controllers
             {
                 ViewBag.publisher = id;
             }
-            var items = _dbContext.Publishers.ToList();
+            var items = _dbContext.Publishers.Where(p=>p.IsActive==true).OrderByDescending(p=>p.FullName).ToList();
             return PartialView("_MenuLeftPublisher", items);
         }
 
@@ -130,7 +130,7 @@ namespace BanHangOnline.Controllers
             {
                 ViewBag.category = id;
             }
-            var items = _dbContext.Categories.ToList();
+            var items = _dbContext.Categories.Where(p => p.IsActive == true).ToList();
             return PartialView("_MenuLeftCategories", items);
         }
     }

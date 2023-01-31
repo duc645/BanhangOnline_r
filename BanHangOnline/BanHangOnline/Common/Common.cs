@@ -14,12 +14,14 @@ namespace BanHangOnline.Common
 
         private static string password = ConfigurationManager.AppSettings["PasswordEmail"];
         private static string Email = ConfigurationManager.AppSettings["Email"];
+        //tieu de thu , tieu de noi dung, noi dung , guitoimailnao
         public static bool SendMail(string name, string subject, string content,
             string toMail)
         {
         bool rs = false;
             try
             {
+                //tao moi MailMessage
                 MailMessage message = new MailMessage();
                 var smtp = new SmtpClient();
                 {
@@ -29,17 +31,24 @@ namespace BanHangOnline.Common
                     smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
 
                     smtp.UseDefaultCredentials = false;
+                    //thong tin mail quan tri
                     smtp.Credentials = new NetworkCredential() { 
                         UserName=Email,
                         Password=password
                     };
                 }
+                //thong tin ng gui
                 MailAddress fromAddress = new MailAddress(Email, name);
                 message.From = fromAddress;
+                //gui toi email nao "toMail"
                 message.To.Add(toMail);
+                //tieu de noi dung
                 message.Subject = subject;
+                //cho phep dung html
                 message.IsBodyHtml = true;
+                //noi dung
                 message.Body = content;
+                //gui mail bang smtp
                 smtp.Send(message);
                 rs = true;
             }

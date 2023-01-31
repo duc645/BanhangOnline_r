@@ -30,20 +30,21 @@ namespace BanHangOnline.Models
         public void Remove(int id)
         {
             var checkExits = items.SingleOrDefault(x => x.ProductId == id);
-            if(checkExits != null)
-            {
+            //if(checkExits != null)
+            //{
                 items.Remove(checkExits);
                 
-            }
+            //}
         }
         public void UpdateQuantity(int id, int quantity)
         {
+            //lấy ra sách này trong giỏ
             var checkExits = items.SingleOrDefault(x => x.ProductId == id);
-            if (checkExits != null)
-            {
+            //if (checkExits != null)
+            //{
                 checkExits.Quantity = quantity;
                 checkExits.TotalPrice = checkExits.Price * checkExits.Quantity;
-            }
+            //}
 
         }
         public decimal GetToTalPrice()

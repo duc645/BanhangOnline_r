@@ -178,26 +178,26 @@
     <script>
         $(document).ready(function () {
             // hien thi form anh
-            $("#dialog").dialog({
-                autoOpen: false,
-                show: "fade",
-                hide: "fade",
-                modal: true,
-                height: '600',
-                width: '700',
-                resizable: true,
-                title: 'ảnh sản phẩm',
-                close: function () {
-                    wiwdow.location.reload();
-                }
+            //$("#dialog").dialog({
+            //    autoOpen: false,
+            //    show: "fade",
+            //    hide: "fade",
+            //    modal: true,
+            //    height: '600',
+            //    width: '700',
+            //    resizable: true,
+            //    title: 'ảnh sản phẩm',
+            //    close: function () {
+            //        wiwdow.location.reload();
+            //    }
 
-            });
-            $('body').on("click", ".imgproduct", function () {
-                var proid = $(this).attr("data-id");
-                $("#dialog #myIframe").attr("src", "/admin/ProductImage/Index?id=" + proid);
-                $('#dialog').dialog('open');
-                return false;
-            });
+            //});
+            //$('body').on("click", ".imgproduct", function () {
+            //    var proid = $(this).attr("data-id");
+            //    $("#dialog #myIframe").attr("src", "/admin/ProductImage/Index?id=" + proid);
+            //    $('#dialog').dialog('open');
+            //    return false;
+            //});
 
             $('body').on('click', '#BtnDeleteAll', function (e) {
                 e.preventDefault();
@@ -209,6 +209,7 @@
                     if (this.checked) {
                         checkbox.attr('selected', 'checked');
                         var _id = $(this).val();
+                        //tk dau tien
                         if (i === 0) {
                             str += _id;
                         }

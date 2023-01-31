@@ -71,8 +71,8 @@ namespace BanHangOnline.Controllers
             if (ModelState.IsValid)
             {
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
-                if (cart != null && cart.items.Count >0)
-                {
+                //if (cart != null && cart.items.Count >0)
+                //{
                     Order order = new Order();
                     order.CustomerName = req.CustomerName;
                     order.Phone = req.Phone;
@@ -84,12 +84,25 @@ namespace BanHangOnline.Controllers
                     {
                         order.Address = req.Address + req.subAddress;
                     }
+                //if (string.IsNullOrEmpty(req.subAddress) && string.IsNullOrEmpty(req.MainAddress))
+                //{
+                //    order.Address = req.Address;thkonhapca2
+                //}
 
-                    order.Email = req.Email;
+                order.Email = req.Email;
                     order.UserId = User.Identity.GetUserId();
                     order.TotalAmount = cart.items.Sum(x => (x.Price * x.Quantity));
                     order.TypePayment = req.Payment;
-                    order.CreatedDate = DateTime.Now;
+                //if (req.Payment == 1 && order.TotalAmount >200000 )
+                //{
+                //    order.TotalAmount += 30000;
+                //}
+                //if (req.Payment == 1 && order.TotalAmount <= 200000)
+                //{
+                //    var ShippingMoney = (order.TotalAmount * 5) / 100;
+                //    order.TotalAmount += ShippingMoney;
+                //}
+                order.CreatedDate = DateTime.Now;
                     order.ModifiedDate = DateTime.Now;
                     order.OrderStatusId = 1;
                     cart.items.ForEach(x => order.OrderDetails.Add(new OrderDetail
@@ -119,6 +132,7 @@ namespace BanHangOnline.Controllers
                         thanhtien += s.Price * s.Quantity;
                     }
                     TongTien = thanhtien;
+                //lay ra template
                     string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send2.html"));
                     contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Id.ToString());
                     contentCustomer = contentCustomer.Replace("{{SanPham}}", strSanPham);
@@ -161,7 +175,7 @@ namespace BanHangOnline.Controllers
                     return Json(new { url = Url.Action("Index", "ShoppingCart") });
                     //return Json(new { url = Url.Action("CheckOutSuccess","ShoppingCart") });
 
-                }
+                //}
             }
             return Json(code);
         }
@@ -206,18 +220,18 @@ namespace BanHangOnline.Controllers
             var code = new { Success = false, msg = "", code = -1, Count = 0 };
             var db = new ApplicationDbContext();
             var checkProduct = db.Products.Where(x => x.Id == id).Include(c=>c.ProductCategory).FirstOrDefault();
-            if(checkProduct !=null && checkProduct.Quantity < quantity)
+            if(checkProduct.Quantity < quantity)
             {
                 code = new { Success = false, msg = " Số lượng hàng trong kho không đủ ", code = -1, Count = 0};
                 return Json(code);
             }
-            if(checkProduct != null)
-            {
+            //if(checkProduct != null)
+            //{
                 //khoi tao, lay thong tin gio
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
-                if(cart == null)
+                if (cart == null)
                 {
-                    cart = new ShoppingCart();
+                cart = new ShoppingCart();
                 }
                 ShoppingCartItem item = new ShoppingCartItem
                 {
@@ -236,13 +250,13 @@ namespace BanHangOnline.Controllers
                 cart.AddToCart(item, quantity);
                 code = new { Success = true, msg = " Đã thêm sản phẩm vào giỏ hàng", code = 1, Count = cart.items.Count };
                 Session["Cart"] = cart;
-            }
+            //}
             return Json(code);
 
         }
         public ActionResult ShowCount()
         {
-            Session["CheckOutSuccess"] = 0;
+            Session["CheckOutSuccess"] = 0;//khoi tao khi moi chay crinh,chua checkout thanh cong
             var check = Session["CheckOutSuccess"];
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
             if (cart != null)
@@ -258,15 +272,15 @@ namespace BanHangOnline.Controllers
             var code = new { Success = false, msg = "", code = -1, Count = 0 };
 
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
-            if (cart != null)
-            {
-                var checkProduct = cart.items.FirstOrDefault(x => x.ProductId == id);
-                if (checkProduct != null)
-                {
+            //if (cart != null)
+            //{
+                //var checkProduct = cart.items.FirstOrDefault(x => x.ProductId == id);
+                //if (checkProduct != null)
+                //{
                     cart.Remove(id);
                     code = new { Success = true, msg = "", code = 1, Count = cart.items.Count };
-                }
-            }
+                //}
+            //}
             return Json(code);
         }
 
@@ -276,22 +290,22 @@ namespace BanHangOnline.Controllers
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
             var db = new ApplicationDbContext();
             //neu ng dung troll , co tinh nhap so luong 0
-            if(quantity <= 0)
-            {
-                return Json(new { Success = false });
+            //if(quantity <= 0)
+            //{
+            //    return Json(new { Success = false });
 
-            }
+            //}
             var checkProduct = db.Products.Where(x => x.Id == id).Include(c => c.ProductCategory).FirstOrDefault();
-            if (checkProduct != null && checkProduct.Quantity < quantity)
+            if (quantity < 1 || checkProduct.Quantity < quantity)
             {
                 return Json(new { Success = false });
             }
-            if (cart != null)
-            {
+            //if (cart != null)
+            //{
                 cart.UpdateQuantity(id, quantity);
                 return Json(new { Success = true });
-            }
-            return Json(new { Success = false });
+            //}
+            //return Json(new { Success = false });
         }
     }
 }

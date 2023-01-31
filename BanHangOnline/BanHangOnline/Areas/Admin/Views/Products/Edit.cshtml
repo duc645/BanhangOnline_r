@@ -9,6 +9,7 @@
         margin: 0;
         padding: 0;
         display: flex;
+        flex-wrap: wrap;
     }
 
         .glImage li {
@@ -78,10 +79,10 @@
                 {
                     foreach (var item in Model.ProductImages)
                     {
-                        <li id="trow_@item.Id">
+                        <li style="margin-bottom:50px;" id="trow_@item.Id">
                             <img src="@item.Image" width="200" height="260"/>
                             <div class="box-btn">
-                                <a href="#" class="btn btn-sm btn-danger btnDelete" data-id="@item.Id"><i class="fa fa-trash"></i></a>
+                                <a href="#" class="btn btn-sm btn-danger btnDelete" data-id="@item.Id">@*<i class="fa fa-trash"></i>*@Xóa</a>
                                 @if (item.IsDefault)
                                 {
                             <a href="#" class="btn btn-sm btn-success btnDefault" data-default1="@item.IsDefault" data-id="@item.Id" onclick="ChangeMain();">@*<i class="fa fa-check"></i>*@ Ảnh đại diện</a>

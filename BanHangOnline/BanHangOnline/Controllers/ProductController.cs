@@ -22,7 +22,7 @@ namespace BanHangOnline.Controllers
             {
                 page = 1;
             }
-            IEnumerable<Product> items = _dbContext.Products.OrderByDescending(p => p.Id);
+            IEnumerable<Product> items = _dbContext.Products.Where(p=>p.IsActive==true).OrderByDescending(p => p.Id);
             if (category != null)
             {
                 ViewBag.category = category;
@@ -41,7 +41,7 @@ namespace BanHangOnline.Controllers
             if (!string.IsNullOrEmpty(searchText))
             {
                 ViewBag.SearchText = searchText;
-                items = items.Where(p => p.Alias.Contains(searchText) || p.Title.Contains(searchText));
+                items = items.Where(p => p.Alias.Contains(searchText) || p.Title.ToLower().Contains(searchText));
             }
             if (!string.IsNullOrEmpty(sortText))
             {
@@ -113,7 +113,7 @@ namespace BanHangOnline.Controllers
 
         public ActionResult Partial_ProductSale()
         {
-            var items = _dbContext.Products.Where(p =>  p.IsActive == true && p.PriceSale>0).Take(4).Include(c => c.ProductImages).ToList();
+            var items = _dbContext.Products.Where(p =>  p.IsActive == true && p.PriceSale>0).Take(10).Include(c => c.ProductImages).ToList();
             return PartialView(items);
 
         }
@@ -126,14 +126,14 @@ namespace BanHangOnline.Controllers
         }
         public ActionResult Partial_TopViewCount()
         {
-            var items =  _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.ViewCout).Take(5).Include(c => c.ProductImages).ToList();
+            var items =  _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.ViewCout).Take(7).Include(c => c.ProductImages).ToList();
             return PartialView(items);
 
         }
 
         public ActionResult Partial_TopProductNew()
         {
-            var items = _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.CreatedDate).Take(5).Include(c => c.ProductImages).ToList();
+            var items = _dbContext.Products.Where(p => p.IsActive == true).OrderByDescending(p => p.CreatedDate).Take(10).Include(c => c.ProductImages).ToList();
             return PartialView(items);
 
         }

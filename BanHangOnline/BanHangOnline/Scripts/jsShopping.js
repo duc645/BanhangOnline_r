@@ -75,7 +75,7 @@ $(document).ready(function () {
             console.log('sau 10 giay');
 
             Update(productid, quantity);
-        }, 1000);
+        }, 400);
 
     });
 
@@ -117,7 +117,7 @@ function Update(id, quantity) {
                 LoadCart();
             }
             else {
-                alert("Số lượng trong kho không đủ, xin mời bạn chọn lại !!!");
+                alert("Số lượng trong kho không đủ, xin mời bạn nhập lại !!!");
             }
         }
     });

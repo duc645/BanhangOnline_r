@@ -276,8 +276,8 @@ namespace BanHangOnline.Controllers
         public ActionResult CancelStatus(int id)
         {
             var item = _dbContext.Orders.Where(o => o.Id == id).Include(d => d.OrderDetails).FirstOrDefault();
-            if(item != null)
-            {
+            //if(item != null)
+            //{
                 item.OrderStatusId = 3;
                 _dbContext.Orders.Attach(item);
                 _dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
@@ -298,8 +298,8 @@ namespace BanHangOnline.Controllers
                 }
 
                 return Json(new { success=true}, JsonRequestBehavior.AllowGet);
-            }
-            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            //}
+            //return Json(new { success = false }, JsonRequestBehavior.AllowGet);
         }
 
         //edit user info
